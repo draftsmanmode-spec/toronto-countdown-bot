@@ -2,9 +2,9 @@ name: Send daily countdown
 
 on:
   schedule:
-    # 13:00 UTC = 9:00am Toronto (EDT) / 3:00pm Koeln (CEST)
+    # 13:00 UTC = 9:00am Toronto (EDT) / 3:00pm K\u00f6ln (CEST)
     - cron: "0 13 * * *"
-  workflow_dispatch: {}  # lets you manually trigger a test run from the Actions tab
+  workflow_dispatch: {}
 
 jobs:
   send:
@@ -20,5 +20,6 @@ jobs:
       - run: python send_countdown.py
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-          CHAT_ID: ${{ secrets.CHAT_ID }}
+          ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
+          CUSTOMER_CHAT_ID: ${{ secrets.CUSTOMER_CHAT_ID }}
           PAGES_URL: ${{ secrets.PAGES_URL }}
