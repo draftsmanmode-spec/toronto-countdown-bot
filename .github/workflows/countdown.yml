@@ -1,0 +1,21 @@
+name: Send daily countdown
+
+on:
+  schedule:
+    # 13:00 UTC = 9:00am Toronto (EDT) / 3:00pm Koeln (CEST)
+    - cron: "0 13 * * *"
+  workflow_dispatch: {}  # lets you manually trigger a test run from the Actions tab
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - run: python send_countdown.py
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
