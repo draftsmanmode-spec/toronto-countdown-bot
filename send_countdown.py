@@ -1,82 +1,86 @@
 """
-Sends a daily "days until the flight" message + countdown screenshot to your
-brother via Telegram.
+Sends the daily countdown photo to your brother (CUSTOMER_CHAT_ID), then
+sends you (ADMIN_CHAT_ID) a copy of exactly what he received, so you always
+know what went out.
 
-Setup (one time):
-1. Create a bot with @BotFather on Telegram -> get BOT_TOKEN
-2. Message your new bot from your brother's account (he sends it /start)
-3. Get his CHAT_ID by visiting:
-   https://api.telegram.org/bot<BOT_TOKEN>/getUpdates
-   (look for "chat":{"id": ...} in the response after he messages the bot)
-4. Enable GitHub Pages for this repo (Settings -> Pages -> Deploy from
-   branch -> main -> /docs) and copy the URL it gives you into a PAGES_URL
-   secret. This is the link that gets included in the message.
-5. Set BOT_TOKEN, CHAT_ID and PAGES_URL as repo secrets
-   (Settings -> Secrets and variables -> Actions)
+Required repo secrets:
+  BOT_TOKEN         - from @BotFather
+  ADMIN_CHAT_ID     - your chat ID (you, the controller)
+  CUSTOMER_CHAT_ID  - your brother's chat ID (set this once he has messaged
+                      the bot at least once; until then the script sends
+                      only to you with a warning)
+  PAGES_URL         - the live link to docs/index.html (GitHub Pages)
 
-Run manually to test:
-   BOT_TOKEN=xxx CHAT_ID=xxx PAGES_URL=xxx python3 send_countdown.py
+Honest limitation: Telegram's Bot API does not expose read receipts to
+bots. "Sent successfully" is the most this script (or any bot) can ever
+confirm — there is no way to know if he actually opened/read the message.
 """
 
 import os
 import sys
 from datetime import date
-import requests
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
-CHAT_ID = os.environ.get("CHAT_ID")
+from telegram_utils import send_text, send_photo
+
+ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID")
+CUSTOMER_CHAT_ID = os.environ.get("CUSTOMER_CHAT_ID", "").strip()
 PAGES_URL = os.environ.get("PAGES_URL", "").strip()
 
-FLIGHT_DATE = date(2026, 8, 9)  # August 9, 2026
+FLIGHT_DATE = date(2026, 8, 9)
 PHOTO_PATH = "countdown.png"
 
 
 def days_left() -> int:
-    today = date.today()
-    return (FLIGHT_DATE - today).days
+    return (FLIGHT_DATE - date.today()).days
 
 
 def build_caption(days: int) -> str:
     if days > 1:
-        text = f"{days} days till Toronto \U0001F1E8\U0001F1E6✈️\n\nKoeln → Toronto. Getting closer!"
+        text = f"{days} days till Toronto \U0001F1E8\U0001F1E6\u2708\uFE0F\n\nK\u00f6ln \u2192 Toronto. Getting closer!"
     elif days == 1:
-        text = "1 day left. TOMORROW. \U0001F1E8\U0001F1E6✈️"
+        text = "1 day left. TOMORROW. \U0001F1E8\U0001F1E6\u2708\uFE0F"
     elif days == 0:
-        text = "TODAY'S THE DAY. See you soon! \U0001F1E8\U0001F1E6✈️\U0001F389"
+        text = "TODAY'S THE DAY. See you soon! \U0001F1E8\U0001F1E6\u2708\uFE0F\U0001F389"
     else:
         text = "He's already in Toronto \U0001F1E8\U0001F1E6 (or this date needs updating)"
-
     if PAGES_URL:
         text += f"\n\n\U0001F517 {PAGES_URL}"
     return text
 
 
-def send_photo(caption: str) -> None:
-    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendPhoto"
-    with open(PHOTO_PATH, "rb") as f:
-        resp = requests.post(
-            url,
-            data={"chat_id": CHAT_ID, "caption": caption},
-            files={"photo": f},
-        )
-    resp.raise_for_status()
-    print("Sent photo with caption:", caption)
+def main():
+    if not os.environ.get("BOT_TOKEN") or not ADMIN_CHAT_ID:
+        print("Missing BOT_TOKEN or ADMIN_CHAT_ID.", file=sys.stderr)
+        sys.exit(1)
 
+    caption = build_caption(days_left())
+    has_photo = os.path.exists(PHOTO_PATH)
 
-def send_text(caption: str) -> None:
-    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    resp = requests.post(url, json={"chat_id": CHAT_ID, "text": caption})
-    resp.raise_for_status()
-    print("Sent text (no photo found):", caption)
+    if not CUSTOMER_CHAT_ID:
+        # No customer set up yet -> just tell the admin, don't send anywhere else
+        warn = "\u26A0\uFE0F CUSTOMER_CHAT_ID isn't set yet, so today's countdown only went to you.\n\n" + caption
+        if has_photo:
+            send_photo(ADMIN_CHAT_ID, PHOTO_PATH, warn)
+        else:
+            send_text(ADMIN_CHAT_ID, warn)
+        print("Sent to admin only (no customer chat id set).")
+        return
+
+    # 1. Send to the customer (your brother)
+    if has_photo:
+        send_photo(CUSTOMER_CHAT_ID, PHOTO_PATH, caption)
+    else:
+        send_text(CUSTOMER_CHAT_ID, caption)
+    print("Sent to customer.")
+
+    # 2. Report the same thing to the admin (you), so you know it went out
+    report = "\U0001F4E4 Sent to your brother just now:\n\n" + caption
+    if has_photo:
+        send_photo(ADMIN_CHAT_ID, PHOTO_PATH, report)
+    else:
+        send_text(ADMIN_CHAT_ID, report)
+    print("Sent report to admin.")
 
 
 if __name__ == "__main__":
-    if not BOT_TOKEN or not CHAT_ID:
-        print("Missing BOT_TOKEN or CHAT_ID environment variables.", file=sys.stderr)
-        sys.exit(1)
-
-    msg = build_caption(days_left())
-    if os.path.exists(PHOTO_PATH):
-        send_photo(msg)
-    else:
-        send_text(msg)
+    main()

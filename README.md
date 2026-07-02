@@ -1,37 +1,74 @@
-# Toronto Countdown Bot
+# Toronto Countdown Bot (v3 — admin/customer roles)
 
-Sends your brother a daily "days left" message in Telegram until Aug 9, 2026.
+Two roles now:
+- **CUSTOMER** (your brother) — receives the daily countdown photo
+- **ADMIN** (you) — gets a copy of everything sent to him, plus a report
+  whenever he sends *anything* to the bot
 
-## Setup (10 minutes)
+## Honest limits, read this first
+- Telegram's Bot API does **not** give bots read receipts. This setup can
+  tell you "the message was successfully delivered to Telegram's servers
+  for his chat" — it cannot tell you if he opened or read it. No bot setup
+  can do that; it's a platform limitation, not something more code fixes.
+- "He typed something" is checked **every 5 minutes**, not instantly —
+  there's no always-on server here, so it's near-real-time rather than
+  live.
+- Worth actually telling your brother the bot works this way, so it's not
+  a surprise later.
 
-1. **Create the bot**
-   - Open Telegram, message [@BotFather](https://t.me/BotFather)
-   - Send `/newbot`, follow the prompts, name it whatever (e.g. `TorontoCountdownBot`)
-   - Copy the **token** it gives you (looks like `123456:ABC-DEF...`)
+## What's new vs. v2
+- `telegram_utils.py` — shared helper functions
+- `send_countdown.py` — now sends to `CUSTOMER_CHAT_ID` **and** reports a
+  copy to `ADMIN_CHAT_ID`
+- `poll_messages.py` — new, checks for new messages from your brother and
+  forwards a summary to you
+- `.github/workflows/poll.yml` — new workflow, runs every 5 minutes
+- `state.json` — tracks which messages have already been reported (the
+  poll workflow commits updates to this file automatically — don't edit
+  it by hand)
 
-2. **Get your brother's chat ID**
-   - Have your brother open Telegram and send `/start` (or any message) to your new bot
-   - In a browser, visit:
-     `https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates`
-   - Find `"chat":{"id":XXXXXXXXX` in the response — that number is his `CHAT_ID`
+## Setup
 
-3. **Put this on GitHub**
-   - Create a new repo, upload everything in this `countdown_bot` folder
-     (keep the `.github/workflows/countdown.yml` path exactly as-is)
-   - Go to repo **Settings → Secrets and variables → Actions**
-   - Add two secrets:
-     - `BOT_TOKEN` — the token from step 1
-     - `CHAT_ID` — the number from step 2
+### 1. Upload/replace these files in your repo
+Replace: `send_countdown.py`, `.github/workflows/countdown.yml`
+Add new: `telegram_utils.py`, `poll_messages.py`,
+`.github/workflows/poll.yml`, `state.json`
+(`docs/index.html` and `capture_countdown.py` are unchanged from v2 — no
+need to re-upload if already there)
 
-4. **Test it**
-   - Go to the **Actions** tab → "Send daily countdown" → **Run workflow**
-   - Check Telegram — your brother should get the message within a few seconds
+### 2. Rename your secret
+- Go to Settings → Secrets and variables → Actions
+- Your existing `CHAT_ID` secret was you (for testing) — add a new secret
+  called `ADMIN_CHAT_ID` with that same value
+- You can delete the old `CHAT_ID` secret once `ADMIN_CHAT_ID` is added,
+  it's no longer used
 
-That's it. It'll now run automatically every day at 9am Toronto time until the
-flight date, with no server, no laptop needing to stay on, nothing to maintain.
+### 3. Add your brother's chat ID
+- Once he has messaged the bot at least once, get his chat ID the same way
+  as before (`getUpdates`)
+- Add it as a new secret called `CUSTOMER_CHAT_ID`
+- Until this secret exists, the daily send will go to you only, with a
+  warning in the message — nothing breaks, it just waits for you
+
+### 4. Allow the poll workflow to save its progress
+- Settings → Actions → General → scroll to "Workflow permissions"
+- Select **"Read and write permissions"** → Save
+- (Without this, `poll.yml` can't commit `state.json` back and will fail
+  on the last step)
+
+### 5. Test both workflows
+- Actions tab → "Send daily countdown" → Run workflow
+  → you should get a normal countdown message (with the "only sent to
+  you" warning until `CUSTOMER_CHAT_ID` is set)
+- Actions tab → "Poll for brother's messages" → Run workflow
+  → check the logs; if `CUSTOMER_CHAT_ID` isn't set yet it'll just print
+  "nothing to poll for" and exit cleanly, that's expected
 
 ## Changing things later
-- **Flight date**: edit `FLIGHT_DATE` in `send_countdown.py`
-- **Send time**: edit the `cron` line in `.github/workflows/countdown.yml`
-  (time is in UTC)
-- **Message wording**: edit `build_message()` in `send_countdown.py`
+- **Poll frequency**: the `cron` line in `.github/workflows/poll.yml`
+  (more frequent = more Actions minutes used, though this is free on a
+  public repo)
+- **What counts as "received"**: `send_countdown.py` already reports every
+  send to you automatically, nothing to change there
+- **Message wording**: `build_caption()` in `send_countdown.py`, or the
+  report text in `poll_messages.py`
