@@ -26,7 +26,7 @@ ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID")
 CUSTOMER_CHAT_ID = os.environ.get("CUSTOMER_CHAT_ID", "").strip()
 PAGES_URL = os.environ.get("PAGES_URL", "").strip()
 
-FLIGHT_DATE = date(2026, 8, 9)
+FLIGHT_DATE = date(2026, 8, 11)
 PHOTO_PATH = "countdown.png"
 
 
@@ -36,7 +36,7 @@ def days_left() -> int:
 
 def build_caption(days: int) -> str:
     if days > 1:
-        text = f"{days} days till Toronto \U0001F1E8\U0001F1E6\u2708\uFE0F\n\nK\u00f6ln \u2192 Toronto. Getting closer!"
+        text = f"{days} days till Toronto \U0001F1E8\U0001F1E6\u2708\uFE0F\n\nFrankfurt \u2192 Toronto, nonstop, lands 17:55. Getting closer!"
     elif days == 1:
         text = "1 day left. TOMORROW. \U0001F1E8\U0001F1E6\u2708\uFE0F"
     elif days == 0:
