@@ -1,0 +1,25 @@
+name: Send custom message
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "Message to send to your brother"
+        required: true
+        type: string
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - run: python send_custom_message.py
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
+          CUSTOMER_CHAT_ID: ${{ secrets.CUSTOMER_CHAT_ID }}
+          MESSAGE_TEXT: ${{ github.event.inputs.message }}
