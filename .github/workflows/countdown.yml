@@ -1,9 +1,9 @@
 name: Send daily countdown
 
+# Automatic daily schedule removed on request - this workflow now only runs
+# when triggered manually (Actions tab -> Run workflow). The countdown
+# still works fine on-demand, it just won't fire on its own anymore.
 on:
-  schedule:
-    # 13:00 UTC = 9:00am Toronto (EDT) / 3:00pm K\u00f6ln (CEST)
-    - cron: "0 13 * * *"
   workflow_dispatch: {}
 
 jobs:
