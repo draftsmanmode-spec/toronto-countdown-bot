@@ -1,0 +1,37 @@
+name: Send daily quote
+
+on:
+  schedule:
+    # 12:00 UTC = 8:00am Toronto (EDT) / 2:00pm Köln (CEST)
+    - cron: "0 12 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write   # needed to commit the updated quote_state.json + docs/index.html
+
+jobs:
+  quote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - run: python send_quote.py
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
+          CUSTOMER_CHAT_ID: ${{ secrets.CUSTOMER_CHAT_ID }}
+      - run: python update_site.py
+      - name: Save quote log and updated site
+        run: |
+          if ! git diff --quiet quote_state.json docs/index.html; then
+            git config user.name "quote-bot"
+            git config user.email "actions@github.com"
+            git add quote_state.json docs/index.html
+            git commit -m "Daily quote update [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
