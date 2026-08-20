@@ -1,7 +1,8 @@
 """
 Rebuilds the HTML between the <!-- QUOTES_START --> and <!-- QUOTES_END -->
-markers in docs/index.html using quote_state.json's history: today's quote
-as a featured card, plus a collapsible list of everything sent before.
+markers in docs/index.html using quote_state.json's history: today's theme
+(quotes + analysis, EN then UK) as a featured card, plus a collapsible list
+of everything sent before.
 
 Run this right after send_quote.py so the log already includes today's
 entry.
@@ -32,11 +33,18 @@ def format_date(iso_date: str) -> str:
     return date(y, m, d).strftime("%b %-d, %Y")
 
 
-def render_quote_block(entry: dict) -> str:
-    text = html_module.escape(entry["text"])
-    author = entry.get("author")
-    author_html = f'<div class="qauthor">— {html_module.escape(author)}</div>' if author else ""
-    return text, author_html
+def render_quotes_html(quotes: list) -> str:
+    out = ""
+    for q in quotes:
+        text = html_module.escape(q["text"])
+        text_uk = html_module.escape(q.get("text_uk", ""))
+        author = html_module.escape(q.get("author", ""))
+        out += f"""
+      <p class="qline">&ldquo;{text}&rdquo;</p>
+      <div class="qauthor">&mdash; {author}</div>
+      <p class="qline qline-uk">&laquo;{text_uk}&raquo;</p>
+      <div class="qauthor">&mdash; {author}</div>"""
+    return out
 
 
 def build_html(history: list) -> str:
@@ -44,14 +52,20 @@ def build_html(history: list) -> str:
         return '<div style="text-align:center; color:var(--sub); padding:20px;">First quote lands after the daily job runs.</div>'
 
     today_entry = history[-1]
-    text, author_html = render_quote_block(today_entry)
     today_date = format_date(today_entry["date"])
+    subject = html_module.escape(today_entry.get("subject", ""))
+    subject_uk = html_module.escape(today_entry.get("subject_uk", ""))
+    analysis_en = html_module.escape(today_entry.get("analysis_en", ""))
+    analysis_uk = html_module.escape(today_entry.get("analysis_uk", ""))
+    quotes_html = render_quotes_html(today_entry.get("quotes", []))
 
     featured = f"""
     <div class="quote-today">
       <div class="qmark">&ldquo;</div>
-      <p>{text}</p>
-      {author_html}
+      <div class="qsubject">{subject} / {subject_uk}</div>
+      {quotes_html}
+      <p class="qanalysis">{analysis_en}</p>
+      <p class="qanalysis qanalysis-uk">{analysis_uk}</p>
       <div class="qdate">{today_date}</div>
     </div>"""
 
@@ -59,17 +73,23 @@ def build_html(history: list) -> str:
     if older:
         items = ""
         for entry in older:
-            t, a_html = render_quote_block(entry)
             d = format_date(entry["date"])
-            author_txt = entry.get("author") or ""
+            subj = html_module.escape(entry.get("subject", ""))
+            subj_uk = html_module.escape(entry.get("subject_uk", ""))
+            q_html = render_quotes_html(entry.get("quotes", []))
+            a_en = html_module.escape(entry.get("analysis_en", ""))
+            a_uk = html_module.escape(entry.get("analysis_uk", ""))
             items += f"""
         <div class="qh-item">
-          <p>&ldquo;{t}&rdquo;</p>
-          <div class="qh-meta">{d}{' &middot; ' + html_module.escape(author_txt) if author_txt else ''}</div>
+          <div class="qh-subject">{subj} / {subj_uk}</div>
+          {q_html}
+          <p class="qanalysis">{a_en}</p>
+          <p class="qanalysis qanalysis-uk">{a_uk}</p>
+          <div class="qh-meta">{d}</div>
         </div>"""
         history_html = f"""
     <details class="quote-history">
-      <summary>See {len(older)} earlier quote{'s' if len(older) != 1 else ''} ▾</summary>
+      <summary>See {len(older)} earlier theme{'s' if len(older) != 1 else ''} &#9662;</summary>
       {items}
     </details>"""
     else:
@@ -94,7 +114,7 @@ def main():
         + site_html[end:]
     )
     SITE_PATH.write_text(updated, encoding="utf-8")
-    print(f"Updated {SITE_PATH} with {len(history)} quote(s) in history.")
+    print(f"Updated {SITE_PATH} with {len(history)} theme(s) in history.")
 
 
 if __name__ == "__main__":
