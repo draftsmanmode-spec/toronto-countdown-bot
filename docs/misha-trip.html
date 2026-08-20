@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мишин август в Торонто</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root{
+    --bg: #f1f6f4;
+    --paper: #ffffff;
+    --ink: #1c3a3f;
+    --ink-soft: #4d6b6e;
+    --teal: #0f5c52;
+    --teal-deep: #0a3f39;
+    --coral: #e2653e;
+    --gold: #d79a2c;
+    --line: #d8e6e1;
+    --grey-cell: #e8ede9;
+    --shadow: 0 1px 2px rgba(15,40,35,0.06), 0 6px 20px rgba(15,40,35,0.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased;
+    padding-bottom:60px;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif; margin:0;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  header{
+    background: linear-gradient(180deg, var(--teal-deep), var(--teal));
+    color:#eef7f4; padding:28px 20px 22px;
+  }
+  .hwrap{max-width:1040px; margin:0 auto;}
+  header h1{font-size:26px; font-weight:700; letter-spacing:.2px;}
+  header .sub{font-size:13px; color:#bfe0d6; margin-top:4px; font-family:'Inter',sans-serif;}
+
+  .ribbon{ margin-top:20px; position:relative; height:64px; }
+  .ribbon-track{ position:absolute; left:0; right:0; top:30px; height:2px; background:rgba(255,255,255,0.25); }
+  .ribbon-fill{ position:absolute; left:0; top:30px; height:2px; background:var(--gold); }
+  .ribbon-end{
+    position:absolute; top:14px; width:34px; height:34px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:15px;
+    background:#0a3f39; border:2px solid var(--gold); transform:translateX(-50%);
+  }
+  .ribbon-label{
+    position:absolute; top:-16px; font-size:10.5px; color:#cfe9df; white-space:nowrap; transform:translateX(-50%); font-family:'IBM Plex Mono',monospace;
+  }
+  .ribbon-today{
+    position:absolute; top:26px; width:10px; height:10px; border-radius:50%;
+    background:#fff; transform:translate(-50%,0); box-shadow:0 0 0 4px rgba(255,255,255,0.25);
+  }
+  .ribbon-today-label{
+    position:absolute; top:44px; font-size:10.5px; color:#fff; font-weight:600; transform:translateX(-50%); white-space:nowrap;
+  }
+
+  main{max-width:1040px; margin:0 auto; padding:26px 20px;}
+  section{margin-bottom:34px;}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;}
+  .section-head h2{font-size:19px; color:var(--teal-deep);}
+  .section-head .hint{font-size:12px; color:var(--ink-soft);}
+
+  .weekday-row{display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-bottom:6px;}
+  .weekday-row div{font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); text-align:center; font-weight:600;}
+  .week{display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-bottom:8px;}
+  .cell{
+    background:var(--paper); border-radius:10px; padding:9px 8px 10px; min-height:96px;
+    border:1px solid var(--line); cursor:pointer; position:relative; transition:box-shadow .15s, transform .15s;
+    display:flex; flex-direction:column;
+  }
+  .cell:hover{box-shadow:var(--shadow); transform:translateY(-1px);}
+  .cell.outside{background:var(--grey-cell); border:1px dashed #cddad4; cursor:default; opacity:.55;}
+  .cell.outside:hover{box-shadow:none; transform:none;}
+  .cell .datenum{font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; color:var(--ink-soft);}
+  .cell.is-today .datenum{color:var(--coral); font-weight:700;}
+  .cell.is-today{border-color:var(--coral); box-shadow:0 0 0 1.5px var(--coral) inset;}
+  .cell .flightmark{font-size:10px; color:var(--coral); font-weight:700; letter-spacing:.03em;}
+  .cell .title{font-size:12.5px; font-weight:600; margin-top:5px; line-height:1.25; color:var(--ink); flex-grow:1;}
+  .cell .title.empty{color:#9fb3ae; font-weight:500; font-style:italic;}
+  .cell .status-dot{position:absolute; top:9px; right:9px; width:9px; height:9px; border-radius:50%;}
+  .dot-confirmed{background:#2f8f5b;}
+  .dot-planned{background:var(--gold);}
+  .dot-tbd{background:#c7d3ce;}
+
+  .ideas{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px;}
+  .idea-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:14px 14px 12px; box-shadow:var(--shadow);
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .idea-card .iname{font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:var(--teal-deep); display:flex; align-items:center; gap:6px;}
+  .idea-card .ilink{font-size:10.5px; color:var(--teal); text-decoration:none; word-break:break-all; margin-top:-4px;}
+  .idea-card .ilink:hover{text-decoration:underline;}
+  .idea-card textarea{
+    width:100%; min-height:72px; border:1px solid var(--line); border-radius:8px; padding:7px 8px; font-family:'Inter',sans-serif;
+    font-size:12.5px; color:var(--ink); resize:vertical; background:#fafdfc;
+  }
+  .idea-card .row{display:flex; align-items:center; gap:8px; font-size:12px;}
+  .idea-card select{flex:1; font-size:12px; padding:5px 6px; border-radius:6px; border:1px solid var(--line); font-family:'Inter',sans-serif;}
+  .idea-card button.assign{
+    background:var(--teal); color:#fff; border:none; border-radius:6px; padding:5px 10px; font-size:11.5px; font-weight:600; cursor:pointer;
+  }
+  .idea-card button.assign:hover{background:var(--teal-deep);}
+  .idea-card label.confirm{display:flex; align-items:center; gap:6px; font-size:12px; color:var(--ink-soft); cursor:pointer;}
+
+  .overlay{position:fixed; inset:0; background:rgba(10,30,27,0.35); display:none; z-index:40;}
+  .overlay.open{display:block;}
+  .drawer{
+    position:fixed; top:0; right:0; height:100%; width:min(380px,92vw); background:var(--paper); z-index:50;
+    box-shadow:-8px 0 30px rgba(0,0,0,0.15); transform:translateX(100%); transition:transform .22s ease; padding:22px 20px; overflow-y:auto;
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer .dhead{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em;}
+  .drawer h3{font-size:22px; color:var(--teal-deep); margin-top:2px; margin-bottom:16px;}
+  .drawer label{display:block; font-size:11.5px; font-weight:600; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; margin-bottom:5px; margin-top:14px;}
+  .drawer input[type=text], .drawer textarea{
+    width:100%; border:1px solid var(--line); border-radius:8px; padding:9px 10px; font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink);
+  }
+  .drawer textarea{min-height:110px; resize:vertical;}
+  .drawer .confirm-row{display:flex; align-items:center; gap:8px; margin-top:16px;}
+  .drawer .confirm-row input{width:17px; height:17px;}
+  .drawer .btnrow{display:flex; gap:8px; margin-top:22px;}
+  .drawer button{flex:1; padding:10px; border-radius:8px; border:none; font-weight:600; font-size:13px; cursor:pointer;}
+  .btn-save{background:var(--teal); color:#fff;}
+  .btn-save:hover{background:var(--teal-deep);}
+  .btn-close{background:#eef2f0; color:var(--ink-soft);}
+  .btn-close:hover{background:#e2e8e5;}
+  .drawer .closeX{position:absolute; top:18px; right:18px; font-size:20px; color:var(--ink-soft); cursor:pointer; background:none; border:none;}
+  .savedflag{font-size:11px; color:#2f8f5b; margin-top:8px; height:14px;}
+
+  .legend{display:flex; gap:16px; font-size:11.5px; color:var(--ink-soft); margin-top:10px; flex-wrap:wrap;}
+  .legend span{display:inline-flex; align-items:center; gap:5px;}
+  .legend i{width:8px; height:8px; border-radius:50%; display:inline-block;}
+
+  .note{font-size:11.5px; color:var(--ink-soft); margin-top:6px;}
+
+  .exportbar{display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;}
+  .exportbtn{
+    background:var(--paper); border:1.5px solid var(--teal); color:var(--teal-deep); font-family:'Inter',sans-serif;
+    font-size:12.5px; font-weight:700; padding:8px 14px; border-radius:8px; cursor:pointer; transition:background .15s;
+  }
+  .exportbtn:hover{background:#e2f0ec;}
+  .exportbtn:disabled{opacity:.5; cursor:default;}
+  .exportstatus{font-size:11.5px; color:#2f8f5b; font-weight:600;}
+  #exportArea{background:var(--bg); padding:4px; border-radius:8px;}
+  .exporttitle{display:none; font-family:'Fraunces',serif; font-weight:700; font-size:17px; color:var(--teal-deep); margin-bottom:12px; text-align:center;}
+  #exportArea.capturing{background:#ffffff; padding:18px;}
+  #exportArea.capturing .exporttitle{display:block;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hwrap">
+    <h1>Мишин август в Торонто ✈</h1>
+    <div class="sub">11 – 31 августа 2026 · Condor FRA⇄YYZ · нажимай на день, чтобы вписать план</div>
+    <div class="ribbon" id="ribbon"></div>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <div class="section-head">
+      <h2>Календарь поездки</h2>
+      <div class="hint">клик по дню — открыть и заполнить</div>
+    </div>
+    <div class="exportbar">
+      <button class="exportbtn" id="btnExportPng">⬇ Экспорт PNG</button>
+      <button class="exportbtn" id="btnExportPdf">⬇ Экспорт PDF</button>
+      <span class="exportstatus" id="exportStatus"></span>
+    </div>
+    <div id="exportArea">
+      <div class="exporttitle">Мишин август в Торонто · 11–31 августа 2026</div>
+      <div class="weekday-row">
+        <div>Вс</div><div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div><div>Сб</div>
+      </div>
+      <div id="calendar"></div>
+      <div class="legend">
+        <span><i style="background:#2f8f5b"></i> подтверждено</span>
+        <span><i style="background:#d79a2c"></i> в планах / не финально</span>
+        <span><i style="background:#c7d3ce"></i> ещё не решили</span>
+      </div>
+    </div>
+    <div class="note" id="storageNote"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Копилка идей — куда ещё съездить</h2>
+      <div class="hint">впиши заметки и назначь на свободную дату</div>
+    </div>
+    <div class="ideas" id="ideas"></div>
+  </section>
+
+</main>
+
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <button class="closeX" id="closeX">✕</button>
+  <div class="dhead" id="dHead">ВТ · 11 АВГУСТА</div>
+  <h3 id="dTitleShow">День</h3>
+  <label>Что планируем</label>
+  <input type="text" id="fTitle" placeholder="Например: Ниагарский водопад">
+  <label>Заметки — за/против, почему именно в этот день</label>
+  <textarea id="fNotes" placeholder="Плюсы, минусы, почему этот день подходит..."></textarea>
+  <div class="confirm-row">
+    <input type="checkbox" id="fConfirmed">
+    <label style="margin:0; text-transform:none; font-weight:500; font-size:13px; color:var(--ink);">Точно подтверждено семьёй</label>
+  </div>
+  <div class="btnrow">
+    <button class="btn-close" id="btnCancel">Отмена</button>
+    <button class="btn-save" id="btnSave">Сохранить</button>
+  </div>
+  <div class="savedflag" id="savedFlag"></div>
+</div>
+
+<script>
+const TODAY = "2026-08-20";
+const TRIP_START = "2026-08-11";
+const TRIP_END = "2026-08-31";
+
+function fmt(d){ return d.toISOString().slice(0,10); }
+
+const defaultDays = {
+  "2026-08-11": {title:"✈️ Прилёт Миши", notes:"Frankfurt → Toronto, рейс Condor, посадка 17:55. Встречаем в аэропорту.", confirmed:true},
+  "2026-08-12": {title:"🎬 Кино", notes:"Ходили на «Эксперимент». Уже сделано.", confirmed:true},
+  "2026-08-13": {title:"👟 Шоппинг", notes:"Кроссовки и вещи для Миши.", confirmed:true},
+  "2026-08-14": {title:"👨‍👩‍👧 Скорее всего к дяде", notes:"Пока не финализировано — просто заедем в гости.", confirmed:false},
+  "2026-08-15": {title:"🎂 ДР дяди — едем на север", notes:"Семейное событие, дорога на север займёт время, весь день там. Почему этот день: день рождения нельзя перенести.", confirmed:true},
+  "2026-08-17": {title:"💻 Дома + немного PC вечером", notes:"Денис на работе, Миша весь день дома. Вечером немного погеймили вместе на компьютере.", confirmed:true},
+  "2026-08-18": {title:"🏗️ Newmarket + 🥋 джиу-джитсу", notes:"Днём — объект (кондо) в Newmarket. Вечером — тренировка джиу-джитсу.", confirmed:true},
+  "2026-08-19": {title:"🏗️ Newmarket + 🥊 Muay Thai", notes:"Днём снова на объекте в Newmarket. Вечером Muay Thai — Daniel, Alex, Mike, Adelina, Миша и я.", confirmed:true},
+  "2026-08-20": {title:"🚴 Велопрогулянка", notes:"Сегодняшний день — катаемся на великах.", confirmed:true},
+  "2026-08-21": {title:"🗼 CN Tower (скорее всего)", notes:"Вероятно идём на CN Tower. Плюс: сегодня же открывается CNE (The Ex) — можно совместить с вечером на Ex после башни.", confirmed:false},
+  "2026-08-31": {title:"✈️ Отъезд", notes:"Рейс Toronto → Frankfurt в 19:55. Быть в аэропорту к ~17:00. Утро — сборы, ничего активного не планировать.", confirmed:true},
+};
+
+const defaultIdeas = [
+  {key:"cne", name:"🎡 CNE / The Ex", link:"https://www.theex.com/", notes:"Открывается именно завтра, 21 августа, и идёт до 7 сентября. Заранее купленный билет дешевле, чем на входе. Ride-All-Day Pass — если хочется кататься весь день. Бесплатные концерты на Bandshell включены в билет."},
+  {key:"fanexpo", name:"🦸 Fan Expo Canada", link:"https://www.fanexpocanada.com", notes:"27–30 августа, Metro Toronto Convention Centre. Игровая зона GX, Artist Alley, костюм-контест Masquerade. Рефанд билетов только до 20 августа — то есть решать нужно уже сегодня."},
+  {key:"concerts", name:"🎤 Большие концерты на этой неделе", notes:"Ed Sheeran — 20, 21, 22 августа, Rogers Centre. BTS — 22–23 августа, Rogers Stadium. Kacey Musgraves — 24 августа, Scotiabank Arena. Билеты быстро разбирают, если интересно — проверить Ticketmaster уже сегодня."},
+  {key:"wonderland", name:"🎢 Canada's Wonderland", notes:"Лучше в будний день — меньше очередей. Минус: нужно, чтобы кто-то взял отгул. Погода должна быть хорошей — весь день на улице."},
+  {key:"niagara", name:"💦 Niagara Falls", notes:"Логичнее на выходных — не нужен отгул. ~1.5 часа в одну сторону, закладывать весь день."},
+  {key:"rainyday", name:"🎳 Запасной пасмурный день", notes:"Боулинг / теннис — не привязан к дате, можно вечером, если погода подведёт."},
+  {key:"liquor", name:"🥃 Liquor store outlet", notes:"Быстрая поездка, можно совместить с другим днём поблизости."},
+  {key:"safari", name:"🐒 African Lion Safari", notes:"Под вопросом. Риск: обезьяны в drive-through зоне иногда царапают машины. Уточнить на месте, стоит ли ехать / объезжать зону обезьян."},
+  {key:"camping", name:"⛺ Кемпинг на ночь", notes:"Нужен как минимум 1 свободный день + ночь. Хорошо подойдёт на открытое окно, например 25–27 августа."},
+];
+
+let dayData = {};
+let ideaData = {};
+let currentKey = null;
+const STORAGE_OK = (typeof window.storage !== "undefined");
+
+async function loadAll(){
+  for(const k in defaultDays){ dayData[k] = {...defaultDays[k]}; }
+  const allDates = enumerateDates(TRIP_START, TRIP_END);
+  for(const dt of allDates){
+    if(!dayData[dt]) dayData[dt] = {title:"", notes:"", confirmed:false};
+    if(STORAGE_OK){
+      try{
+        const r = await window.storage.get("day:"+dt, false);
+        if(r && r.value) dayData[dt] = JSON.parse(r.value);
+      }catch(e){}
+    }
+  }
+  for(const idea of defaultIdeas){
+    ideaData[idea.key] = {notes: idea.notes, confirmed:false, assigned:null};
+    if(STORAGE_OK){
+      try{
+        const r = await window.storage.get("idea:"+idea.key, false);
+        if(r && r.value) ideaData[idea.key] = JSON.parse(r.value);
+      }catch(e){}
+    }
+  }
+  document.getElementById("storageNote").textContent = STORAGE_OK ? "" : "Заметка: хранилище недоступно в этом просмотрщике — изменения не сохранятся между открытиями. Откройте файл в браузере, чтобы сохранение работало.";
+  renderCalendar();
+  renderIdeas();
+  renderRibbon();
+}
+
+function enumerateDates(start, end){
+  const out=[]; let d=new Date(start+"T00:00:00Z"); const e=new Date(end+"T00:00:00Z");
+  while(d<=e){ out.push(fmt(d)); d=new Date(d.getTime()+86400000); }
+  return out;
+}
+
+function weekdayShort(dt){
+  const names=["Вс","Пн","Вт","Ср","Чт","Пт","Сб"];
+  return names[new Date(dt+"T00:00:00Z").getUTCDay()];
+}
+function dayNum(dt){ return parseInt(dt.slice(8,10),10); }
+
+function renderCalendar(){
+  const cal = document.getElementById("calendar");
+  cal.innerHTML="";
+  let start = new Date(TRIP_START+"T00:00:00Z");
+  start.setUTCDate(start.getUTCDate() - start.getUTCDay());
+  let end = new Date(TRIP_END+"T00:00:00Z");
+  end.setUTCDate(end.getUTCDate() + (6-end.getUTCDay()));
+
+  let d = new Date(start);
+  while(d<=end){
+    const week = document.createElement("div");
+    week.className="week";
+    for(let i=0;i<7;i++){
+      const dt = fmt(d);
+      const inTrip = dt>=TRIP_START && dt<=TRIP_END;
+      const cell = document.createElement("div");
+      cell.className = "cell" + (inTrip? "" : " outside") + (dt===TODAY? " is-today":"");
+      if(inTrip){
+        const info = dayData[dt] || {title:"",notes:"",confirmed:false};
+        const dotClass = info.title? (info.confirmed? "dot-confirmed":"dot-planned") : "dot-tbd";
+        const flightTag = dt===TRIP_START? '<div class="flightmark">ПРИЛЁТ</div>' : (dt===TRIP_END? '<div class="flightmark">ОТЪЕЗД</div>' : "");
+        cell.innerHTML = `
+          <div class="status-dot ${dotClass}"></div>
+          <div class="datenum">${dayNum(dt)} авг${dt===TODAY? " · сегодня":""}</div>
+          ${flightTag}
+          <div class="title ${info.title? "":"empty"}">${info.title? escapeHtml(info.title) : "не решили"}</div>
+        `;
+        cell.addEventListener("click", ()=>openDrawer(dt));
+      } else {
+        cell.innerHTML = `<div class="datenum">${dayNum(dt)}</div>`;
+      }
+      week.appendChild(cell);
+      d = new Date(d.getTime()+86400000);
+    }
+    cal.appendChild(week);
+  }
+}
+
+function escapeHtml(s){ const div=document.createElement("div"); div.innerText=s; return div.innerHTML; }
+
+function openDrawer(dt){
+  currentKey = dt;
+  const info = dayData[dt] || {title:"",notes:"",confirmed:false};
+  const wd = weekdayShort(dt).toUpperCase();
+  document.getElementById("dHead").textContent = `${wd} · ${dayNum(dt)} АВГУСТА 2026`;
+  document.getElementById("dTitleShow").textContent = info.title || "Новый план";
+  document.getElementById("fTitle").value = info.title || "";
+  document.getElementById("fNotes").value = info.notes || "";
+  document.getElementById("fConfirmed").checked = !!info.confirmed;
+  document.getElementById("savedFlag").textContent = "";
+  document.getElementById("overlay").classList.add("open");
+  document.getElementById("drawer").classList.add("open");
+}
+function closeDrawer(){
+  document.getElementById("overlay").classList.remove("open");
+  document.getElementById("drawer").classList.remove("open");
+  currentKey = null;
+}
+document.getElementById("overlay").addEventListener("click", closeDrawer);
+document.getElementById("closeX").addEventListener("click", closeDrawer);
+document.getElementById("btnCancel").addEventListener("click", closeDrawer);
+
+document.getElementById("btnSave").addEventListener("click", async ()=>{
+  if(!currentKey) return;
+  const title = document.getElementById("fTitle").value.trim();
+  const notes = document.getElementById("fNotes").value.trim();
+  const confirmed = document.getElementById("fConfirmed").checked;
+  dayData[currentKey] = {title, notes, confirmed};
+  if(STORAGE_OK){
+    try{ await window.storage.set("day:"+currentKey, JSON.stringify(dayData[currentKey]), false); }catch(e){}
+  }
+  document.getElementById("savedFlag").textContent = "Сохранено ✓";
+  renderCalendar();
+  renderIdeas();
+  setTimeout(closeDrawer, 450);
+});
+
+function renderIdeas(){
+  const wrap = document.getElementById("ideas");
+  wrap.innerHTML="";
+  const openDates = enumerateDates(TRIP_START, TRIP_END).filter(dt => !(dayData[dt] && dayData[dt].title));
+  for(const idea of defaultIdeas){
+    const st = ideaData[idea.key];
+    const card = document.createElement("div");
+    card.className="idea-card";
+    let options = openDates.map(dt=>`<option value="${dt}">${dayNum(dt)} авг (${weekdayShort(dt)})</option>`).join("");
+    if(options==="") options = `<option value="">нет свободных дней</option>`;
+    card.innerHTML = `
+      <div class="iname">${idea.name}</div>
+      ${idea.link? `<a class="ilink" href="${idea.link}" target="_blank">${idea.link.replace(/^https?:\/\//,"")}</a>` : ""}
+      <textarea data-key="${idea.key}">${escapeHtml(st.notes)}</textarea>
+      <label class="confirm"><input type="checkbox" data-confirm="${idea.key}" ${st.confirmed? "checked":""}> хотим сделать</label>
+      <div class="row">
+        <select data-assign="${idea.key}">${options}</select>
+        <button class="assign" data-go="${idea.key}">→ в календарь</button>
+      </div>
+    `;
+    wrap.appendChild(card);
+  }
+  wrap.querySelectorAll("textarea").forEach(ta=>{
+    ta.addEventListener("change", async ()=>{
+      const key = ta.getAttribute("data-key");
+      ideaData[key].notes = ta.value;
+      if(STORAGE_OK){ try{ await window.storage.set("idea:"+key, JSON.stringify(ideaData[key]), false); }catch(e){} }
+    });
+  });
+  wrap.querySelectorAll("[data-confirm]").forEach(cb=>{
+    cb.addEventListener("change", async ()=>{
+      const key = cb.getAttribute("data-confirm");
+      ideaData[key].confirmed = cb.checked;
+      if(STORAGE_OK){ try{ await window.storage.set("idea:"+key, JSON.stringify(ideaData[key]), false); }catch(e){} }
+    });
+  });
+  wrap.querySelectorAll("[data-go]").forEach(btn=>{
+    btn.addEventListener("click", async ()=>{
+      const key = btn.getAttribute("data-go");
+      const sel = wrap.querySelector(`[data-assign="${key}"]`);
+      const dt = sel.value;
+      if(!dt) return;
+      const idea = defaultIdeas.find(i=>i.key===key);
+      dayData[dt] = {title: idea.name, notes: ideaData[key].notes, confirmed:false};
+      if(STORAGE_OK){ try{ await window.storage.set("day:"+dt, JSON.stringify(dayData[dt]), false); }catch(e){} }
+      renderCalendar();
+      renderIdeas();
+    });
+  });
+}
+
+function renderRibbon(){
+  const ribbon = document.getElementById("ribbon");
+  ribbon.innerHTML = `<div class="ribbon-track"></div><div class="ribbon-fill" id="rfill"></div>`;
+  const start = new Date(TRIP_START+"T00:00:00Z").getTime();
+  const end = new Date(TRIP_END+"T00:00:00Z").getTime();
+  const today = new Date(TODAY+"T00:00:00Z").getTime();
+  const pct = Math.max(0,Math.min(1,(today-start)/(end-start)));
+
+  const startEl = document.createElement("div");
+  startEl.className="ribbon-end"; startEl.style.left="0%"; startEl.textContent="🛫";
+  const startLbl = document.createElement("div");
+  startLbl.className="ribbon-label"; startLbl.style.left="0%"; startLbl.textContent="11 АВГ · FRA→YYZ";
+  ribbon.appendChild(startEl); ribbon.appendChild(startLbl);
+
+  const endEl = document.createElement("div");
+  endEl.className="ribbon-end"; endEl.style.left="100%"; endEl.textContent="🛬";
+  const endLbl = document.createElement("div");
+  endLbl.className="ribbon-label"; endLbl.style.left="100%"; endLbl.textContent="31 АВГ · YYZ→FRA";
+  ribbon.appendChild(endEl); ribbon.appendChild(endLbl);
+
+  document.getElementById("rfill").style.width = (pct*100)+"%";
+
+  const todayDot = document.createElement("div");
+  todayDot.className="ribbon-today"; todayDot.style.left=(pct*100)+"%";
+  const todayLbl = document.createElement("div");
+  todayLbl.className="ribbon-today-label"; todayLbl.style.left=(pct*100)+"%"; todayLbl.textContent="сегодня";
+  ribbon.appendChild(todayDot); ribbon.appendChild(todayLbl);
+}
+
+async function captureCalendar(){
+  const area = document.getElementById("exportArea");
+  area.classList.add("capturing");
+  await new Promise(r=>setTimeout(r,50)); // let layout/fonts settle
+  const canvas = await html2canvas(area, {backgroundColor:"#ffffff", scale:2});
+  area.classList.remove("capturing");
+  return canvas;
+}
+
+document.getElementById("btnExportPng").addEventListener("click", async ()=>{
+  const status = document.getElementById("exportStatus");
+  const btns = document.querySelectorAll(".exportbtn");
+  btns.forEach(b=>b.disabled=true);
+  status.textContent = "Готовим PNG…";
+  try{
+    const canvas = await captureCalendar();
+    const link = document.createElement("a");
+    link.download = "Misha_kalendar_"+TODAY+".png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+    status.textContent = "Готово ✓";
+  }catch(e){
+    status.textContent = "Не получилось :(";
+  }
+  btns.forEach(b=>b.disabled=false);
+  setTimeout(()=>status.textContent="", 3000);
+});
+
+document.getElementById("btnExportPdf").addEventListener("click", async ()=>{
+  const status = document.getElementById("exportStatus");
+  const btns = document.querySelectorAll(".exportbtn");
+  btns.forEach(b=>b.disabled=true);
+  status.textContent = "Готовим PDF…";
+  try{
+    const canvas = await captureCalendar();
+    const { jsPDF } = window.jspdf;
+    const imgW = canvas.width, imgH = canvas.height;
+    const orientation = imgW >= imgH ? "landscape" : "portrait";
+    const pdf = new jsPDF({orientation, unit:"pt", format:"a4"});
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+    const ratio = Math.min(pageW/imgW, pageH/imgH);
+    const w = imgW*ratio, h = imgH*ratio;
+    const x = (pageW-w)/2, y = (pageH-h)/2;
+    pdf.addImage(canvas.toDataURL("image/png"), "PNG", x, y, w, h);
+    pdf.save("Misha_kalendar_"+TODAY+".pdf");
+    status.textContent = "Готово ✓";
+  }catch(e){
+    status.textContent = "Не получилось :(";
+  }
+  btns.forEach(b=>b.disabled=false);
+  setTimeout(()=>status.textContent="", 3000);
+});
+
+loadAll();
+</script>
+
+</body>
+</html>
