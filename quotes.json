@@ -1,72 +1,231 @@
 [
-  {"text": "You are not your job. You are not how much money you have in the bank. You are not the car you drive.", "author": "Chuck Palahniuk"},
-  {"text": "We suffer more often in imagination than in reality.", "author": "Seneca"},
-  {"text": "He who has a why to live can bear almost any how.", "author": "Friedrich Nietzsche"},
-  {"text": "The obstacle is the way.", "author": "Marcus Aurelius"},
-  {"text": "You have power over your mind, not outside events. Realize this, and you will find strength.", "author": "Marcus Aurelius"},
-  {"text": "Discipline is choosing between what you want now and what you want most.", "author": "Abraham Lincoln"},
-  {"text": "The cave you fear to enter holds the treasure you seek.", "author": "Joseph Campbell"},
-  {"text": "It does not matter how slowly you go as long as you do not stop.", "author": "Confucius"},
-  {"text": "Desire is a contract you make with yourself to be unhappy until you get what you want.", "author": "Naval Ravikant"},
-  {"text": "A person who never made a mistake never tried anything new.", "author": "Albert Einstein"},
-  {"text": "Fall seven times, stand up eight.", "author": "Japanese proverb"},
-  {"text": "What stands in the way becomes the way.", "author": "Marcus Aurelius"},
-  {"text": "The unexamined life is not worth living.", "author": "Socrates"},
-  {"text": "Amateurs sit and wait for inspiration, the rest of us just get up and go to work.", "author": "Stephen King"},
-  {"text": "You don't have to be great to start, but you have to start to be great.", "author": "Zig Ziglar"},
-  {"text": "Comparison is the thief of joy.", "author": "Theodore Roosevelt"},
-  {"text": "The privilege of a lifetime is to become who you truly are.", "author": "Carl Jung"},
-  {"text": "Between stimulus and response there is a space. In that space is our power to choose.", "author": "Viktor Frankl"},
-  {"text": "Waste no more time arguing about what a good man should be. Be one.", "author": "Marcus Aurelius"},
-  {"text": "What you do every day matters more than what you do once in a while.", "author": "Gretchen Rubin"},
-
-  {"text": "Discipline weighs ounces. Regret weighs tons."},
-  {"text": "Nobody is coming to save you. That's actually good news — it means it's yours to build."},
-  {"text": "You don't need more time, you need fewer distractions and a clearer why."},
-  {"text": "Motivation gets you started. Systems keep you going when motivation leaves the room."},
-  {"text": "The version of you that has what you want has habits you don't have yet."},
-  {"text": "Rest is not the opposite of discipline, it's part of it."},
-  {"text": "Every skill you have was once something you were bad at."},
-  {"text": "Consistency beats intensity almost every single time."},
-  {"text": "Your standards are a decision, not a feeling — don't wait to feel ready."},
-  {"text": "The people who change your life rarely announce it in advance. Show up anyway."},
-  {"text": "Confidence is built in the practice room, not on stage."},
-  {"text": "You will never regret the workout, the honest conversation, or the early night's sleep."},
-  {"text": "Small daily improvements are the key to staggering long-term results."},
-  {"text": "The comfort zone is a beautiful place, but nothing ever grows there."},
-  {"text": "Ask for what you want. The worst answer you'll ever get is the one you already have by staying silent."},
-  {"text": "Energy management matters more than time management."},
-  {"text": "Your reputation is built in the moments nobody's watching."},
-  {"text": "Progress hides in boring, repeatable actions."},
-  {"text": "If it's important, you'll find a way. If it's not, you'll find an excuse."},
-  {"text": "Take care of your body — it's the only place you have to live."},
-  {"text": "Say less, do more, let the results talk."},
-  {"text": "The best time to plant a tree was 20 years ago. The second best time is now.", "author": "Chinese proverb"},
-  {"text": "Character is who you are when the room is empty."},
-  {"text": "Growth is uncomfortable by design — that discomfort is the signal you're doing it right."},
-  {"text": "You can't pour from an empty cup — fill yours first."},
-  {"text": "Patience is a form of confidence — it says you trust the process."},
-  {"text": "Every 'no' gets you closer to a 'yes,' if you keep asking."},
-  {"text": "Don't wait until you feel confident. Act, and let confidence catch up."},
-  {"text": "Your circle either stretches your thinking or shrinks it — choose carefully."},
-  {"text": "The obstacle you're avoiding is usually the one thing worth doing."},
-  {"text": "Discipline is remembering what you want."},
-  {"text": "You are the average of the five habits you repeat most, not the five people you follow."},
-  {"text": "A goal without a deadline is just a wish."},
-  {"text": "Do the hard thing first — everything after gets easier."},
-  {"text": "Ambition without patience is just anxiety wearing a suit."},
-  {"text": "The market rewards clarity, not perfection."},
-  {"text": "Your future self is watching what you do today — make them proud."},
-  {"text": "Silence the noise long enough to hear your own decisions."},
-  {"text": "Bet on yourself before you ask anyone else to."},
-  {"text": "The best apology is changed behavior."},
-  {"text": "You don't find time, you make it — on purpose, every day."},
-  {"text": "Slow progress is still progress. Stopping is the only real failure."},
-  {"text": "Build the life you don't need a vacation from."},
-  {"text": "Strong opinions, loosely held — stay curious enough to change your mind."},
-  {"text": "The work you're avoiding is usually the work that matters most."},
-  {"text": "Kindness is a strength, not a soft option."},
-  {"text": "Nobody remembers your excuses, they remember your results."},
-  {"text": "Do it scared. Courage isn't the absence of fear, it's moving anyway."},
-  {"text": "You are one decision away from a completely different life."}
+  {
+    "subject": "Sleep",
+    "subject_uk": "Сон",
+    "analysis_en": "Both guests point to the same lever: your mornings and your sleep quietly set the ceiling for everything else you do that day. Fix the edges of your day before trying to fix the middle.",
+    "analysis_uk": "Обидва гості вказують на один і той самий важіль: твій сон і ранок тихо визначають стелю для всього іншого, що ти робиш того дня. Спочатку впорядкуй краї дня — і середина піде легше.",
+    "quotes": [
+      {
+        "text": "The shorter your sleep, the shorter your life. Sleep is the single most effective thing you can do to reset your brain and body health.",
+        "text_uk": "Чим коротший твій сон, тим коротше твоє життя. Сон — це найефективніше, що ти можеш зробити, щоб перезавантажити мозок і тіло.",
+        "author": "Matthew Walker"
+      },
+      {
+        "text": "A good morning can make a day; a bad morning can be hard to recover from — how you start shapes everything after.",
+        "text_uk": "Правильний початок ранку впливає на весь день; поганий ранок важко надолужити — те, як ти починаєш, формує все, що буде далі.",
+        "author": "Dr Rangan Chatterjee"
+      }
+    ]
+  },
+  {
+    "subject": "Happiness",
+    "subject_uk": "Щастя",
+    "analysis_en": "Happiness isn't a mood you chase directly. It's what's left over when your expectations match reality and your actions align with what actually matters to you.",
+    "analysis_uk": "Щастя — це не настрій, за яким варто гнатися напряму. Це те, що залишається, коли твої очікування збігаються з реальністю, а дії — з тим, що для тебе справді важливе.",
+    "quotes": [
+      {
+        "text": "Happiness equals your perception of the events of your life minus your expectations of how life should be.",
+        "text_uk": "Щастя дорівнює твоєму сприйняттю подій твого життя мінус твої очікування того, яким життя має бути.",
+        "author": "Mo Gawdat"
+      },
+      {
+        "text": "We chase the emotion of happiness itself, when really it's a byproduct of doing the right things.",
+        "text_uk": "Ми гонимося за самим відчуттям щастя, тоді як насправді це побічний продукт правильних дій.",
+        "author": "Dr Rangan Chatterjee"
+      }
+    ]
+  },
+  {
+    "subject": "Trauma & Healing",
+    "subject_uk": "Травма та зцілення",
+    "analysis_en": "Healing doesn't mean erasing what happened. It means changing your relationship to it, from something that runs you to something you've made peace with.",
+    "analysis_uk": "Зцілення — це не стирання того, що сталося, а зміна твого ставлення до цього: з того, що керує тобою, на те, з чим ти домовився.",
+    "quotes": [
+      {
+        "text": "If we make friends with our pain but relieve it of its duties, thank it, but tell it we can handle things now, it becomes our friend rather than our master.",
+        "text_uk": "Якщо ми потоваришуємо з болем, але звільнимо його від обов'язків — подякуємо, скажемо, що тепер впораємося самі — він стає нашим другом, а не господарем.",
+        "author": "Dr Gabor Maté"
+      },
+      {
+        "text": "Trauma is not what happens to you, it's what happens inside you as a result of what happened to you.",
+        "text_uk": "Травма — це не те, що з тобою сталося, а те, що відбулося всередині тебе внаслідок того, що сталося.",
+        "author": "Dr Gabor Maté"
+      }
+    ]
+  },
+  {
+    "subject": "Fear & Confidence",
+    "subject_uk": "Страх та впевненість",
+    "analysis_en": "Confidence isn't a feeling you wait for. It's a byproduct of repetition and real skill. Fear fades the same way: through doing the thing enough times that it stops being unfamiliar.",
+    "analysis_uk": "Впевненість — це не почуття, на яке треба чекати, а побічний ефект повторення та реальної майстерності. Страх зникає так само: через те, що ти робиш це достатньо разів, щоб воно перестало бути незнайомим.",
+    "quotes": [
+      {
+        "text": "As you gain experience, you lose fear. The things that once kept you up at night stop frightening you once you know how to do them.",
+        "text_uk": "З досвідом страх зникає — те, що колись не давало спати ночами, перестає лякати, коли ти вже знаєш, як це робити.",
+        "author": "Simon Sinek"
+      },
+      {
+        "text": "Real confidence comes from actual accomplishments, not from how you feel or what you say, but from skills you actually have.",
+        "text_uk": "Справжня впевненість народжується з реальних досягнень — не з того, як ти почуваєшся чи що кажеш, а з навичок, які в тебе справді є.",
+        "author": "Robert Greene"
+      }
+    ]
+  },
+  {
+    "subject": "Discipline & Growth",
+    "subject_uk": "Дисципліна та зростання",
+    "analysis_en": "Structure isn't the enemy of freedom, it's what makes freedom possible. And growth requires doing things before you feel ready, not after.",
+    "analysis_uk": "Структура — не ворог свободи, а те, що робить свободу можливою. А зростання вимагає діяти до того, як відчуєш готовність, а не після.",
+    "quotes": [
+      {
+        "text": "Discipline equals freedom.",
+        "text_uk": "Дисципліна дорівнює свободі.",
+        "author": "Jocko Willink"
+      },
+      {
+        "text": "Stop telling yourself you're not qualified, good enough or worthy. Growth happens when you start doing the things you're not qualified to do.",
+        "text_uk": "Перестань казати собі, що ти недостатньо кваліфікований, хороший чи вартий цього. Зростання починається тоді, коли береш ся за те, до чого ще «не готовий».",
+        "author": "Steven Bartlett"
+      }
+    ]
+  },
+  {
+    "subject": "Anxiety & Action",
+    "subject_uk": "Тривога та дія",
+    "analysis_en": "The gap between deciding and acting is where anxiety lives. Both quotes point to the same fix: shrink that gap deliberately, on purpose, before your mind talks you out of it.",
+    "analysis_uk": "Тривога живе в проміжку між рішенням і дією. Обидві цитати вказують на одне й те саме рішення: свідомо скорочувати цей проміжок, поки розум не встиг тебе відмовити.",
+    "quotes": [
+      {
+        "text": "Inside that five-second window lives fear, anxiety, procrastination and imposter syndrome.",
+        "text_uk": "У цьому п'ятисекундному вікні живуть страх, тривога, прокрастинація та синдром самозванця.",
+        "author": "Mel Robbins"
+      },
+      {
+        "text": "Make yourself a promise, count backwards, 5, 4, 3, 2, 1, then do it.",
+        "text_uk": "Дай собі обіцянку, порахуй у зворотному порядку — 5, 4, 3, 2, 1 — і зроби це.",
+        "author": "Mel Robbins"
+      }
+    ]
+  },
+  {
+    "subject": "Stress & Leadership",
+    "subject_uk": "Стрес та лідерство",
+    "analysis_en": "Your internal state doesn't stay internal. As a leader, parent, or partner, your stress becomes everyone else's stress whether you intend it or not.",
+    "analysis_uk": "Твій внутрішній стан не залишається лише твоїм — як лідер, батько чи партнер, твій стрес стає стресом усіх навколо, хочеш ти того чи ні.",
+    "quotes": [
+      {
+        "text": "Your stress levels as a leader are going to have more impact on everybody else than the rest of the people put together.",
+        "text_uk": "Рівень стресу лідера впливає на всіх навколо більше, ніж усі інші фактори разом узяті.",
+        "author": "Dr Tara Swart"
+      },
+      {
+        "text": "Stress is contagious. The people around you absorb it whether you intend that or not.",
+        "text_uk": "Стрес заразний — люди навколо переймають його, навіть якщо ти цього не хочеш.",
+        "author": "Dr Tara Swart"
+      }
+    ]
+  },
+  {
+    "subject": "Mind & Habits",
+    "subject_uk": "Розум і звички",
+    "analysis_en": "Real change requires more than new information. It requires interrupting the emotional loop you keep replaying, which is often the hardest habit of all to break.",
+    "analysis_uk": "Справжні зміни потребують не лише нової інформації — потрібно перервати емоційний цикл, який ти постійно відтворюєш, і це часто найважча звичка для подолання.",
+    "quotes": [
+      {
+        "text": "The greatest habit we have to break is the habit of being ourselves.",
+        "text_uk": "Найважча звичка, яку треба подолати, — це звичка бути собою.",
+        "author": "Dr Joe Dispenza"
+      },
+      {
+        "text": "No new information changes anything if you keep reliving the same emotional state.",
+        "text_uk": "Жодна нова інформація нічого не змінить, поки ти продовжуєш проживати той самий емоційний стан.",
+        "author": "Dr Joe Dispenza"
+      }
+    ]
+  },
+  {
+    "subject": "Relationships",
+    "subject_uk": "Стосунки",
+    "analysis_en": "Relationships aren't a side project to a good life, for most people they are the measure of it. And lasting love holds two opposite needs at once: closeness and independence.",
+    "analysis_uk": "Стосунки — це не побічний проєкт хорошого життя, а для більшості людей — його мірило. А тривала любов утримує дві протилежні потреби одночасно: близькість і незалежність.",
+    "quotes": [
+      {
+        "text": "The quality of your life is ultimately the quality of your relationships.",
+        "text_uk": "Якість твого життя — це, зрештою, якість твоїх стосунків.",
+        "author": "Esther Perel"
+      },
+      {
+        "text": "Love rests on two pillars: surrender and autonomy. Our need for togetherness exists right alongside our need for separateness.",
+        "text_uk": "Любов тримається на двох опорах: єднанні та автономії. Потреба бути разом існує поруч із потребою бути окремим.",
+        "author": "Esther Perel"
+      }
+    ]
+  },
+  {
+    "subject": "Purpose",
+    "subject_uk": "Сенс і мета",
+    "analysis_en": "People connect with why you do something before they care what you do, and the same discipline that builds outward purpose also quiets the mind inward, rather than trying to force it silent.",
+    "analysis_uk": "Люди спершу відгукуються на те, навіщо ти щось робиш, а вже потім — на те, що саме ти робиш. І та сама дисципліна, що будує зовнішню мету, заспокоює розум зсередини — а не намагається змусити його замовкнути.",
+    "quotes": [
+      {
+        "text": "People don't buy what you do, they buy why you do it.",
+        "text_uk": "Люди купують не те, що ти робиш, а те, навіщо ти це робиш.",
+        "author": "Simon Sinek"
+      },
+      {
+        "text": "You're not trying to control your mind when you meditate, you're learning to stop letting it control you.",
+        "text_uk": "Медитуючи, ти не намагаєшся контролювати свій розум — ти вчишся не дозволяти йому контролювати тебе.",
+        "author": "Jay Shetty"
+      }
+    ]
+  },
+  {
+    "subject": "Vulnerability & Courage",
+    "subject_uk": "Вразливість і мужність",
+    "analysis_en": "Owning your story, imperfections included, takes more courage than hiding it, and that honesty is the actual source of strength, not a weakness to manage.",
+    "analysis_uk": "Прийняти свою історію з усіма недосконалостями вимагає більше мужності, ніж її приховувати — і саме ця чесність є справжнім джерелом сили, а не слабкістю, яку треба контролювати.",
+    "quotes": [
+      {
+        "text": "Vulnerability is not weakness; it's our greatest measure of courage.",
+        "text_uk": "Вразливість — це не слабкість; це найвищий прояв мужності.",
+        "author": "Brené Brown"
+      },
+      {
+        "text": "You either walk inside your story and own it, or you stand outside your story and hustle for your worthiness.",
+        "text_uk": "Ти або йдеш всередину своєї історії і приймаєш її, або стоїш зовні і випрошуєш право на власну гідність.",
+        "author": "Brené Brown"
+      }
+    ]
+  },
+  {
+    "subject": "Self-Comparison & Progress",
+    "subject_uk": "Порівняння із собою та прогрес",
+    "analysis_en": "The only fair comparison is against your own past self. Measuring against someone else's present just imports their context, timeline, and luck into your judgment of yourself.",
+    "analysis_uk": "Єдине справедливе порівняння — це порівняння із собою минулим. Порівнюючи себе з чиїмось теперішнім, ти імпортуєш чужий контекст, часову шкалу й везіння у власну оцінку себе.",
+    "quotes": [
+      {
+        "text": "Compare yourself to who you were yesterday, not to who someone else is today.",
+        "text_uk": "Порівнюй себе з тим, ким ти був учора, а не з тим, ким є хтось інший сьогодні.",
+        "author": "Jordan Peterson"
+      }
+    ]
+  },
+  {
+    "subject": "Resilience",
+    "subject_uk": "Стійкість",
+    "analysis_en": "Discipline is really just a series of small trades, what you want right now for what you want most, and the toughest opponent in that trade is usually the voice in your own head.",
+    "analysis_uk": "Дисципліна — це, по суті, серія маленьких обмінів: те, чого хочеш зараз, на те, чого хочеш найбільше. І найважчий суперник у цьому обміні — це зазвичай голос у власній голові.",
+    "quotes": [
+      {
+        "text": "Discipline is choosing what you want most over what you want now.",
+        "text_uk": "Дисципліна — це вибір того, чого хочеш найбільше, замість того, чого хочеш прямо зараз.",
+        "author": "David Goggins"
+      },
+      {
+        "text": "The most important conversations you'll ever have are the ones you have with yourself.",
+        "text_uk": "Найважливіші розмови, які в тебе колись будуть, — це розмови з самим собою.",
+        "author": "David Goggins"
+      }
+    ]
+  }
 ]
