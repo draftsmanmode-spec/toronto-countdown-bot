@@ -1,1 +1,26 @@
-{"used_indices": [], "history": []}
+{
+  "used_indices": [
+    10
+  ],
+  "history": [
+    {
+      "date": "2026-08-20",
+      "subject": "Vulnerability & Courage",
+      "subject_uk": "Вразливість і мужність",
+      "quotes": [
+        {
+          "text": "Vulnerability is not weakness; it's our greatest measure of courage.",
+          "text_uk": "Вразливість — це не слабкість; це найвищий прояв мужності.",
+          "author": "Brené Brown"
+        },
+        {
+          "text": "You either walk inside your story and own it, or you stand outside your story and hustle for your worthiness.",
+          "text_uk": "Ти або йдеш всередину своєї історії і приймаєш її, або стоїш зовні і випрошуєш право на власну гідність.",
+          "author": "Brené Brown"
+        }
+      ],
+      "analysis_en": "Owning your story, imperfections included, takes more courage than hiding it, and that honesty is the actual source of strength, not a weakness to manage.",
+      "analysis_uk": "Прийняти свою історію з усіма недосконалостями вимагає більше мужності, ніж її приховувати — і саме ця чесність є справжнім джерелом сили, а не слабкістю, яку треба контролювати."
+    }
+  ]
+}
