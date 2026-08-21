@@ -1,5 +1,6 @@
 {
   "used_indices": [
+    8,
     10
   ],
   "history": [
@@ -21,6 +22,25 @@
       ],
       "analysis_en": "Owning your story, imperfections included, takes more courage than hiding it, and that honesty is the actual source of strength, not a weakness to manage.",
       "analysis_uk": "Прийняти свою історію з усіма недосконалостями вимагає більше мужності, ніж її приховувати — і саме ця чесність є справжнім джерелом сили, а не слабкістю, яку треба контролювати."
+    },
+    {
+      "date": "2026-08-21",
+      "subject": "Relationships",
+      "subject_uk": "Стосунки",
+      "quotes": [
+        {
+          "text": "The quality of your life is ultimately the quality of your relationships.",
+          "text_uk": "Якість твого життя — це, зрештою, якість твоїх стосунків.",
+          "author": "Esther Perel"
+        },
+        {
+          "text": "Love rests on two pillars: surrender and autonomy. Our need for togetherness exists right alongside our need for separateness.",
+          "text_uk": "Любов тримається на двох опорах: єднанні та автономії. Потреба бути разом існує поруч із потребою бути окремим.",
+          "author": "Esther Perel"
+        }
+      ],
+      "analysis_en": "Relationships aren't a side project to a good life, for most people they are the measure of it. And lasting love holds two opposite needs at once: closeness and independence.",
+      "analysis_uk": "Стосунки — це не побічний проєкт хорошого життя, а для більшості людей — його мірило. А тривала любов утримує дві протилежні потреби одночасно: близькість і незалежність."
     }
   ]
 }
