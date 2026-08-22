@@ -1,5 +1,6 @@
 {
   "used_indices": [
+    7,
     8,
     10
   ],
@@ -41,6 +42,25 @@
       ],
       "analysis_en": "Relationships aren't a side project to a good life, for most people they are the measure of it. And lasting love holds two opposite needs at once: closeness and independence.",
       "analysis_uk": "Стосунки — це не побічний проєкт хорошого життя, а для більшості людей — його мірило. А тривала любов утримує дві протилежні потреби одночасно: близькість і незалежність."
+    },
+    {
+      "date": "2026-08-22",
+      "subject": "Mind & Habits",
+      "subject_uk": "Розум і звички",
+      "quotes": [
+        {
+          "text": "The greatest habit we have to break is the habit of being ourselves.",
+          "text_uk": "Найважча звичка, яку треба подолати, — це звичка бути собою.",
+          "author": "Dr Joe Dispenza"
+        },
+        {
+          "text": "No new information changes anything if you keep reliving the same emotional state.",
+          "text_uk": "Жодна нова інформація нічого не змінить, поки ти продовжуєш проживати той самий емоційний стан.",
+          "author": "Dr Joe Dispenza"
+        }
+      ],
+      "analysis_en": "Real change requires more than new information. It requires interrupting the emotional loop you keep replaying, which is often the hardest habit of all to break.",
+      "analysis_uk": "Справжні зміни потребують не лише нової інформації — потрібно перервати емоційний цикл, який ти постійно відтворюєш, і це часто найважча звичка для подолання."
     }
   ]
 }
