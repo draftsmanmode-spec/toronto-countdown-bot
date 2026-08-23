@@ -2,6 +2,7 @@
   "used_indices": [
     7,
     8,
+    9,
     10
   ],
   "history": [
@@ -61,6 +62,25 @@
       ],
       "analysis_en": "Real change requires more than new information. It requires interrupting the emotional loop you keep replaying, which is often the hardest habit of all to break.",
       "analysis_uk": "Справжні зміни потребують не лише нової інформації — потрібно перервати емоційний цикл, який ти постійно відтворюєш, і це часто найважча звичка для подолання."
+    },
+    {
+      "date": "2026-08-23",
+      "subject": "Purpose",
+      "subject_uk": "Сенс і мета",
+      "quotes": [
+        {
+          "text": "People don't buy what you do, they buy why you do it.",
+          "text_uk": "Люди купують не те, що ти робиш, а те, навіщо ти це робиш.",
+          "author": "Simon Sinek"
+        },
+        {
+          "text": "You're not trying to control your mind when you meditate, you're learning to stop letting it control you.",
+          "text_uk": "Медитуючи, ти не намагаєшся контролювати свій розум — ти вчишся не дозволяти йому контролювати тебе.",
+          "author": "Jay Shetty"
+        }
+      ],
+      "analysis_en": "People connect with why you do something before they care what you do, and the same discipline that builds outward purpose also quiets the mind inward, rather than trying to force it silent.",
+      "analysis_uk": "Люди спершу відгукуються на те, навіщо ти щось робиш, а вже потім — на те, що саме ти робиш. І та сама дисципліна, що будує зовнішню мету, заспокоює розум зсередини — а не намагається змусити його замовкнути."
     }
   ]
 }
