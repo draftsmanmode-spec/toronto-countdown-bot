@@ -3,7 +3,8 @@
     7,
     8,
     9,
-    10
+    10,
+    12
   ],
   "history": [
     {
@@ -81,6 +82,25 @@
       ],
       "analysis_en": "People connect with why you do something before they care what you do, and the same discipline that builds outward purpose also quiets the mind inward, rather than trying to force it silent.",
       "analysis_uk": "Люди спершу відгукуються на те, навіщо ти щось робиш, а вже потім — на те, що саме ти робиш. І та сама дисципліна, що будує зовнішню мету, заспокоює розум зсередини — а не намагається змусити його замовкнути."
+    },
+    {
+      "date": "2026-08-24",
+      "subject": "Resilience",
+      "subject_uk": "Стійкість",
+      "quotes": [
+        {
+          "text": "Discipline is choosing what you want most over what you want now.",
+          "text_uk": "Дисципліна — це вибір того, чого хочеш найбільше, замість того, чого хочеш прямо зараз.",
+          "author": "David Goggins"
+        },
+        {
+          "text": "The most important conversations you'll ever have are the ones you have with yourself.",
+          "text_uk": "Найважливіші розмови, які в тебе колись будуть, — це розмови з самим собою.",
+          "author": "David Goggins"
+        }
+      ],
+      "analysis_en": "Discipline is really just a series of small trades, what you want right now for what you want most, and the toughest opponent in that trade is usually the voice in your own head.",
+      "analysis_uk": "Дисципліна — це, по суті, серія маленьких обмінів: те, чого хочеш зараз, на те, чого хочеш найбільше. І найважчий суперник у цьому обміні — це зазвичай голос у власній голові."
     }
   ]
 }
