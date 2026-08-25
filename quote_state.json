@@ -1,5 +1,6 @@
 {
   "used_indices": [
+    1,
     7,
     8,
     9,
@@ -101,6 +102,25 @@
       ],
       "analysis_en": "Discipline is really just a series of small trades, what you want right now for what you want most, and the toughest opponent in that trade is usually the voice in your own head.",
       "analysis_uk": "Дисципліна — це, по суті, серія маленьких обмінів: те, чого хочеш зараз, на те, чого хочеш найбільше. І найважчий суперник у цьому обміні — це зазвичай голос у власній голові."
+    },
+    {
+      "date": "2026-08-25",
+      "subject": "Happiness",
+      "subject_uk": "Щастя",
+      "quotes": [
+        {
+          "text": "Happiness equals your perception of the events of your life minus your expectations of how life should be.",
+          "text_uk": "Щастя дорівнює твоєму сприйняттю подій твого життя мінус твої очікування того, яким життя має бути.",
+          "author": "Mo Gawdat"
+        },
+        {
+          "text": "We chase the emotion of happiness itself, when really it's a byproduct of doing the right things.",
+          "text_uk": "Ми гонимося за самим відчуттям щастя, тоді як насправді це побічний продукт правильних дій.",
+          "author": "Dr Rangan Chatterjee"
+        }
+      ],
+      "analysis_en": "Happiness isn't a mood you chase directly. It's what's left over when your expectations match reality and your actions align with what actually matters to you.",
+      "analysis_uk": "Щастя — це не настрій, за яким варто гнатися напряму. Це те, що залишається, коли твої очікування збігаються з реальністю, а дії — з тим, що для тебе справді важливе."
     }
   ]
 }
