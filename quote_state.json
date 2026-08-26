@@ -1,6 +1,7 @@
 {
   "used_indices": [
     1,
+    4,
     7,
     8,
     9,
@@ -121,6 +122,25 @@
       ],
       "analysis_en": "Happiness isn't a mood you chase directly. It's what's left over when your expectations match reality and your actions align with what actually matters to you.",
       "analysis_uk": "Щастя — це не настрій, за яким варто гнатися напряму. Це те, що залишається, коли твої очікування збігаються з реальністю, а дії — з тим, що для тебе справді важливе."
+    },
+    {
+      "date": "2026-08-26",
+      "subject": "Discipline & Growth",
+      "subject_uk": "Дисципліна та зростання",
+      "quotes": [
+        {
+          "text": "Discipline equals freedom.",
+          "text_uk": "Дисципліна дорівнює свободі.",
+          "author": "Jocko Willink"
+        },
+        {
+          "text": "Stop telling yourself you're not qualified, good enough or worthy. Growth happens when you start doing the things you're not qualified to do.",
+          "text_uk": "Перестань казати собі, що ти недостатньо кваліфікований, хороший чи вартий цього. Зростання починається тоді, коли береш ся за те, до чого ще «не готовий».",
+          "author": "Steven Bartlett"
+        }
+      ],
+      "analysis_en": "Structure isn't the enemy of freedom, it's what makes freedom possible. And growth requires doing things before you feel ready, not after.",
+      "analysis_uk": "Структура — не ворог свободи, а те, що робить свободу можливою. А зростання вимагає діяти до того, як відчуєш готовність, а не після."
     }
   ]
 }
