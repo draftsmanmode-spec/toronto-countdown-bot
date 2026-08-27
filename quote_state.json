@@ -2,6 +2,7 @@
   "used_indices": [
     1,
     4,
+    5,
     7,
     8,
     9,
@@ -141,6 +142,25 @@
       ],
       "analysis_en": "Structure isn't the enemy of freedom, it's what makes freedom possible. And growth requires doing things before you feel ready, not after.",
       "analysis_uk": "Структура — не ворог свободи, а те, що робить свободу можливою. А зростання вимагає діяти до того, як відчуєш готовність, а не після."
+    },
+    {
+      "date": "2026-08-27",
+      "subject": "Anxiety & Action",
+      "subject_uk": "Тривога та дія",
+      "quotes": [
+        {
+          "text": "Inside that five-second window lives fear, anxiety, procrastination and imposter syndrome.",
+          "text_uk": "У цьому п'ятисекундному вікні живуть страх, тривога, прокрастинація та синдром самозванця.",
+          "author": "Mel Robbins"
+        },
+        {
+          "text": "Make yourself a promise, count backwards, 5, 4, 3, 2, 1, then do it.",
+          "text_uk": "Дай собі обіцянку, порахуй у зворотному порядку — 5, 4, 3, 2, 1 — і зроби це.",
+          "author": "Mel Robbins"
+        }
+      ],
+      "analysis_en": "The gap between deciding and acting is where anxiety lives. Both quotes point to the same fix: shrink that gap deliberately, on purpose, before your mind talks you out of it.",
+      "analysis_uk": "Тривога живе в проміжку між рішенням і дією. Обидві цитати вказують на одне й те саме рішення: свідомо скорочувати цей проміжок, поки розум не встиг тебе відмовити."
     }
   ]
 }
