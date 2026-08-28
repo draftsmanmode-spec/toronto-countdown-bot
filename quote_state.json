@@ -3,6 +3,7 @@
     1,
     4,
     5,
+    6,
     7,
     8,
     9,
@@ -161,6 +162,25 @@
       ],
       "analysis_en": "The gap between deciding and acting is where anxiety lives. Both quotes point to the same fix: shrink that gap deliberately, on purpose, before your mind talks you out of it.",
       "analysis_uk": "Тривога живе в проміжку між рішенням і дією. Обидві цитати вказують на одне й те саме рішення: свідомо скорочувати цей проміжок, поки розум не встиг тебе відмовити."
+    },
+    {
+      "date": "2026-08-28",
+      "subject": "Stress & Leadership",
+      "subject_uk": "Стрес та лідерство",
+      "quotes": [
+        {
+          "text": "Your stress levels as a leader are going to have more impact on everybody else than the rest of the people put together.",
+          "text_uk": "Рівень стресу лідера впливає на всіх навколо більше, ніж усі інші фактори разом узяті.",
+          "author": "Dr Tara Swart"
+        },
+        {
+          "text": "Stress is contagious. The people around you absorb it whether you intend that or not.",
+          "text_uk": "Стрес заразний — люди навколо переймають його, навіть якщо ти цього не хочеш.",
+          "author": "Dr Tara Swart"
+        }
+      ],
+      "analysis_en": "Your internal state doesn't stay internal. As a leader, parent, or partner, your stress becomes everyone else's stress whether you intend it or not.",
+      "analysis_uk": "Твій внутрішній стан не залишається лише твоїм — як лідер, батько чи партнер, твій стрес стає стресом усіх навколо, хочеш ти того чи ні."
     }
   ]
 }
