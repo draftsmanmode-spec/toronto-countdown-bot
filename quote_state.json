@@ -1,6 +1,7 @@
 {
   "used_indices": [
     1,
+    3,
     4,
     5,
     6,
@@ -181,6 +182,25 @@
       ],
       "analysis_en": "Your internal state doesn't stay internal. As a leader, parent, or partner, your stress becomes everyone else's stress whether you intend it or not.",
       "analysis_uk": "Твій внутрішній стан не залишається лише твоїм — як лідер, батько чи партнер, твій стрес стає стресом усіх навколо, хочеш ти того чи ні."
+    },
+    {
+      "date": "2026-08-29",
+      "subject": "Fear & Confidence",
+      "subject_uk": "Страх та впевненість",
+      "quotes": [
+        {
+          "text": "As you gain experience, you lose fear. The things that once kept you up at night stop frightening you once you know how to do them.",
+          "text_uk": "З досвідом страх зникає — те, що колись не давало спати ночами, перестає лякати, коли ти вже знаєш, як це робити.",
+          "author": "Simon Sinek"
+        },
+        {
+          "text": "Real confidence comes from actual accomplishments, not from how you feel or what you say, but from skills you actually have.",
+          "text_uk": "Справжня впевненість народжується з реальних досягнень — не з того, як ти почуваєшся чи що кажеш, а з навичок, які в тебе справді є.",
+          "author": "Robert Greene"
+        }
+      ],
+      "analysis_en": "Confidence isn't a feeling you wait for. It's a byproduct of repetition and real skill. Fear fades the same way: through doing the thing enough times that it stops being unfamiliar.",
+      "analysis_uk": "Впевненість — це не почуття, на яке треба чекати, а побічний ефект повторення та реальної майстерності. Страх зникає так само: через те, що ти робиш це достатньо разів, щоб воно перестало бути незнайомим."
     }
   ]
 }
