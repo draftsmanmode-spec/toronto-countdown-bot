@@ -9,6 +9,7 @@
     8,
     9,
     10,
+    11,
     12
   ],
   "history": [
@@ -201,6 +202,20 @@
       ],
       "analysis_en": "Confidence isn't a feeling you wait for. It's a byproduct of repetition and real skill. Fear fades the same way: through doing the thing enough times that it stops being unfamiliar.",
       "analysis_uk": "Впевненість — це не почуття, на яке треба чекати, а побічний ефект повторення та реальної майстерності. Страх зникає так само: через те, що ти робиш це достатньо разів, щоб воно перестало бути незнайомим."
+    },
+    {
+      "date": "2026-08-30",
+      "subject": "Self-Comparison & Progress",
+      "subject_uk": "Порівняння із собою та прогрес",
+      "quotes": [
+        {
+          "text": "Compare yourself to who you were yesterday, not to who someone else is today.",
+          "text_uk": "Порівнюй себе з тим, ким ти був учора, а не з тим, ким є хтось інший сьогодні.",
+          "author": "Jordan Peterson"
+        }
+      ],
+      "analysis_en": "The only fair comparison is against your own past self. Measuring against someone else's present just imports their context, timeline, and luck into your judgment of yourself.",
+      "analysis_uk": "Єдине справедливе порівняння — це порівняння із собою минулим. Порівнюючи себе з чиїмось теперішнім, ти імпортуєш чужий контекст, часову шкалу й везіння у власну оцінку себе."
     }
   ]
 }
