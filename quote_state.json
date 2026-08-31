@@ -1,5 +1,6 @@
 {
   "used_indices": [
+    0,
     1,
     3,
     4,
@@ -216,6 +217,25 @@
       ],
       "analysis_en": "The only fair comparison is against your own past self. Measuring against someone else's present just imports their context, timeline, and luck into your judgment of yourself.",
       "analysis_uk": "Єдине справедливе порівняння — це порівняння із собою минулим. Порівнюючи себе з чиїмось теперішнім, ти імпортуєш чужий контекст, часову шкалу й везіння у власну оцінку себе."
+    },
+    {
+      "date": "2026-08-31",
+      "subject": "Sleep",
+      "subject_uk": "Сон",
+      "quotes": [
+        {
+          "text": "The shorter your sleep, the shorter your life. Sleep is the single most effective thing you can do to reset your brain and body health.",
+          "text_uk": "Чим коротший твій сон, тим коротше твоє життя. Сон — це найефективніше, що ти можеш зробити, щоб перезавантажити мозок і тіло.",
+          "author": "Matthew Walker"
+        },
+        {
+          "text": "A good morning can make a day; a bad morning can be hard to recover from — how you start shapes everything after.",
+          "text_uk": "Правильний початок ранку впливає на весь день; поганий ранок важко надолужити — те, як ти починаєш, формує все, що буде далі.",
+          "author": "Dr Rangan Chatterjee"
+        }
+      ],
+      "analysis_en": "Both guests point to the same lever: your mornings and your sleep quietly set the ceiling for everything else you do that day. Fix the edges of your day before trying to fix the middle.",
+      "analysis_uk": "Обидва гості вказують на один і той самий важіль: твій сон і ранок тихо визначають стелю для всього іншого, що ти робиш того дня. Спочатку впорядкуй краї дня — і середина піде легше."
     }
   ]
 }
