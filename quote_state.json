@@ -2,6 +2,7 @@
   "used_indices": [
     0,
     1,
+    2,
     3,
     4,
     5,
@@ -236,6 +237,25 @@
       ],
       "analysis_en": "Both guests point to the same lever: your mornings and your sleep quietly set the ceiling for everything else you do that day. Fix the edges of your day before trying to fix the middle.",
       "analysis_uk": "Обидва гості вказують на один і той самий важіль: твій сон і ранок тихо визначають стелю для всього іншого, що ти робиш того дня. Спочатку впорядкуй краї дня — і середина піде легше."
+    },
+    {
+      "date": "2026-09-01",
+      "subject": "Trauma & Healing",
+      "subject_uk": "Травма та зцілення",
+      "quotes": [
+        {
+          "text": "If we make friends with our pain but relieve it of its duties, thank it, but tell it we can handle things now, it becomes our friend rather than our master.",
+          "text_uk": "Якщо ми потоваришуємо з болем, але звільнимо його від обов'язків — подякуємо, скажемо, що тепер впораємося самі — він стає нашим другом, а не господарем.",
+          "author": "Dr Gabor Maté"
+        },
+        {
+          "text": "Trauma is not what happens to you, it's what happens inside you as a result of what happened to you.",
+          "text_uk": "Травма — це не те, що з тобою сталося, а те, що відбулося всередині тебе внаслідок того, що сталося.",
+          "author": "Dr Gabor Maté"
+        }
+      ],
+      "analysis_en": "Healing doesn't mean erasing what happened. It means changing your relationship to it, from something that runs you to something you've made peace with.",
+      "analysis_uk": "Зцілення — це не стирання того, що сталося, а зміна твого ставлення до цього: з того, що керує тобою, на те, з чим ти домовився."
     }
   ]
 }
