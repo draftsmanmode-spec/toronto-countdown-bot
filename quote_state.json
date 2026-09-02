@@ -1,18 +1,6 @@
 {
   "used_indices": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12
+    11
   ],
   "history": [
     {
@@ -256,6 +244,20 @@
       ],
       "analysis_en": "Healing doesn't mean erasing what happened. It means changing your relationship to it, from something that runs you to something you've made peace with.",
       "analysis_uk": "Зцілення — це не стирання того, що сталося, а зміна твого ставлення до цього: з того, що керує тобою, на те, з чим ти домовився."
+    },
+    {
+      "date": "2026-09-02",
+      "subject": "Self-Comparison & Progress",
+      "subject_uk": "Порівняння із собою та прогрес",
+      "quotes": [
+        {
+          "text": "Compare yourself to who you were yesterday, not to who someone else is today.",
+          "text_uk": "Порівнюй себе з тим, ким ти був учора, а не з тим, ким є хтось інший сьогодні.",
+          "author": "Jordan Peterson"
+        }
+      ],
+      "analysis_en": "The only fair comparison is against your own past self. Measuring against someone else's present just imports their context, timeline, and luck into your judgment of yourself.",
+      "analysis_uk": "Єдине справедливе порівняння — це порівняння із собою минулим. Порівнюючи себе з чиїмось теперішнім, ти імпортуєш чужий контекст, часову шкалу й везіння у власну оцінку себе."
     }
   ]
 }
