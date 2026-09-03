@@ -1,5 +1,6 @@
 {
   "used_indices": [
+    6,
     11
   ],
   "history": [
@@ -258,6 +259,25 @@
       ],
       "analysis_en": "The only fair comparison is against your own past self. Measuring against someone else's present just imports their context, timeline, and luck into your judgment of yourself.",
       "analysis_uk": "Єдине справедливе порівняння — це порівняння із собою минулим. Порівнюючи себе з чиїмось теперішнім, ти імпортуєш чужий контекст, часову шкалу й везіння у власну оцінку себе."
+    },
+    {
+      "date": "2026-09-03",
+      "subject": "Stress & Leadership",
+      "subject_uk": "Стрес та лідерство",
+      "quotes": [
+        {
+          "text": "Your stress levels as a leader are going to have more impact on everybody else than the rest of the people put together.",
+          "text_uk": "Рівень стресу лідера впливає на всіх навколо більше, ніж усі інші фактори разом узяті.",
+          "author": "Dr Tara Swart"
+        },
+        {
+          "text": "Stress is contagious. The people around you absorb it whether you intend that or not.",
+          "text_uk": "Стрес заразний — люди навколо переймають його, навіть якщо ти цього не хочеш.",
+          "author": "Dr Tara Swart"
+        }
+      ],
+      "analysis_en": "Your internal state doesn't stay internal. As a leader, parent, or partner, your stress becomes everyone else's stress whether you intend it or not.",
+      "analysis_uk": "Твій внутрішній стан не залишається лише твоїм — як лідер, батько чи партнер, твій стрес стає стресом усіх навколо, хочеш ти того чи ні."
     }
   ]
 }
