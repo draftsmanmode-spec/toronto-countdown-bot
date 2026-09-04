@@ -1,5 +1,6 @@
 {
   "used_indices": [
+    5,
     6,
     11
   ],
@@ -278,6 +279,25 @@
       ],
       "analysis_en": "Your internal state doesn't stay internal. As a leader, parent, or partner, your stress becomes everyone else's stress whether you intend it or not.",
       "analysis_uk": "Твій внутрішній стан не залишається лише твоїм — як лідер, батько чи партнер, твій стрес стає стресом усіх навколо, хочеш ти того чи ні."
+    },
+    {
+      "date": "2026-09-04",
+      "subject": "Anxiety & Action",
+      "subject_uk": "Тривога та дія",
+      "quotes": [
+        {
+          "text": "Inside that five-second window lives fear, anxiety, procrastination and imposter syndrome.",
+          "text_uk": "У цьому п'ятисекундному вікні живуть страх, тривога, прокрастинація та синдром самозванця.",
+          "author": "Mel Robbins"
+        },
+        {
+          "text": "Make yourself a promise, count backwards, 5, 4, 3, 2, 1, then do it.",
+          "text_uk": "Дай собі обіцянку, порахуй у зворотному порядку — 5, 4, 3, 2, 1 — і зроби це.",
+          "author": "Mel Robbins"
+        }
+      ],
+      "analysis_en": "The gap between deciding and acting is where anxiety lives. Both quotes point to the same fix: shrink that gap deliberately, on purpose, before your mind talks you out of it.",
+      "analysis_uk": "Тривога живе в проміжку між рішенням і дією. Обидві цитати вказують на одне й те саме рішення: свідомо скорочувати цей проміжок, поки розум не встиг тебе відмовити."
     }
   ]
 }
