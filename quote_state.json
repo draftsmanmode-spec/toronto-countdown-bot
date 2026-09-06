@@ -1,5 +1,6 @@
 {
   "used_indices": [
+    3,
     5,
     6,
     10,
@@ -318,6 +319,25 @@
       ],
       "analysis_en": "Owning your story, imperfections included, takes more courage than hiding it, and that honesty is the actual source of strength, not a weakness to manage.",
       "analysis_uk": "Прийняти свою історію з усіма недосконалостями вимагає більше мужності, ніж її приховувати — і саме ця чесність є справжнім джерелом сили, а не слабкістю, яку треба контролювати."
+    },
+    {
+      "date": "2026-09-06",
+      "subject": "Fear & Confidence",
+      "subject_uk": "Страх та впевненість",
+      "quotes": [
+        {
+          "text": "As you gain experience, you lose fear. The things that once kept you up at night stop frightening you once you know how to do them.",
+          "text_uk": "З досвідом страх зникає — те, що колись не давало спати ночами, перестає лякати, коли ти вже знаєш, як це робити.",
+          "author": "Simon Sinek"
+        },
+        {
+          "text": "Real confidence comes from actual accomplishments, not from how you feel or what you say, but from skills you actually have.",
+          "text_uk": "Справжня впевненість народжується з реальних досягнень — не з того, як ти почуваєшся чи що кажеш, а з навичок, які в тебе справді є.",
+          "author": "Robert Greene"
+        }
+      ],
+      "analysis_en": "Confidence isn't a feeling you wait for. It's a byproduct of repetition and real skill. Fear fades the same way: through doing the thing enough times that it stops being unfamiliar.",
+      "analysis_uk": "Впевненість — це не почуття, на яке треба чекати, а побічний ефект повторення та реальної майстерності. Страх зникає так само: через те, що ти робиш це достатньо разів, щоб воно перестало бути незнайомим."
     }
   ]
 }
