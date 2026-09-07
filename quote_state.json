@@ -1,5 +1,6 @@
 {
   "used_indices": [
+    2,
     3,
     5,
     6,
@@ -338,6 +339,25 @@
       ],
       "analysis_en": "Confidence isn't a feeling you wait for. It's a byproduct of repetition and real skill. Fear fades the same way: through doing the thing enough times that it stops being unfamiliar.",
       "analysis_uk": "Впевненість — це не почуття, на яке треба чекати, а побічний ефект повторення та реальної майстерності. Страх зникає так само: через те, що ти робиш це достатньо разів, щоб воно перестало бути незнайомим."
+    },
+    {
+      "date": "2026-09-07",
+      "subject": "Trauma & Healing",
+      "subject_uk": "Травма та зцілення",
+      "quotes": [
+        {
+          "text": "If we make friends with our pain but relieve it of its duties, thank it, but tell it we can handle things now, it becomes our friend rather than our master.",
+          "text_uk": "Якщо ми потоваришуємо з болем, але звільнимо його від обов'язків — подякуємо, скажемо, що тепер впораємося самі — він стає нашим другом, а не господарем.",
+          "author": "Dr Gabor Maté"
+        },
+        {
+          "text": "Trauma is not what happens to you, it's what happens inside you as a result of what happened to you.",
+          "text_uk": "Травма — це не те, що з тобою сталося, а те, що відбулося всередині тебе внаслідок того, що сталося.",
+          "author": "Dr Gabor Maté"
+        }
+      ],
+      "analysis_en": "Healing doesn't mean erasing what happened. It means changing your relationship to it, from something that runs you to something you've made peace with.",
+      "analysis_uk": "Зцілення — це не стирання того, що сталося, а зміна твого ставлення до цього: з того, що керує тобою, на те, з чим ти домовився."
     }
   ]
 }
