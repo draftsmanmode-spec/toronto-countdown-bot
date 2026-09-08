@@ -1,5 +1,6 @@
 {
   "used_indices": [
+    1,
     2,
     3,
     5,
@@ -358,6 +359,25 @@
       ],
       "analysis_en": "Healing doesn't mean erasing what happened. It means changing your relationship to it, from something that runs you to something you've made peace with.",
       "analysis_uk": "Зцілення — це не стирання того, що сталося, а зміна твого ставлення до цього: з того, що керує тобою, на те, з чим ти домовився."
+    },
+    {
+      "date": "2026-09-08",
+      "subject": "Happiness",
+      "subject_uk": "Щастя",
+      "quotes": [
+        {
+          "text": "Happiness equals your perception of the events of your life minus your expectations of how life should be.",
+          "text_uk": "Щастя дорівнює твоєму сприйняттю подій твого життя мінус твої очікування того, яким життя має бути.",
+          "author": "Mo Gawdat"
+        },
+        {
+          "text": "We chase the emotion of happiness itself, when really it's a byproduct of doing the right things.",
+          "text_uk": "Ми гонимося за самим відчуттям щастя, тоді як насправді це побічний продукт правильних дій.",
+          "author": "Dr Rangan Chatterjee"
+        }
+      ],
+      "analysis_en": "Happiness isn't a mood you chase directly. It's what's left over when your expectations match reality and your actions align with what actually matters to you.",
+      "analysis_uk": "Щастя — це не настрій, за яким варто гнатися напряму. Це те, що залишається, коли твої очікування збігаються з реальністю, а дії — з тим, що для тебе справді важливе."
     }
   ]
 }
