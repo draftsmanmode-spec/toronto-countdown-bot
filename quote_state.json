@@ -6,6 +6,7 @@
     4,
     5,
     6,
+    7,
     10,
     11
   ],
@@ -398,6 +399,25 @@
       ],
       "analysis_en": "Structure isn't the enemy of freedom, it's what makes freedom possible. And growth requires doing things before you feel ready, not after.",
       "analysis_uk": "Структура — не ворог свободи, а те, що робить свободу можливою. А зростання вимагає діяти до того, як відчуєш готовність, а не після."
+    },
+    {
+      "date": "2026-09-10",
+      "subject": "Mind & Habits",
+      "subject_uk": "Розум і звички",
+      "quotes": [
+        {
+          "text": "The greatest habit we have to break is the habit of being ourselves.",
+          "text_uk": "Найважча звичка, яку треба подолати, — це звичка бути собою.",
+          "author": "Dr Joe Dispenza"
+        },
+        {
+          "text": "No new information changes anything if you keep reliving the same emotional state.",
+          "text_uk": "Жодна нова інформація нічого не змінить, поки ти продовжуєш проживати той самий емоційний стан.",
+          "author": "Dr Joe Dispenza"
+        }
+      ],
+      "analysis_en": "Real change requires more than new information. It requires interrupting the emotional loop you keep replaying, which is often the hardest habit of all to break.",
+      "analysis_uk": "Справжні зміни потребують не лише нової інформації — потрібно перервати емоційний цикл, який ти постійно відтворюєш, і це часто найважча звичка для подолання."
     }
   ]
 }
