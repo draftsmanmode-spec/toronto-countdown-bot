@@ -7,6 +7,7 @@
     5,
     6,
     7,
+    8,
     9,
     10,
     11,
@@ -458,6 +459,25 @@
       ],
       "analysis_en": "Discipline is really just a series of small trades, what you want right now for what you want most, and the toughest opponent in that trade is usually the voice in your own head.",
       "analysis_uk": "Дисципліна — це, по суті, серія маленьких обмінів: те, чого хочеш зараз, на те, чого хочеш найбільше. І найважчий суперник у цьому обміні — це зазвичай голос у власній голові."
+    },
+    {
+      "date": "2026-09-13",
+      "subject": "Relationships",
+      "subject_uk": "Стосунки",
+      "quotes": [
+        {
+          "text": "The quality of your life is ultimately the quality of your relationships.",
+          "text_uk": "Якість твого життя — це, зрештою, якість твоїх стосунків.",
+          "author": "Esther Perel"
+        },
+        {
+          "text": "Love rests on two pillars: surrender and autonomy. Our need for togetherness exists right alongside our need for separateness.",
+          "text_uk": "Любов тримається на двох опорах: єднанні та автономії. Потреба бути разом існує поруч із потребою бути окремим.",
+          "author": "Esther Perel"
+        }
+      ],
+      "analysis_en": "Relationships aren't a side project to a good life, for most people they are the measure of it. And lasting love holds two opposite needs at once: closeness and independence.",
+      "analysis_uk": "Стосунки — це не побічний проєкт хорошого життя, а для більшості людей — його мірило. А тривала любов утримує дві протилежні потреби одночасно: близькість і незалежність."
     }
   ]
 }
