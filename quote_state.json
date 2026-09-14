@@ -1,5 +1,6 @@
 {
   "used_indices": [
+    0,
     1,
     2,
     3,
@@ -478,6 +479,25 @@
       ],
       "analysis_en": "Relationships aren't a side project to a good life, for most people they are the measure of it. And lasting love holds two opposite needs at once: closeness and independence.",
       "analysis_uk": "Стосунки — це не побічний проєкт хорошого життя, а для більшості людей — його мірило. А тривала любов утримує дві протилежні потреби одночасно: близькість і незалежність."
+    },
+    {
+      "date": "2026-09-14",
+      "subject": "Sleep",
+      "subject_uk": "Сон",
+      "quotes": [
+        {
+          "text": "The shorter your sleep, the shorter your life. Sleep is the single most effective thing you can do to reset your brain and body health.",
+          "text_uk": "Чим коротший твій сон, тим коротше твоє життя. Сон — це найефективніше, що ти можеш зробити, щоб перезавантажити мозок і тіло.",
+          "author": "Matthew Walker"
+        },
+        {
+          "text": "A good morning can make a day; a bad morning can be hard to recover from — how you start shapes everything after.",
+          "text_uk": "Правильний початок ранку впливає на весь день; поганий ранок важко надолужити — те, як ти починаєш, формує все, що буде далі.",
+          "author": "Dr Rangan Chatterjee"
+        }
+      ],
+      "analysis_en": "Both guests point to the same lever: your mornings and your sleep quietly set the ceiling for everything else you do that day. Fix the edges of your day before trying to fix the middle.",
+      "analysis_uk": "Обидва гості вказують на один і той самий важіль: твій сон і ранок тихо визначають стелю для всього іншого, що ти робиш того дня. Спочатку впорядкуй краї дня — і середина піде легше."
     }
   ]
 }
