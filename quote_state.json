@@ -1,6 +1,7 @@
 {
   "used_indices": [
     1,
+    4,
     7,
     10
   ],
@@ -545,6 +546,25 @@
       ],
       "analysis_en": "Owning your story, imperfections included, takes more courage than hiding it, and that honesty is the actual source of strength, not a weakness to manage.",
       "analysis_uk": "Прийняти свою історію з усіма недосконалостями вимагає більше мужності, ніж її приховувати — і саме ця чесність є справжнім джерелом сили, а не слабкістю, яку треба контролювати."
+    },
+    {
+      "date": "2026-09-18",
+      "subject": "Discipline & Growth",
+      "subject_uk": "Дисципліна та зростання",
+      "quotes": [
+        {
+          "text": "Discipline equals freedom.",
+          "text_uk": "Дисципліна дорівнює свободі.",
+          "author": "Jocko Willink"
+        },
+        {
+          "text": "Stop telling yourself you're not qualified, good enough or worthy. Growth happens when you start doing the things you're not qualified to do.",
+          "text_uk": "Перестань казати собі, що ти недостатньо кваліфікований, хороший чи вартий цього. Зростання починається тоді, коли береш ся за те, до чого ще «не готовий».",
+          "author": "Steven Bartlett"
+        }
+      ],
+      "analysis_en": "Structure isn't the enemy of freedom, it's what makes freedom possible. And growth requires doing things before you feel ready, not after.",
+      "analysis_uk": "Структура — не ворог свободи, а те, що робить свободу можливою. А зростання вимагає діяти до того, як відчуєш готовність, а не після."
     }
   ]
 }
