@@ -3,7 +3,8 @@
     1,
     4,
     7,
-    10
+    10,
+    12
   ],
   "history": [
     {
@@ -565,6 +566,25 @@
       ],
       "analysis_en": "Structure isn't the enemy of freedom, it's what makes freedom possible. And growth requires doing things before you feel ready, not after.",
       "analysis_uk": "Структура — не ворог свободи, а те, що робить свободу можливою. А зростання вимагає діяти до того, як відчуєш готовність, а не після."
+    },
+    {
+      "date": "2026-09-19",
+      "subject": "Resilience",
+      "subject_uk": "Стійкість",
+      "quotes": [
+        {
+          "text": "Discipline is choosing what you want most over what you want now.",
+          "text_uk": "Дисципліна — це вибір того, чого хочеш найбільше, замість того, чого хочеш прямо зараз.",
+          "author": "David Goggins"
+        },
+        {
+          "text": "The most important conversations you'll ever have are the ones you have with yourself.",
+          "text_uk": "Найважливіші розмови, які в тебе колись будуть, — це розмови з самим собою.",
+          "author": "David Goggins"
+        }
+      ],
+      "analysis_en": "Discipline is really just a series of small trades, what you want right now for what you want most, and the toughest opponent in that trade is usually the voice in your own head.",
+      "analysis_uk": "Дисципліна — це, по суті, серія маленьких обмінів: те, чого хочеш зараз, на те, чого хочеш найбільше. І найважчий суперник у цьому обміні — це зазвичай голос у власній голові."
     }
   ]
 }
