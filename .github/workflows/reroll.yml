@@ -1,0 +1,50 @@
+name: Reroll scheduled item
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date to change (YYYY-MM-DD, today or later)"
+        required: true
+        type: string
+      kind:
+        description: "What to swap"
+        required: true
+        default: quotes
+        type: choice
+        options:
+          - quotes
+          - habits
+
+permissions:
+  contents: write
+
+jobs:
+  reroll:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+
+      - run: python reroll_schedule.py
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
+          LANG_MODE: ${{ secrets.LANG_MODE }}
+          REROLL_DATE: ${{ github.event.inputs.date }}
+          REROLL_KIND: ${{ github.event.inputs.kind }}
+
+      - name: Save schedule
+        run: |
+          if ! git diff --quiet schedule.json; then
+            git config user.name "quote-bot"
+            git config user.email "actions@github.com"
+            git add schedule.json
+            git commit -m "Reroll ${{ github.event.inputs.kind }} for ${{ github.event.inputs.date }} [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi

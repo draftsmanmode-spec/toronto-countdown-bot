@@ -1,400 +1,519 @@
 [
   {
     "text": "You are not your job. You are not how much money you have in the bank. You are not the car you drive.",
-    "author": "Chuck Palahniuk"
+    "author": "Chuck Palahniuk",
+    "text_uk": "Ти — не твоя робота. Ти — не гроші на твоєму рахунку. Ти — не машина, якою ти їздиш."
   },
   {
     "text": "We suffer more often in imagination than in reality.",
-    "author": "Seneca"
+    "author": "Seneca",
+    "text_uk": "Ми страждаємо частіше в уяві, ніж насправді."
   },
   {
     "text": "He who has a why to live can bear almost any how.",
-    "author": "Friedrich Nietzsche"
+    "author": "Friedrich Nietzsche",
+    "text_uk": "Той, хто має «навіщо» жити, витримає майже будь-яке «як»."
   },
   {
     "text": "The obstacle is the way.",
-    "author": "Marcus Aurelius"
+    "author": "Marcus Aurelius",
+    "text_uk": "Перешкода — це і є шлях."
   },
   {
     "text": "You have power over your mind, not outside events. Realize this, and you will find strength.",
-    "author": "Marcus Aurelius"
+    "author": "Marcus Aurelius",
+    "text_uk": "Ти маєш владу над своїм розумом, а не над зовнішніми подіями. Усвідом це — і знайдеш силу."
   },
   {
     "text": "Discipline is choosing between what you want now and what you want most.",
-    "author": "Abraham Lincoln"
+    "author": "Abraham Lincoln",
+    "text_uk": "Дисципліна — це вибір між тим, чого ти хочеш зараз, і тим, чого хочеш найбільше."
   },
   {
     "text": "The cave you fear to enter holds the treasure you seek.",
-    "author": "Joseph Campbell"
+    "author": "Joseph Campbell",
+    "text_uk": "У печері, до якої ти боїшся увійти, лежить скарб, який ти шукаєш."
   },
   {
     "text": "It does not matter how slowly you go as long as you do not stop.",
-    "author": "Confucius"
+    "author": "Confucius",
+    "text_uk": "Неважливо, як повільно ти йдеш, доки ти не зупиняєшся."
   },
   {
     "text": "Desire is a contract you make with yourself to be unhappy until you get what you want.",
-    "author": "Naval Ravikant"
+    "author": "Naval Ravikant",
+    "text_uk": "Бажання — це угода з самим собою бути нещасним, доки не отримаєш бажане."
   },
   {
     "text": "A person who never made a mistake never tried anything new.",
-    "author": "Albert Einstein"
+    "author": "Albert Einstein",
+    "text_uk": "Людина, яка ніколи не помилялася, ніколи не пробувала нічого нового."
   },
   {
     "text": "Fall seven times, stand up eight.",
-    "author": "Japanese proverb"
+    "author": "Japanese proverb",
+    "text_uk": "Впади сім разів — підведься вісім."
   },
   {
     "text": "What stands in the way becomes the way.",
-    "author": "Marcus Aurelius"
+    "author": "Marcus Aurelius",
+    "text_uk": "Те, що стає на шляху, саме стає шляхом."
   },
   {
     "text": "The unexamined life is not worth living.",
-    "author": "Socrates"
+    "author": "Socrates",
+    "text_uk": "Непродумане життя не варте того, щоб його прожити."
   },
   {
     "text": "Amateurs sit and wait for inspiration, the rest of us just get up and go to work.",
-    "author": "Stephen King"
+    "author": "Stephen King",
+    "text_uk": "Аматори сидять і чекають натхнення, а решта з нас просто встає і йде працювати."
   },
   {
     "text": "You don't have to be great to start, but you have to start to be great.",
-    "author": "Zig Ziglar"
+    "author": "Zig Ziglar",
+    "text_uk": "Не обов'язково бути великим, щоб почати, але треба почати, щоб стати великим."
   },
   {
     "text": "Comparison is the thief of joy.",
-    "author": "Theodore Roosevelt"
+    "author": "Theodore Roosevelt",
+    "text_uk": "Порівняння — злодій радості."
   },
   {
     "text": "The privilege of a lifetime is to become who you truly are.",
-    "author": "Carl Jung"
+    "author": "Carl Jung",
+    "text_uk": "Привілей усього життя — стати тим, ким ти є насправді."
   },
   {
     "text": "Between stimulus and response there is a space. In that space is our power to choose.",
-    "author": "Viktor Frankl"
+    "author": "Viktor Frankl",
+    "text_uk": "Між стимулом і реакцією є проміжок. У цьому проміжку — наша свобода вибору."
   },
   {
     "text": "Waste no more time arguing about what a good man should be. Be one.",
-    "author": "Marcus Aurelius"
+    "author": "Marcus Aurelius",
+    "text_uk": "Не гай більше часу на суперечки про те, якою має бути хороша людина. Будь нею."
   },
   {
     "text": "What you do every day matters more than what you do once in a while.",
-    "author": "Gretchen Rubin"
+    "author": "Gretchen Rubin",
+    "text_uk": "Те, що ти робиш щодня, важливіше за те, що ти робиш вряди-годи."
   },
   {
-    "text": "Discipline weighs ounces. Regret weighs tons."
+    "text": "Discipline weighs ounces. Regret weighs tons.",
+    "text_uk": "Дисципліна важить грами. Жаль важить тонни."
   },
   {
-    "text": "Nobody is coming to save you. That's actually good news — it means it's yours to build."
+    "text": "Nobody is coming to save you. That's actually good news — it means it's yours to build.",
+    "text_uk": "Ніхто не прийде тебе рятувати. І це насправді хороша новина — означає, що будувати тобі."
   },
   {
-    "text": "You don't need more time, you need fewer distractions and a clearer why."
+    "text": "You don't need more time, you need fewer distractions and a clearer why.",
+    "text_uk": "Тобі потрібно не більше часу, а менше відволікань і чіткіше «навіщо»."
   },
   {
-    "text": "Motivation gets you started. Systems keep you going when motivation leaves the room."
+    "text": "Motivation gets you started. Systems keep you going when motivation leaves the room.",
+    "text_uk": "Мотивація допомагає почати. Системи тримають тебе, коли мотивація виходить з кімнати."
   },
   {
-    "text": "The version of you that has what you want has habits you don't have yet."
+    "text": "The version of you that has what you want has habits you don't have yet.",
+    "text_uk": "У тієї версії тебе, яка має бажане, є звички, яких у тебе поки немає."
   },
   {
-    "text": "Rest is not the opposite of discipline, it's part of it."
+    "text": "Rest is not the opposite of discipline, it's part of it.",
+    "text_uk": "Відпочинок — не протилежність дисципліни, а її частина."
   },
   {
-    "text": "Every skill you have was once something you were bad at."
+    "text": "Every skill you have was once something you were bad at.",
+    "text_uk": "Кожна навичка, яку ти маєш, колись була тим, у чому ти був поганий."
   },
   {
-    "text": "Consistency beats intensity almost every single time."
+    "text": "Consistency beats intensity almost every single time.",
+    "text_uk": "Регулярність майже завжди перемагає інтенсивність."
   },
   {
-    "text": "Your standards are a decision, not a feeling — don't wait to feel ready."
+    "text": "Your standards are a decision, not a feeling — don't wait to feel ready.",
+    "text_uk": "Твої стандарти — це рішення, а не відчуття. Не чекай, поки відчуєш готовність."
   },
   {
-    "text": "The people who change your life rarely announce it in advance. Show up anyway."
+    "text": "The people who change your life rarely announce it in advance. Show up anyway.",
+    "text_uk": "Люди, які змінять твоє життя, рідко попереджають заздалегідь. Приходь усе одно."
   },
   {
-    "text": "Confidence is built in the practice room, not on stage."
+    "text": "Confidence is built in the practice room, not on stage.",
+    "text_uk": "Впевненість будується в репетиційній залі, а не на сцені."
   },
   {
-    "text": "You will never regret the workout, the honest conversation, or the early night's sleep."
+    "text": "You will never regret the workout, the honest conversation, or the early night's sleep.",
+    "text_uk": "Ти ніколи не пошкодуєш про тренування, чесну розмову чи ранній сон."
   },
   {
-    "text": "Small daily improvements are the key to staggering long-term results."
+    "text": "Small daily improvements are the key to staggering long-term results.",
+    "text_uk": "Маленькі щоденні покращення — ключ до вражаючих результатів у довгій перспективі."
   },
   {
-    "text": "The comfort zone is a beautiful place, but nothing ever grows there."
+    "text": "The comfort zone is a beautiful place, but nothing ever grows there.",
+    "text_uk": "Зона комфорту — прекрасне місце, але там нічого не росте."
   },
   {
-    "text": "Ask for what you want. The worst answer you'll ever get is the one you already have by staying silent."
+    "text": "Ask for what you want. The worst answer you'll ever get is the one you already have by staying silent.",
+    "text_uk": "Проси те, чого хочеш. Найгірша відповідь — та, яку ти вже маєш, мовчачи."
   },
   {
-    "text": "Energy management matters more than time management."
+    "text": "Energy management matters more than time management.",
+    "text_uk": "Керувати енергією важливіше, ніж керувати часом."
   },
   {
-    "text": "Your reputation is built in the moments nobody's watching."
+    "text": "Your reputation is built in the moments nobody's watching.",
+    "text_uk": "Твоя репутація будується в моменти, коли ніхто не дивиться."
   },
   {
-    "text": "Progress hides in boring, repeatable actions."
+    "text": "Progress hides in boring, repeatable actions.",
+    "text_uk": "Прогрес ховається в нудних, повторюваних діях."
   },
   {
-    "text": "If it's important, you'll find a way. If it's not, you'll find an excuse."
+    "text": "If it's important, you'll find a way. If it's not, you'll find an excuse.",
+    "text_uk": "Якщо це важливо — ти знайдеш спосіб. Якщо ні — знайдеш виправдання."
   },
   {
-    "text": "Take care of your body — it's the only place you have to live."
+    "text": "Take care of your body — it's the only place you have to live.",
+    "text_uk": "Дбай про своє тіло — це єдине місце, де тобі доведеться жити."
   },
   {
-    "text": "Say less, do more, let the results talk."
+    "text": "Say less, do more, let the results talk.",
+    "text_uk": "Говори менше, роби більше, нехай говорять результати."
   },
   {
     "text": "The best time to plant a tree was 20 years ago. The second best time is now.",
-    "author": "Chinese proverb"
+    "author": "Chinese proverb",
+    "text_uk": "Найкращий час посадити дерево був 20 років тому. Другий найкращий — зараз."
   },
   {
-    "text": "Character is who you are when the room is empty."
+    "text": "Character is who you are when the room is empty.",
+    "text_uk": "Характер — це те, ким ти є, коли в кімнаті нікого немає."
   },
   {
-    "text": "Growth is uncomfortable by design — that discomfort is the signal you're doing it right."
+    "text": "Growth is uncomfortable by design — that discomfort is the signal you're doing it right.",
+    "text_uk": "Ріст незручний за задумом — саме цей дискомфорт є сигналом, що ти робиш правильно."
   },
   {
-    "text": "You can't pour from an empty cup — fill yours first."
+    "text": "You can't pour from an empty cup — fill yours first.",
+    "text_uk": "Не можна наливати з порожньої чашки — спочатку наповни свою."
   },
   {
-    "text": "Patience is a form of confidence — it says you trust the process."
+    "text": "Patience is a form of confidence — it says you trust the process.",
+    "text_uk": "Терпіння — це форма впевненості: воно каже, що ти довіряєш процесу."
   },
   {
-    "text": "Every 'no' gets you closer to a 'yes,' if you keep asking."
+    "text": "Every 'no' gets you closer to a 'yes,' if you keep asking.",
+    "text_uk": "Кожне «ні» наближає тебе до «так», якщо ти продовжуєш питати."
   },
   {
-    "text": "Don't wait until you feel confident. Act, and let confidence catch up."
+    "text": "Don't wait until you feel confident. Act, and let confidence catch up.",
+    "text_uk": "Не чекай, поки відчуєш упевненість. Дій — і впевненість наздожене."
   },
   {
-    "text": "Your circle either stretches your thinking or shrinks it — choose carefully."
+    "text": "Your circle either stretches your thinking or shrinks it — choose carefully.",
+    "text_uk": "Твоє оточення або розширює твоє мислення, або звужує. Обирай уважно."
   },
   {
-    "text": "The obstacle you're avoiding is usually the one thing worth doing."
+    "text": "The obstacle you're avoiding is usually the one thing worth doing.",
+    "text_uk": "Перешкода, якої ти уникаєш, зазвичай і є тим єдиним, що варто зробити."
   },
   {
-    "text": "Discipline is remembering what you want."
+    "text": "Discipline is remembering what you want.",
+    "text_uk": "Дисципліна — це пам'ятати, чого ти хочеш."
   },
   {
-    "text": "You are the average of the five habits you repeat most, not the five people you follow."
+    "text": "You are the average of the five habits you repeat most, not the five people you follow.",
+    "text_uk": "Ти — середнє з п'яти звичок, які повторюєш найчастіше, а не з п'яти людей, на яких підписаний."
   },
   {
-    "text": "A goal without a deadline is just a wish."
+    "text": "A goal without a deadline is just a wish.",
+    "text_uk": "Ціль без дедлайну — це просто побажання."
   },
   {
-    "text": "Do the hard thing first — everything after gets easier."
+    "text": "Do the hard thing first — everything after gets easier.",
+    "text_uk": "Роби складне першим — усе решта стане легшим."
   },
   {
-    "text": "Ambition without patience is just anxiety wearing a suit."
+    "text": "Ambition without patience is just anxiety wearing a suit.",
+    "text_uk": "Амбіція без терпіння — це просто тривога в костюмі."
   },
   {
-    "text": "The market rewards clarity, not perfection."
+    "text": "The market rewards clarity, not perfection.",
+    "text_uk": "Ринок винагороджує ясність, а не досконалість."
   },
   {
-    "text": "Your future self is watching what you do today — make them proud."
+    "text": "Your future self is watching what you do today — make them proud.",
+    "text_uk": "Твоє майбутнє «я» дивиться на те, що ти робиш сьогодні. Зроби так, щоб воно пишалося."
   },
   {
-    "text": "Silence the noise long enough to hear your own decisions."
+    "text": "Silence the noise long enough to hear your own decisions.",
+    "text_uk": "Заглуши шум настільки, щоб почути власні рішення."
   },
   {
-    "text": "Bet on yourself before you ask anyone else to."
+    "text": "Bet on yourself before you ask anyone else to.",
+    "text_uk": "Постав на себе раніше, ніж попросиш це зробити когось іншого."
   },
   {
-    "text": "The best apology is changed behavior."
+    "text": "The best apology is changed behavior.",
+    "text_uk": "Найкраще вибачення — змінена поведінка."
   },
   {
-    "text": "You don't find time, you make it — on purpose, every day."
+    "text": "You don't find time, you make it — on purpose, every day.",
+    "text_uk": "Час не знаходять — його створюють, свідомо, щодня."
   },
   {
-    "text": "Slow progress is still progress. Stopping is the only real failure."
+    "text": "Slow progress is still progress. Stopping is the only real failure.",
+    "text_uk": "Повільний прогрес — це все одно прогрес. Єдина справжня поразка — зупинитися."
   },
   {
-    "text": "Build the life you don't need a vacation from."
+    "text": "Build the life you don't need a vacation from.",
+    "text_uk": "Побудуй життя, від якого не хочеться у відпустку."
   },
   {
-    "text": "Strong opinions, loosely held — stay curious enough to change your mind."
+    "text": "Strong opinions, loosely held — stay curious enough to change your mind.",
+    "text_uk": "Міцні переконання, але не мертвою хваткою — лишайся достатньо допитливим, щоб змінити думку."
   },
   {
-    "text": "The work you're avoiding is usually the work that matters most."
+    "text": "The work you're avoiding is usually the work that matters most.",
+    "text_uk": "Робота, якої ти уникаєш, зазвичай і є найважливішою."
   },
   {
-    "text": "Kindness is a strength, not a soft option."
+    "text": "Kindness is a strength, not a soft option.",
+    "text_uk": "Доброта — це сила, а не м'який варіант."
   },
   {
-    "text": "Nobody remembers your excuses, they remember your results."
+    "text": "Nobody remembers your excuses, they remember your results.",
+    "text_uk": "Ніхто не пам'ятає твоїх виправдань — пам'ятають твої результати."
   },
   {
-    "text": "Do it scared. Courage isn't the absence of fear, it's moving anyway."
+    "text": "Do it scared. Courage isn't the absence of fear, it's moving anyway.",
+    "text_uk": "Роби, навіть якщо страшно. Сміливість — це не відсутність страху, а рух попри нього."
   },
   {
-    "text": "You are one decision away from a completely different life."
+    "text": "You are one decision away from a completely different life.",
+    "text_uk": "Тебе відділяє одне рішення від зовсім іншого життя."
   },
   {
     "text": "The two most important days in your life are the day you are born and the day you find out why.",
-    "author": "Mark Twain"
+    "author": "Mark Twain",
+    "text_uk": "Два найважливіші дні в житті — день, коли ти народився, і день, коли зрозумів навіщо."
   },
   {
     "text": "It is not the load that breaks you down, it's the way you carry it.",
-    "author": "Lou Holtz"
+    "author": "Lou Holtz",
+    "text_uk": "Ламає не вага, а те, як ти її несеш."
   },
   {
     "text": "Whether you think you can or think you can't, you're right.",
-    "author": "Henry Ford"
+    "author": "Henry Ford",
+    "text_uk": "Вважаєш, що можеш, чи що не можеш — ти маєш рацію в обох випадках."
   },
   {
     "text": "The only way to do great work is to love what you do.",
-    "author": "Steve Jobs"
+    "author": "Steve Jobs",
+    "text_uk": "Єдиний спосіб робити велику роботу — любити те, що ти робиш."
   },
   {
     "text": "Turn your wounds into wisdom.",
-    "author": "Oprah Winfrey"
+    "author": "Oprah Winfrey",
+    "text_uk": "Перетворюй свої рани на мудрість."
   },
   {
     "text": "You miss 100 percent of the shots you don't take.",
-    "author": "Wayne Gretzky"
+    "author": "Wayne Gretzky",
+    "text_uk": "Ти промахуєшся у 100 відсотках кидків, яких не зробив."
   },
   {
     "text": "The man who moves a mountain begins by carrying away small stones.",
-    "author": "Confucius"
+    "author": "Confucius",
+    "text_uk": "Той, хто зрушує гору, починає з того, що відносить маленькі камені."
   },
   {
     "text": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
-    "author": "Winston Churchill"
+    "author": "Winston Churchill",
+    "text_uk": "Успіх не остаточний, поразка не фатальна: значення має сміливість продовжувати."
   },
   {
     "text": "What we think, we become.",
-    "author": "Buddha"
+    "author": "Buddha",
+    "text_uk": "Ми стаємо тим, про що думаємо."
   },
   {
     "text": "The best way out is always through.",
-    "author": "Robert Frost"
+    "author": "Robert Frost",
+    "text_uk": "Найкращий вихід — завжди наскрізь."
   },
   {
     "text": "Do not go where the path may lead, go instead where there is no path and leave a trail.",
-    "author": "Ralph Waldo Emerson"
+    "author": "Ralph Waldo Emerson",
+    "text_uk": "Не йди туди, куди веде стежка. Іди туди, де стежки немає, і залиш слід."
   },
   {
     "text": "Knowing yourself is the beginning of all wisdom.",
-    "author": "Aristotle"
+    "author": "Aristotle",
+    "text_uk": "Пізнання себе — початок усякої мудрості."
   },
   {
     "text": "It always seems impossible until it's done.",
-    "author": "Nelson Mandela"
+    "author": "Nelson Mandela",
+    "text_uk": "Це завжди здається неможливим, поки не буде зроблено."
   },
   {
     "text": "The mind is everything. What you think you become.",
-    "author": "Buddha"
+    "author": "Buddha",
+    "text_uk": "Розум — це все. Ти стаєш тим, про що думаєш."
   },
   {
     "text": "A journey of a thousand miles begins with a single step.",
-    "author": "Lao Tzu"
+    "author": "Lao Tzu",
+    "text_uk": "Подорож у тисячу миль починається з одного кроку."
   },
   {
     "text": "You must be the change you wish to see in the world.",
-    "author": "Mahatma Gandhi"
+    "author": "Mahatma Gandhi",
+    "text_uk": "Будь тією зміною, яку хочеш бачити у світі."
   },
   {
     "text": "Either you run the day, or the day runs you.",
-    "author": "Jim Rohn"
+    "author": "Jim Rohn",
+    "text_uk": "Або ти керуєш днем, або день керує тобою."
   },
   {
     "text": "Well done is better than well said.",
-    "author": "Benjamin Franklin"
+    "author": "Benjamin Franklin",
+    "text_uk": "Добре зроблене краще за добре сказане."
   },
   {
     "text": "The future depends on what you do today.",
-    "author": "Mahatma Gandhi"
+    "author": "Mahatma Gandhi",
+    "text_uk": "Майбутнє залежить від того, що ти робиш сьогодні."
   },
   {
     "text": "Difficulties strengthen the mind, as labor does the body.",
-    "author": "Seneca"
+    "author": "Seneca",
+    "text_uk": "Труднощі гартують розум, як праця гартує тіло."
   },
   {
-    "text": "You don't get what you wish for, you get what you work for."
+    "text": "You don't get what you wish for, you get what you work for.",
+    "text_uk": "Ти отримуєш не те, про що мрієш, а те, над чим працюєш."
   },
   {
-    "text": "Your body keeps the score of every night you skip sleep for a screen."
+    "text": "Your body keeps the score of every night you skip sleep for a screen.",
+    "text_uk": "Твоє тіло веде рахунок кожній ночі, яку ти проміняв на екран."
   },
   {
-    "text": "Boredom is the price of admission for a focused mind."
+    "text": "Boredom is the price of admission for a focused mind.",
+    "text_uk": "Нудьга — це вхідний квиток до зосередженого розуму."
   },
   {
-    "text": "Nobody owes you the outcome you haven't earned yet."
+    "text": "Nobody owes you the outcome you haven't earned yet.",
+    "text_uk": "Ніхто не винен тобі результат, якого ти ще не заслужив."
   },
   {
-    "text": "A calendar tells the truth about your priorities more than your mouth does."
+    "text": "A calendar tells the truth about your priorities more than your mouth does.",
+    "text_uk": "Календар говорить про твої пріоритети правдивіше, ніж твої слова."
   },
   {
-    "text": "Most burnout is unclarified priorities wearing a costume."
+    "text": "Most burnout is unclarified priorities wearing a costume.",
+    "text_uk": "Більшість вигорання — це невизначені пріоритети в костюмі."
   },
   {
-    "text": "The first rep is the only one that requires motivation."
+    "text": "The first rep is the only one that requires motivation.",
+    "text_uk": "Лише перше повторення потребує мотивації."
   },
   {
-    "text": "You're not behind. You're on a timeline nobody else is living."
+    "text": "You're not behind. You're on a timeline nobody else is living.",
+    "text_uk": "Ти не відстаєш. Ти живеш за графіком, якого не живе ніхто інший."
   },
   {
-    "text": "Discomfort you choose builds you. Discomfort you avoid controls you."
+    "text": "Discomfort you choose builds you. Discomfort you avoid controls you.",
+    "text_uk": "Дискомфорт, який ти обираєш, будує тебе. Дискомфорт, якого уникаєш, керує тобою."
   },
   {
-    "text": "A habit is a vote for the person you're becoming."
+    "text": "A habit is a vote for the person you're becoming.",
+    "text_uk": "Звичка — це голос за людину, якою ти стаєш."
   },
   {
-    "text": "Most 'someday' plans die quietly in the notes app."
+    "text": "Most 'someday' plans die quietly in the notes app.",
+    "text_uk": "Більшість планів «колись» тихо вмирають у нотатках."
   },
   {
-    "text": "You can't out-hustle a bad night's sleep."
+    "text": "You can't out-hustle a bad night's sleep.",
+    "text_uk": "Недоспану ніч не перепрацюєш."
   },
   {
-    "text": "The goal isn't balance, it's rhythm — seasons of push and seasons of rest."
+    "text": "The goal isn't balance, it's rhythm — seasons of push and seasons of rest.",
+    "text_uk": "Ціль — не баланс, а ритм: сезони натиску і сезони відпочинку."
   },
   {
-    "text": "What you tolerate, you teach people to keep doing."
+    "text": "What you tolerate, you teach people to keep doing.",
+    "text_uk": "Те, що ти терпиш, ти вчиш людей робити й далі."
   },
   {
-    "text": "The best financial plan starts with knowing where your money already goes."
+    "text": "The best financial plan starts with knowing where your money already goes.",
+    "text_uk": "Найкращий фінансовий план починається з розуміння, куди твої гроші йдуть уже зараз."
   },
   {
-    "text": "Your attention is the only currency you can never earn back."
+    "text": "Your attention is the only currency you can never earn back.",
+    "text_uk": "Увага — єдина валюта, яку неможливо заробити назад."
   },
   {
-    "text": "Trust is built in drops and lost in buckets."
+    "text": "Trust is built in drops and lost in buckets.",
+    "text_uk": "Довіра будується краплями, а втрачається відрами."
   },
   {
-    "text": "The hardest part of any workout is putting on the shoes."
+    "text": "The hardest part of any workout is putting on the shoes.",
+    "text_uk": "Найважча частина будь-якого тренування — взути кросівки."
   },
   {
-    "text": "You don't rise to the level of your goals, you fall to the level of your systems."
+    "text": "You don't rise to the level of your goals, you fall to the level of your systems.",
+    "text_uk": "Ти не піднімаєшся до рівня своїх цілей — ти падаєш до рівня своїх систем."
   },
   {
-    "text": "A tidy space is a quieter mind."
+    "text": "A tidy space is a quieter mind.",
+    "text_uk": "Прибраний простір — тихіший розум."
   },
   {
-    "text": "Every expert was once a beginner who didn't quit."
+    "text": "Every expert was once a beginner who didn't quit.",
+    "text_uk": "Кожен експерт колись був новачком, який не здався."
   },
   {
-    "text": "The best apology includes a plan that prevents a repeat."
+    "text": "The best apology includes a plan that prevents a repeat.",
+    "text_uk": "Найкраще вибачення містить план, який не дасть цьому повторитися."
   },
   {
-    "text": "Your twenties are for collecting data on who you actually are."
+    "text": "Your twenties are for collecting data on who you actually are.",
+    "text_uk": "Двадцяті роки — щоб зібрати дані про те, ким ти є насправді."
   },
   {
-    "text": "You can't think your way into a new way of living, you have to live your way into a new way of thinking."
+    "text": "You can't think your way into a new way of living, you have to live your way into a new way of thinking.",
+    "text_uk": "Не можна продумати себе до нового способу життя — треба прожити себе до нового способу мислення."
   },
   {
-    "text": "The smallest habit done daily beats the biggest habit done never."
+    "text": "The smallest habit done daily beats the biggest habit done never.",
+    "text_uk": "Найменша звичка щодня перемагає найбільшу звичку ніколи."
   },
   {
-    "text": "Clarity comes from engagement, not thought — start before you feel ready."
+    "text": "Clarity comes from engagement, not thought — start before you feel ready.",
+    "text_uk": "Ясність приходить із дії, а не з роздумів — починай до того, як відчуєш готовність."
   },
   {
-    "text": "Your network is your net worth in more than just money."
+    "text": "Your network is your net worth in more than just money.",
+    "text_uk": "Твоє оточення — це твій капітал, і не лише грошовий."
   },
   {
-    "text": "Most anxiety is a to-do list wearing a disguise."
+    "text": "Most anxiety is a to-do list wearing a disguise.",
+    "text_uk": "Більшість тривоги — це список справ під маскуванням."
   },
   {
-    "text": "The way you do one thing is the way you do most things."
+    "text": "The way you do one thing is the way you do most things.",
+    "text_uk": "Як ти робиш одну річ — так ти робиш і більшість речей."
   },
   {
-    "text": "Protect your morning and your morning will protect your day."
+    "text": "Protect your morning and your morning will protect your day.",
+    "text_uk": "Захисти свій ранок — і ранок захистить твій день."
   }
 ]

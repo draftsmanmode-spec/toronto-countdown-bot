@@ -1,23 +1,24 @@
 """
-Two-way relay, checked every 5 minutes:
+Two-way relay + delivery reporting, checked every 5 minutes.
 
-1. Anything your brother (CUSTOMER_CHAT_ID) sends the bot gets forwarded
-   to you (ADMIN_CHAT_ID) as a report.
-2. Anything YOU send the bot (in your own chat with it, as ADMIN_CHAT_ID)
-   gets relayed straight to your brother (CUSTOMER_CHAT_ID) - this is how
-   you trigger an on-demand reminder: just message the bot yourself.
+1. Anything your brother (CUSTOMER_CHAT_ID) sends the bot is reported to
+   you (ADMIN_CHAT_ID).
+2. Anything YOU send the bot is relayed straight to him, and you get a
+   delivery report back - a green check if Telegram accepted it, a red X
+   with the reason if it did not. A failed send is never silent.
+3. Commands you can text the bot instead of opening GitHub:
+       /schedule  (or /preview)  - what's queued to go out next
+       /help                     - list the commands
 
-Messages starting with "/" (bot commands like /start) are never relayed -
-only plain text you actually type to be forwarded.
+What a delivery report can and cannot tell you: Telegram's Bot API
+confirms that a message was accepted for delivery to his chat. It does NOT
+expose read receipts to bots, so nothing here can tell you whether he
+actually opened it. That's a platform limit, not a gap in this code.
 
 Required repo secrets:
   BOT_TOKEN
   ADMIN_CHAT_ID
   CUSTOMER_CHAT_ID   (script exits quietly if this isn't set yet)
-
-Uses state.json (committed back to the repo by the workflow) to remember
-which messages have already been handled, so nothing gets double-sent and
-nothing gets missed between runs.
 """
 
 import json
@@ -29,6 +30,14 @@ from telegram_utils import get_updates, send_text, describe_message
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID")
 CUSTOMER_CHAT_ID = os.environ.get("CUSTOMER_CHAT_ID", "").strip()
 STATE_PATH = "state.json"
+
+HELP_TEXT = (
+    "\U0001F916 Bot commands\n\n"
+    "/schedule — what's queued to send next\n"
+    "/help — this list\n\n"
+    "Anything else you type here is relayed straight to your brother, "
+    "and you get a delivery report back."
+)
 
 
 def load_offset() -> int:
@@ -44,25 +53,66 @@ def save_offset(update_id: int) -> None:
 
 
 def handle_customer_message(message: dict) -> None:
-    """Brother messaged the bot -> report it to admin."""
+    """Brother messaged the bot -> report it to you."""
     summary = describe_message(message)
-    report = f"\U0001F4AC Your brother messaged the bot:\n\n{summary}"
-    send_text(ADMIN_CHAT_ID, report)
+    send_text(ADMIN_CHAT_ID, f"\U0001F4AC Your brother messaged the bot:\n\n{summary}")
     print("Reported to admin:", summary)
 
 
+def handle_command(text: str) -> bool:
+    """Handle an admin command. Returns True if it was one."""
+    cmd = text.split()[0].lower().lstrip("/")
+
+    if cmd in ("schedule", "preview"):
+        try:
+            from send_schedule_preview import build_preview
+            send_text(ADMIN_CHAT_ID, build_preview())
+            print("Sent schedule preview on request.")
+        except Exception as exc:  # noqa: BLE001
+            send_text(ADMIN_CHAT_ID, f"❌ Couldn't build the schedule preview: {exc}")
+            print("Preview failed:", exc, file=sys.stderr)
+        return True
+
+    if cmd in ("help", "start"):
+        send_text(ADMIN_CHAT_ID, HELP_TEXT)
+        print("Sent help.")
+        return True
+
+    send_text(ADMIN_CHAT_ID, f"❓ Unknown command “/{cmd}”. Send /help for the list.")
+    print("Unknown command:", cmd)
+    return True
+
+
 def handle_admin_message(message: dict) -> None:
-    """Admin messaged the bot -> relay plain text straight to the brother."""
+    """You messaged the bot -> run a command, or relay the text to him."""
     text = message.get("text", "")
+
     if text.startswith("/"):
-        print("Ignored admin command:", text)
-        return
-    if not text:
-        print("Ignored non-text admin message (only text is relayed).")
+        handle_command(text)
         return
 
-    send_text(CUSTOMER_CHAT_ID, text)
-    send_text(ADMIN_CHAT_ID, f"✅ Relayed to your brother:\n\n\"{text}\"")
+    if not text:
+        send_text(
+            ADMIN_CHAT_ID,
+            "ℹ️ Only text messages get relayed — that one wasn't sent on.",
+        )
+        print("Ignored non-text admin message.")
+        return
+
+    try:
+        send_text(CUSTOMER_CHAT_ID, text)
+    except Exception as exc:  # noqa: BLE001 - a failed relay must never be silent
+        send_text(
+            ADMIN_CHAT_ID,
+            f"❌ NOT delivered to your brother:\n\n“{text}”\n\nReason: {exc}",
+        )
+        print("Relay FAILED:", exc, file=sys.stderr)
+        return
+
+    send_text(
+        ADMIN_CHAT_ID,
+        f"✅ Delivered to your brother:\n\n“{text}”",
+    )
     print("Relayed to customer:", text)
 
 

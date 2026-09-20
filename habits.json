@@ -1,42 +1,322 @@
 [
-  {"title": "Get sunlight within 30 minutes of waking", "action": "Step outside (or sit by a bright window) for 5-10 minutes as soon as you can after waking up, no sunglasses.", "why": "Morning light exposure helps set your circadian rhythm, which improves sleep quality and daytime energy \u2014 one of the most well-supported findings in sleep research."},
-  {"title": "Walk for 10 minutes after eating", "action": "Take a short walk after your biggest meal of the day, even just around the block.", "why": "Post-meal movement measurably blunts blood sugar spikes and aids digestion, per multiple clinical studies on postprandial walking."},
-  {"title": "Write down 3 things you're grateful for", "action": "Each night, jot down three specific things that went well that day, however small.", "why": "Gratitude journaling is one of the most replicated interventions in positive psychology for improving mood and life satisfaction over time."},
-  {"title": "Do a weekly phone-free block", "action": "Pick 2-3 hours once a week (a meal, a walk, a hobby) where your phone stays in another room.", "why": "Studies on attention residue show that even a silent phone in view reduces available cognitive capacity."},
-  {"title": "Strength train twice a week", "action": "Two short sessions of resistance training (bodyweight is fine) targeting major muscle groups.", "why": "Resistance training twice weekly is linked to better long-term metabolic health, bone density, and mood regulation."},
-  {"title": "Batch-check messages instead of reacting instantly", "action": "Pick 2-3 set times a day to check texts/email/DMs instead of responding the second they arrive.", "why": "Constant task-switching measurably increases stress and reduces the quality of deep work, according to attention-residue research."},
-  {"title": "Cold finish on your shower", "action": "End your shower with 30-60 seconds of cold water.", "why": "Brief cold exposure is associated with improved mood and alertness in early research, and it's a low-cost way to practice discomfort tolerance."},
-  {"title": "Write tomorrow's top 3 tasks tonight", "action": "Before bed, write down the 3 things that matter most to get done the next day.", "why": "Pre-deciding priorities reduces decision fatigue and morning procrastination \u2014 a well-documented effect in productivity research."},
-  {"title": "Get 7+ hours of sleep, same time nightly", "action": "Pick a consistent bedtime and wake time, even on weekends, and protect it.", "why": "Sleep consistency (not just duration) is independently linked to better cognitive performance and mood regulation."},
-  {"title": "Do a single-tasking hour", "action": "Once a day, work on one task with every notification off for 60 minutes.", "why": "Deep, uninterrupted focus periods produce measurably higher-quality output than fragmented multitasking."},
-  {"title": "Call, don't text, one person you care about", "action": "Once a week, replace a text conversation with an actual phone or video call.", "why": "Research on social connection shows voice contact builds felt closeness significantly more than text, even at the same frequency."},
-  {"title": "Track your spending for one week", "action": "Write down every purchase for 7 days, no judgment, just data.", "why": "Simple expense tracking is one of the most consistently effective first steps in behavioral finance research for building money awareness."},
-  {"title": "Do a 10-minute weekly declutter", "action": "Pick one drawer, shelf, or folder (digital or physical) and clear it out.", "why": "Physical clutter is linked to elevated cortisol and reduced focus in environmental psychology studies."},
-  {"title": "Practice box breathing when stressed", "action": "Inhale 4 seconds, hold 4, exhale 4, hold 4. Repeat for 2 minutes.", "why": "Controlled breathing activates the parasympathetic nervous system and is well-supported for reducing acute stress response."},
-  {"title": "Eat protein at breakfast", "action": "Include a solid protein source (eggs, yogurt, etc.) in your first meal of the day.", "why": "Protein-forward breakfasts are associated with steadier blood sugar and reduced cravings later in the day."},
-  {"title": "Do one uncomfortable ask this week", "action": "Ask for something you'd normally avoid asking for \u2014 a discount, feedback, a favor.", "why": "Deliberate practice with rejection reduces social anxiety over time, a core finding behind exposure-based therapy approaches."},
-  {"title": "Take real breaks, not scrolling breaks", "action": "When you take a break, stand up and look away from a screen entirely for a few minutes.", "why": "Scrolling during 'breaks' doesn't give the attention-restoration effect that stepping away from screens does, per cognitive load research."},
-  {"title": "Write a two-line note to someone who helped you", "action": "Send a short, specific thank-you message to someone this week.", "why": "Expressed gratitude reliably boosts the wellbeing of both the sender and receiver in controlled studies."},
-  {"title": "Plan meals for 3 days ahead", "action": "Spend 15 minutes once a week roughly planning your next few days of meals.", "why": "Meal planning is associated with better diet quality and less reliance on last-minute convenience food."},
-  {"title": "Do a digital sunset", "action": "Stop screens 30-60 minutes before bed; read or stretch instead.", "why": "Blue light and stimulating content before bed delay melatonin release and reduce sleep quality, per sleep science."},
-  {"title": "Learn one new word or fact daily", "action": "Spend 2 minutes a day learning something small and unrelated to work.", "why": "Small, low-stakes learning habits are linked to better long-term cognitive flexibility and reduced boredom-driven scrolling."},
-  {"title": "Do a weekly reflection", "action": "Once a week, spend 10 minutes writing what went well, what didn't, and one adjustment for next week.", "why": "Structured self-reflection is one of the most consistent predictors of skill improvement in performance psychology."},
-  {"title": "Stretch for 5 minutes after waking", "action": "A short stretch routine before you start your day.", "why": "Morning mobility work is associated with reduced stiffness and better movement quality throughout the day."},
-  {"title": "Say no to one low-value commitment", "action": "This week, decline one thing that doesn't serve your actual priorities.", "why": "Overcommitment is a leading driver of burnout; boundary-setting is a core recommendation across occupational health research."},
-  {"title": "Drink a glass of water before your morning coffee", "action": "Rehydrate first thing, before caffeine.", "why": "You wake up mildly dehydrated after hours without fluids; rehydrating first supports energy and cognitive function."},
-  {"title": "Do a 'worry window'", "action": "Set aside 10 minutes to actively worry/plan for anxious thoughts, then close the window for the day.", "why": "Scheduled worry time is a technique from cognitive behavioral therapy shown to reduce rumination outside that window."},
-  {"title": "Read 10 pages of a real book", "action": "Pick a physical or e-book (not your phone) and read a small amount daily.", "why": "Sustained reading builds deep-focus capacity that fragmented phone use actively erodes over time."},
-  {"title": "Batch your errands", "action": "Group small tasks (calls, errands, admin) into one block instead of spreading them through the day.", "why": "Context-switching between unrelated small tasks carries a real cognitive cost, well documented in task-switching research."},
-  {"title": "Do a favor with no expectation of return", "action": "Help someone this week without mentioning it or expecting anything back.", "why": "Prosocial behavior is one of the more reliable, replicated boosts to subjective wellbeing in psychology research."},
-  {"title": "Track your sleep for a week", "action": "Note roughly what time you fell asleep and woke up, even without a device.", "why": "Simple sleep awareness alone often nudges people toward better sleep habits, a common finding in behavior-change research."},
-  {"title": "Take the stairs this week", "action": "Default to stairs over elevators/escalators where reasonable.", "why": "Small bouts of extra daily movement ('non-exercise activity') add up to meaningful differences in long-term health outcomes."},
-  {"title": "Have one screen-free meal a day", "action": "Eat at least one meal daily without a phone, show, or laptop in front of you.", "why": "Mindful eating without screens is linked to better digestion signals and portion awareness."},
-  {"title": "Write down one fear and the actual worst case", "action": "Pick something you're avoiding, and write out honestly what would happen if it went wrong.", "why": "This 'fear-setting' exercise, used in performance coaching, reliably reduces the perceived size of avoided tasks."},
-  {"title": "Do a 20-minute weekly finance check-in", "action": "Once a week, glance at your accounts and upcoming bills \u2014 no deep dive, just awareness.", "why": "Regular light-touch financial check-ins reduce avoidance and are linked to better long-term financial outcomes."},
-  {"title": "Introduce yourself to one new person", "action": "Strike up a conversation with someone you wouldn't normally talk to this week.", "why": "Weak-tie social interactions are linked to measurable boosts in daily mood, per social psychology research on 'the surprising power of strangers.'"},
-  {"title": "Do a posture check hourly", "action": "Set a reminder to notice and reset your posture a few times a day.", "why": "Prolonged poor posture is linked to increased tension and fatigue; brief resets reduce cumulative strain."},
-  {"title": "Pick one task to do first, not last", "action": "Identify your most important (not easiest) task and do it before checking messages.", "why": "Willpower and focus are typically highest earlier in the day, so front-loading hard tasks uses that window well."},
-  {"title": "Limit decision fatigue with a uniform", "action": "Simplify one recurring decision this week (what to wear, what to eat) with a default choice.", "why": "Reducing trivial daily decisions preserves mental energy for decisions that actually matter, a well-known effect in decision research."},
-  {"title": "Spend 15 minutes in nature", "action": "Sit or walk somewhere with greenery, even a park, for a short stretch this week.", "why": "Time in green space is linked to lower cortisol and improved mood in environmental psychology studies."},
-  {"title": "End the week by naming one win", "action": "Every Sunday, write down one specific thing you're proud of from that week.", "why": "Regularly acknowledging progress (not just outcomes) is linked to sustained motivation in goal-pursuit research."}
+  {
+    "title": "Get sunlight within 30 minutes of waking",
+    "action": "Step outside (or sit by a bright window) for 5-10 minutes as soon as you can after waking up, no sunglasses.",
+    "why": "Morning light exposure helps set your circadian rhythm, which improves sleep quality and daytime energy — one of the most well-supported findings in sleep research.",
+    "title_uk": "Лови сонячне світло протягом 30 хвилин після пробудження",
+    "action_uk": "Вийди надвір (або сядь біля яскравого вікна) на 5–10 хвилин одразу після пробудження, без сонцезахисних окулярів.",
+    "why_uk": "Ранкове світло допомагає налаштувати циркадний ритм, що покращує якість сну та денну енергію — один з найкраще підтверджених висновків у дослідженнях сну."
+  },
+  {
+    "title": "Walk for 10 minutes after eating",
+    "action": "Take a short walk after your biggest meal of the day, even just around the block.",
+    "why": "Post-meal movement measurably blunts blood sugar spikes and aids digestion, per multiple clinical studies on postprandial walking.",
+    "title_uk": "Гуляй 10 хвилин після їжі",
+    "action_uk": "Прогуляйся після найбільшого прийому їжі за день, хоча б навколо кварталу.",
+    "why_uk": "Рух після їжі помітно згладжує стрибки цукру в крові та допомагає травленню — за даними кількох клінічних досліджень."
+  },
+  {
+    "title": "Write down 3 things you're grateful for",
+    "action": "Each night, jot down three specific things that went well that day, however small.",
+    "why": "Gratitude journaling is one of the most replicated interventions in positive psychology for improving mood and life satisfaction over time.",
+    "title_uk": "Запиши 3 речі, за які ти вдячний",
+    "action_uk": "Щовечора записуй три конкретні речі, які сьогодні вдалися, навіть найдрібніші.",
+    "why_uk": "Щоденник вдячності — одна з найчастіше підтверджених практик у позитивній психології для покращення настрою й задоволеності життям."
+  },
+  {
+    "title": "Do a weekly phone-free block",
+    "action": "Pick 2-3 hours once a week (a meal, a walk, a hobby) where your phone stays in another room.",
+    "why": "Studies on attention residue show that even a silent phone in view reduces available cognitive capacity.",
+    "title_uk": "Влаштуй щотижневий блок без телефона",
+    "action_uk": "Обери 2–3 години раз на тиждень (їжа, прогулянка, хобі), коли телефон лежить в іншій кімнаті.",
+    "why_uk": "Дослідження залишкової уваги показують, що навіть беззвучний телефон у полі зору знижує доступний когнітивний ресурс."
+  },
+  {
+    "title": "Strength train twice a week",
+    "action": "Two short sessions of resistance training (bodyweight is fine) targeting major muscle groups.",
+    "why": "Resistance training twice weekly is linked to better long-term metabolic health, bone density, and mood regulation.",
+    "title_uk": "Силові тренування двічі на тиждень",
+    "action_uk": "Два коротких силових заняття (з власною вагою теж підходить) на основні групи м'язів.",
+    "why_uk": "Силові двічі на тиждень пов'язані з кращим метаболічним здоров'ям, щільністю кісток і регуляцією настрою в довгій перспективі."
+  },
+  {
+    "title": "Batch-check messages instead of reacting instantly",
+    "action": "Pick 2-3 set times a day to check texts/email/DMs instead of responding the second they arrive.",
+    "why": "Constant task-switching measurably increases stress and reduces the quality of deep work, according to attention-residue research.",
+    "title_uk": "Перевіряй повідомлення блоками, а не миттєво",
+    "action_uk": "Обери 2–3 конкретні моменти на день для перевірки повідомлень замість реакції на кожне одразу.",
+    "why_uk": "Постійне перемикання між задачами вимірювано підвищує стрес і знижує якість глибокої роботи."
+  },
+  {
+    "title": "Cold finish on your shower",
+    "action": "End your shower with 30-60 seconds of cold water.",
+    "why": "Brief cold exposure is associated with improved mood and alertness in early research, and it's a low-cost way to practice discomfort tolerance.",
+    "title_uk": "Закінчуй душ холодною водою",
+    "action_uk": "Останні 30–60 секунд душу — холодна вода.",
+    "why_uk": "Коротке холодове навантаження в ранніх дослідженнях пов'язують із покращенням настрою та бадьорості, і це дешевий спосіб тренувати витримку до дискомфорту."
+  },
+  {
+    "title": "Write tomorrow's top 3 tasks tonight",
+    "action": "Before bed, write down the 3 things that matter most to get done the next day.",
+    "why": "Pre-deciding priorities reduces decision fatigue and morning procrastination — a well-documented effect in productivity research.",
+    "title_uk": "Запиши 3 головні задачі на завтра ще звечора",
+    "action_uk": "Перед сном випиши три найважливіші справи на наступний день.",
+    "why_uk": "Попереднє визначення пріоритетів знижує втому від рішень і ранкову прокрастинацію — добре задокументований ефект."
+  },
+  {
+    "title": "Get 7+ hours of sleep, same time nightly",
+    "action": "Pick a consistent bedtime and wake time, even on weekends, and protect it.",
+    "why": "Sleep consistency (not just duration) is independently linked to better cognitive performance and mood regulation.",
+    "title_uk": "Спи 7+ годин, щодня в один і той самий час",
+    "action_uk": "Обери сталий час відходу до сну й підйому — і тримайся його навіть у вихідні.",
+    "why_uk": "Стабільність сну (не лише тривалість) окремо пов'язана з кращою когнітивною роботою та настроєм."
+  },
+  {
+    "title": "Do a single-tasking hour",
+    "action": "Once a day, work on one task with every notification off for 60 minutes.",
+    "why": "Deep, uninterrupted focus periods produce measurably higher-quality output than fragmented multitasking.",
+    "title_uk": "Виділи годину на одну-єдину задачу",
+    "action_uk": "Раз на день працюй над однією задачею з вимкненими сповіщеннями протягом 60 хвилин.",
+    "why_uk": "Глибока безперервна концентрація дає вимірювано якісніший результат, ніж фрагментована багатозадачність."
+  },
+  {
+    "title": "Call, don't text, one person you care about",
+    "action": "Once a week, replace a text conversation with an actual phone or video call.",
+    "why": "Research on social connection shows voice contact builds felt closeness significantly more than text, even at the same frequency.",
+    "title_uk": "Подзвони, а не пиши, комусь важливому",
+    "action_uk": "Раз на тиждень заміни переписку справжнім дзвінком — голосовим або відео.",
+    "why_uk": "Дослідження соціальних зв'язків показують: голосовий контакт створює відчуття близькості значно сильніше за текст, навіть за тієї ж частоти."
+  },
+  {
+    "title": "Track your spending for one week",
+    "action": "Write down every purchase for 7 days, no judgment, just data.",
+    "why": "Simple expense tracking is one of the most consistently effective first steps in behavioral finance research for building money awareness.",
+    "title_uk": "Відстежуй витрати протягом тижня",
+    "action_uk": "Записуй кожну покупку 7 днів поспіль — без осуду, просто дані.",
+    "why_uk": "Просте відстеження витрат — один з найстабільніше ефективних перших кроків у поведінковій економіці для усвідомлення грошей."
+  },
+  {
+    "title": "Do a 10-minute weekly declutter",
+    "action": "Pick one drawer, shelf, or folder (digital or physical) and clear it out.",
+    "why": "Physical clutter is linked to elevated cortisol and reduced focus in environmental psychology studies.",
+    "title_uk": "10 хвилин розхламлення щотижня",
+    "action_uk": "Обери одну шухляду, полицю чи папку (фізичну або цифрову) і розбери її.",
+    "why_uk": "Фізичний безлад пов'язують із підвищеним кортизолом і зниженою концентрацією в дослідженнях психології середовища."
+  },
+  {
+    "title": "Practice box breathing when stressed",
+    "action": "Inhale 4 seconds, hold 4, exhale 4, hold 4. Repeat for 2 minutes.",
+    "why": "Controlled breathing activates the parasympathetic nervous system and is well-supported for reducing acute stress response.",
+    "title_uk": "Практикуй «квадратне дихання» у стресі",
+    "action_uk": "Вдих 4 секунди, затримка 4, видих 4, затримка 4. Повторюй 2 хвилини.",
+    "why_uk": "Контрольоване дихання активує парасимпатичну нервову систему і добре підтверджене для зниження гострої стресової реакції."
+  },
+  {
+    "title": "Eat protein at breakfast",
+    "action": "Include a solid protein source (eggs, yogurt, etc.) in your first meal of the day.",
+    "why": "Protein-forward breakfasts are associated with steadier blood sugar and reduced cravings later in the day.",
+    "title_uk": "Їж білок на сніданок",
+    "action_uk": "Додай повноцінне джерело білка (яйця, йогурт тощо) до першого прийому їжі.",
+    "why_uk": "Сніданки з акцентом на білок пов'язані зі стабільнішим рівнем цукру та меншою тягою до їжі протягом дня."
+  },
+  {
+    "title": "Do one uncomfortable ask this week",
+    "action": "Ask for something you'd normally avoid asking for — a discount, feedback, a favor.",
+    "why": "Deliberate practice with rejection reduces social anxiety over time, a core finding behind exposure-based therapy approaches.",
+    "title_uk": "Зроби одне незручне прохання цього тижня",
+    "action_uk": "Попроси те, про що зазвичай не просиш — знижку, зворотний зв'язок, послугу.",
+    "why_uk": "Свідома практика з відмовами знижує соціальну тривожність з часом — базовий принцип терапії через експозицію."
+  },
+  {
+    "title": "Take real breaks, not scrolling breaks",
+    "action": "When you take a break, stand up and look away from a screen entirely for a few minutes.",
+    "why": "Scrolling during 'breaks' doesn't give the attention-restoration effect that stepping away from screens does, per cognitive load research.",
+    "title_uk": "Роби справжні перерви, а не скрол-перерви",
+    "action_uk": "Під час перерви вставай і повністю відводь очі від екрана на кілька хвилин.",
+    "why_uk": "Скрол під час «перерви» не дає ефекту відновлення уваги, який дає справжній відхід від екранів."
+  },
+  {
+    "title": "Write a two-line note to someone who helped you",
+    "action": "Send a short, specific thank-you message to someone this week.",
+    "why": "Expressed gratitude reliably boosts the wellbeing of both the sender and receiver in controlled studies.",
+    "title_uk": "Напиши два рядки подяки тому, хто допоміг",
+    "action_uk": "Надішли коротке конкретне «дякую» комусь цього тижня.",
+    "why_uk": "Висловлена вдячність надійно підвищує самопочуття і того, хто пише, і того, хто отримує."
+  },
+  {
+    "title": "Plan meals for 3 days ahead",
+    "action": "Spend 15 minutes once a week roughly planning your next few days of meals.",
+    "why": "Meal planning is associated with better diet quality and less reliance on last-minute convenience food.",
+    "title_uk": "Сплануй їжу на 3 дні вперед",
+    "action_uk": "Витрать 15 хвилин раз на тиждень, щоб приблизно спланувати наступні кілька днів харчування.",
+    "why_uk": "Планування їжі пов'язане з кращою якістю раціону й меншою залежністю від фастфуду в останній момент."
+  },
+  {
+    "title": "Do a digital sunset",
+    "action": "Stop screens 30-60 minutes before bed; read or stretch instead.",
+    "why": "Blue light and stimulating content before bed delay melatonin release and reduce sleep quality, per sleep science.",
+    "title_uk": "Влаштуй «цифровий захід сонця»",
+    "action_uk": "Прибери екрани за 30–60 хвилин до сну; натомість почитай або порозтягуйся.",
+    "why_uk": "Синє світло та стимулюючий контент перед сном затримують вироблення мелатоніну й погіршують якість сну."
+  },
+  {
+    "title": "Learn one new word or fact daily",
+    "action": "Spend 2 minutes a day learning something small and unrelated to work.",
+    "why": "Small, low-stakes learning habits are linked to better long-term cognitive flexibility and reduced boredom-driven scrolling.",
+    "title_uk": "Вивчай одне нове слово або факт щодня",
+    "action_uk": "Витрачай 2 хвилини на день на щось маленьке й не пов'язане з роботою.",
+    "why_uk": "Маленькі навчальні звички без тиску пов'язані з кращою когнітивною гнучкістю та меншим скролінгом від нудьги."
+  },
+  {
+    "title": "Do a weekly reflection",
+    "action": "Once a week, spend 10 minutes writing what went well, what didn't, and one adjustment for next week.",
+    "why": "Structured self-reflection is one of the most consistent predictors of skill improvement in performance psychology.",
+    "title_uk": "Проводь щотижневу рефлексію",
+    "action_uk": "Раз на тиждень витрать 10 хвилин на запис: що вдалося, що ні, і одна зміна на наступний тиждень.",
+    "why_uk": "Структурована саморефлексія — один з найстабільніших предикторів росту навичок у психології продуктивності."
+  },
+  {
+    "title": "Stretch for 5 minutes after waking",
+    "action": "A short stretch routine before you start your day.",
+    "why": "Morning mobility work is associated with reduced stiffness and better movement quality throughout the day.",
+    "title_uk": "Розтягуйся 5 хвилин після пробудження",
+    "action_uk": "Коротка розтяжка перед тим, як почати день.",
+    "why_uk": "Ранкова мобільність пов'язана з меншою скутістю та кращою якістю рухів протягом дня."
+  },
+  {
+    "title": "Say no to one low-value commitment",
+    "action": "This week, decline one thing that doesn't serve your actual priorities.",
+    "why": "Overcommitment is a leading driver of burnout; boundary-setting is a core recommendation across occupational health research.",
+    "title_uk": "Скажи «ні» одному малоцінному зобов'язанню",
+    "action_uk": "Цього тижня відмовся від однієї справи, яка не працює на твої справжні пріоритети.",
+    "why_uk": "Перевантаження зобов'язаннями — провідна причина вигорання; вміння ставити межі є базовою рекомендацією в дослідженнях професійного здоров'я."
+  },
+  {
+    "title": "Drink a glass of water before your morning coffee",
+    "action": "Rehydrate first thing, before caffeine.",
+    "why": "You wake up mildly dehydrated after hours without fluids; rehydrating first supports energy and cognitive function.",
+    "title_uk": "Випий склянку води до ранкової кави",
+    "action_uk": "Спочатку відновлюй водний баланс, тільки потім кофеїн.",
+    "why_uk": "Після кількох годин без рідини ти прокидаєшся злегка зневодненим; вода першою підтримує енергію та роботу мозку."
+  },
+  {
+    "title": "Do a 'worry window'",
+    "action": "Set aside 10 minutes to actively worry/plan for anxious thoughts, then close the window for the day.",
+    "why": "Scheduled worry time is a technique from cognitive behavioral therapy shown to reduce rumination outside that window.",
+    "title_uk": "Виділи «вікно для тривоги»",
+    "action_uk": "Признач 10 хвилин, коли ти свідомо тривожишся й плануєш — а потім закриваєш це вікно на весь день.",
+    "why_uk": "Заплановане «вікно тривоги» — техніка з когнітивно-поведінкової терапії, яка доведено зменшує роздуми поза цим вікном."
+  },
+  {
+    "title": "Read 10 pages of a real book",
+    "action": "Pick a physical or e-book (not your phone) and read a small amount daily.",
+    "why": "Sustained reading builds deep-focus capacity that fragmented phone use actively erodes over time.",
+    "title_uk": "Читай 10 сторінок справжньої книги",
+    "action_uk": "Візьми паперову або електронну книгу (не телефон) і читай потроху щодня.",
+    "why_uk": "Тривале читання розвиває здатність до глибокої концентрації, яку фрагментоване користування телефоном активно руйнує."
+  },
+  {
+    "title": "Batch your errands",
+    "action": "Group small tasks (calls, errands, admin) into one block instead of spreading them through the day.",
+    "why": "Context-switching between unrelated small tasks carries a real cognitive cost, well documented in task-switching research.",
+    "title_uk": "Групуй дрібні справи",
+    "action_uk": "Збирай малі задачі (дзвінки, доручення, адмін) в один блок замість розкидання по дню.",
+    "why_uk": "Перемикання контексту між непов'язаними дрібними задачами має реальну когнітивну ціну — добре задокументовано."
+  },
+  {
+    "title": "Do a favor with no expectation of return",
+    "action": "Help someone this week without mentioning it or expecting anything back.",
+    "why": "Prosocial behavior is one of the more reliable, replicated boosts to subjective wellbeing in psychology research.",
+    "title_uk": "Зроби послугу, нічого не очікуючи взамін",
+    "action_uk": "Допоможи комусь цього тижня, не згадуючи про це й не чекаючи нічого назад.",
+    "why_uk": "Просоціальна поведінка — один з найнадійніших і найчастіше відтворюваних способів підвищити суб'єктивне благополуччя."
+  },
+  {
+    "title": "Track your sleep for a week",
+    "action": "Note roughly what time you fell asleep and woke up, even without a device.",
+    "why": "Simple sleep awareness alone often nudges people toward better sleep habits, a common finding in behavior-change research.",
+    "title_uk": "Відстежуй сон протягом тижня",
+    "action_uk": "Записуй приблизно, коли заснув і коли прокинувся — навіть без гаджета.",
+    "why_uk": "Саме лише усвідомлення сну часто підштовхує людей до кращих звичок — типовий висновок у дослідженнях зміни поведінки."
+  },
+  {
+    "title": "Take the stairs this week",
+    "action": "Default to stairs over elevators/escalators where reasonable.",
+    "why": "Small bouts of extra daily movement ('non-exercise activity') add up to meaningful differences in long-term health outcomes.",
+    "title_uk": "Цього тижня ходи сходами",
+    "action_uk": "Обирай сходи замість ліфта й ескалатора там, де це розумно.",
+    "why_uk": "Невеликі порції додаткового руху («нетренувальна активність») складаються в помітну різницю для здоров'я в довгій перспективі."
+  },
+  {
+    "title": "Have one screen-free meal a day",
+    "action": "Eat at least one meal daily without a phone, show, or laptop in front of you.",
+    "why": "Mindful eating without screens is linked to better digestion signals and portion awareness.",
+    "title_uk": "Один прийом їжі на день — без екранів",
+    "action_uk": "Їж щонайменше один раз на день без телефона, серіалу чи ноутбука перед собою.",
+    "why_uk": "Усвідомлене харчування без екранів пов'язане з кращим відчуттям ситості й контролем порцій."
+  },
+  {
+    "title": "Write down one fear and the actual worst case",
+    "action": "Pick something you're avoiding, and write out honestly what would happen if it went wrong.",
+    "why": "This 'fear-setting' exercise, used in performance coaching, reliably reduces the perceived size of avoided tasks.",
+    "title_uk": "Запиши один страх і реальний найгірший сценарій",
+    "action_uk": "Візьми те, чого уникаєш, і чесно опиши, що станеться, якщо все піде не так.",
+    "why_uk": "Ця вправа «постановки страхів» із коучингу надійно зменшує уявний масштаб справ, яких ти уникаєш."
+  },
+  {
+    "title": "Do a 20-minute weekly finance check-in",
+    "action": "Once a week, glance at your accounts and upcoming bills — no deep dive, just awareness.",
+    "why": "Regular light-touch financial check-ins reduce avoidance and are linked to better long-term financial outcomes.",
+    "title_uk": "20 хвилин на фінанси раз на тиждень",
+    "action_uk": "Раз на тиждень переглянь рахунки й найближчі платежі — без глибокого занурення, просто усвідомлення.",
+    "why_uk": "Регулярні легкі фінансові перевірки зменшують уникання й пов'язані з кращими фінансовими результатами в довгій перспективі."
+  },
+  {
+    "title": "Introduce yourself to one new person",
+    "action": "Strike up a conversation with someone you wouldn't normally talk to this week.",
+    "why": "Weak-tie social interactions are linked to measurable boosts in daily mood, per social psychology research on 'the surprising power of strangers.'",
+    "title_uk": "Познайомся з однією новою людиною",
+    "action_uk": "Заговори цього тижня з кимось, з ким зазвичай не розмовляєш.",
+    "why_uk": "Слабкі соціальні зв'язки пов'язані з вимірюваним підйомом настрою — за дослідженнями про «дивовижну силу незнайомців»."
+  },
+  {
+    "title": "Do a posture check hourly",
+    "action": "Set a reminder to notice and reset your posture a few times a day.",
+    "why": "Prolonged poor posture is linked to increased tension and fatigue; brief resets reduce cumulative strain.",
+    "title_uk": "Перевіряй поставу щогодини",
+    "action_uk": "Постав нагадування кілька разів на день помічати й виправляти поставу.",
+    "why_uk": "Тривала погана постава пов'язана з наростанням напруги й втоми; короткі скидання зменшують накопичене навантаження."
+  },
+  {
+    "title": "Pick one task to do first, not last",
+    "action": "Identify your most important (not easiest) task and do it before checking messages.",
+    "why": "Willpower and focus are typically highest earlier in the day, so front-loading hard tasks uses that window well.",
+    "title_uk": "Обери одну задачу — і зроби її першою, а не останньою",
+    "action_uk": "Визнач найважливішу (а не найлегшу) задачу й зроби її до перевірки повідомлень.",
+    "why_uk": "Сила волі та концентрація зазвичай найвищі на початку дня, тож складне на початку використовує це вікно найкраще."
+  },
+  {
+    "title": "Limit decision fatigue with a uniform",
+    "action": "Simplify one recurring decision this week (what to wear, what to eat) with a default choice.",
+    "why": "Reducing trivial daily decisions preserves mental energy for decisions that actually matter, a well-known effect in decision research.",
+    "title_uk": "Зменш втому від рішень «уніформою»",
+    "action_uk": "Спрости одне повторюване рішення цього тижня (що вдягнути, що з'їсти) сталим варіантом за замовчуванням.",
+    "why_uk": "Зменшення дрібних щоденних рішень зберігає ментальну енергію для тих рішень, які справді мають значення."
+  },
+  {
+    "title": "Spend 15 minutes in nature",
+    "action": "Sit or walk somewhere with greenery, even a park, for a short stretch this week.",
+    "why": "Time in green space is linked to lower cortisol and improved mood in environmental psychology studies.",
+    "title_uk": "Проведи 15 хвилин на природі",
+    "action_uk": "Посидь або погуляй там, де є зелень — хоча б у парку — цього тижня.",
+    "why_uk": "Час у зелених зонах пов'язаний з нижчим кортизолом і кращим настроєм у дослідженнях психології середовища."
+  },
+  {
+    "title": "End the week by naming one win",
+    "action": "Every Sunday, write down one specific thing you're proud of from that week.",
+    "why": "Regularly acknowledging progress (not just outcomes) is linked to sustained motivation in goal-pursuit research.",
+    "title_uk": "Завершуй тиждень однією перемогою",
+    "action_uk": "Щонеділі записуй одну конкретну річ, якою ти пишаєшся за цей тиждень.",
+    "why_uk": "Регулярне визнання прогресу (а не лише результату) пов'язане зі стійкою мотивацією в дослідженнях досягнення цілей."
+  }
 ]
