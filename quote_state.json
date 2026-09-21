@@ -3,6 +3,7 @@
     1,
     4,
     7,
+    9,
     10,
     12
   ],
@@ -585,6 +586,26 @@
       ],
       "analysis_en": "Discipline is really just a series of small trades, what you want right now for what you want most, and the toughest opponent in that trade is usually the voice in your own head.",
       "analysis_uk": "Дисципліна — це, по суті, серія маленьких обмінів: те, чого хочеш зараз, на те, чого хочеш найбільше. І найважчий суперник у цьому обміні — це зазвичай голос у власній голові."
+    },
+    {
+      "date": "2026-09-21",
+      "subject": "Purpose",
+      "subject_uk": "Сенс і мета",
+      "quotes": [
+        {
+          "text": "People don't buy what you do, they buy why you do it.",
+          "text_uk": "Люди купують не те, що ти робиш, а те, навіщо ти це робиш.",
+          "author": "Simon Sinek"
+        },
+        {
+          "text": "You're not trying to control your mind when you meditate, you're learning to stop letting it control you.",
+          "text_uk": "Медитуючи, ти не намагаєшся контролювати свій розум — ти вчишся не дозволяти йому контролювати тебе.",
+          "author": "Jay Shetty"
+        }
+      ],
+      "analysis_en": "People connect with why you do something before they care what you do, and the same discipline that builds outward purpose also quiets the mind inward, rather than trying to force it silent.",
+      "analysis_uk": "Люди спершу відгукуються на те, навіщо ти щось робиш, а вже потім — на те, що саме ти робиш. І та сама дисципліна, що будує зовнішню мету, заспокоює розум зсередини — а не намагається змусити його замовкнути.",
+      "index": 9
     }
   ]
 }
