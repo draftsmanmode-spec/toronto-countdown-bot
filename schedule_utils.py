@@ -105,13 +105,18 @@ def ensure_schedule(today=None):
     sched = load_schedule()
     added = 0
 
-    for offset in range(QUOTE_HORIZON_DAYS):
+    # never queue further ahead than the library is big, or the queue fills
+    # with repeats (13 themes over 30 days would repeat within two weeks)
+    quote_days = min(QUOTE_HORIZON_DAYS, max(1, len(load_library("quotes"))))
+    habit_weeks = min(HABIT_HORIZON_WEEKS, max(1, len(load_library("habits"))))
+
+    for offset in range(quote_days):
         day = (today + timedelta(days=offset)).isoformat()
         if day not in sched["quotes"]:
             sched["quotes"][day] = pick_index("quotes", sched)
             added += 1
 
-    for monday in upcoming_mondays(today, HABIT_HORIZON_WEEKS):
+    for monday in upcoming_mondays(today, habit_weeks):
         day = monday.isoformat()
         if day not in sched["habits"]:
             sched["habits"][day] = pick_index("habits", sched)

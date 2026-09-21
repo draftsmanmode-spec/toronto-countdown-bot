@@ -31,7 +31,11 @@ jobs:
 
       - run: python update_site.py
 
+      # Runs even if update_site.py failed: the quote was already delivered and
+      # logged, so the log and schedule must be saved regardless. A rendering
+      # bug should not cost us the state - the run still reports red.
       - name: Save quote log, schedule and updated site
+        if: always()
         run: |
           if ! git diff --quiet quote_state.json schedule.json docs/index.html; then
             git config user.name "quote-bot"

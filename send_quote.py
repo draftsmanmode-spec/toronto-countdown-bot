@@ -1,44 +1,82 @@
 """
-Sends the scheduled quote for today to your brother (CUSTOMER_CHAT_ID),
+Sends a combined 1-2 quote "theme of the day" to your brother (CUSTOMER_CHAT_ID),
 reports a copy to you (ADMIN_CHAT_ID), and logs it to quote_state.json so
-update_site.py can put it on the website.
+update_site.py can show it on the website.
 
-Which quote goes out is decided in advance by the schedule (schedule.json),
-not randomly at send time - so you can preview and swap upcoming quotes
-before they ever reach him.
+Each entry in quotes.json is a "subject" (theme) with 1-2 quotes and a short
+analysis, in English and Ukrainian. Every day, one subject is picked (cycling
+through all subjects without repeats until the whole list has been used, then
+reshuffling) and its quotes + analysis are sent in English, followed by the
+same content in Ukrainian underneath.
 
 Required repo secrets:
   BOT_TOKEN
   ADMIN_CHAT_ID
   CUSTOMER_CHAT_ID
-Optional:
-  LANG_MODE   both (default) | uk | en
 """
 
+import json
 import os
+import random
 import sys
 from datetime import date
 
 from telegram_utils import send_text
-from render import build_quote_message
-import schedule_utils as su
 
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID")
 CUSTOMER_CHAT_ID = os.environ.get("CUSTOMER_CHAT_ID", "").strip()
 
+QUOTES_PATH = "quotes.json"
+STATE_PATH = "quote_state.json"
 
-def todays_quote(today):
-    """Return (quote, index, from_schedule)."""
-    quotes = su.load_library("quotes")
-    sched = su.load_schedule()
-    idx = su.scheduled_index("quotes", today, sched)
-    if idx is not None and 0 <= idx < len(quotes):
-        return quotes[idx], idx, True
 
-    # Nothing queued for today (schedule ran dry or was cleared) - fall back
-    # so the send never silently fails, and flag it in the admin report.
-    idx = su.pick_index("quotes", sched)
-    return quotes[idx], idx, False
+def load_subjects():
+    with open(QUOTES_PATH, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def load_state():
+    if os.path.exists(STATE_PATH):
+        with open(STATE_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    return {"used_indices": [], "history": []}
+
+
+def save_state(state):
+    with open(STATE_PATH, "w", encoding="utf-8") as f:
+        json.dump(state, f, ensure_ascii=False, indent=2)
+
+
+def pick_subject(subjects, state):
+    used = set(state.get("used_indices", []))
+    available = [i for i in range(len(subjects)) if i not in used]
+    if not available:
+        used = set()
+        available = list(range(len(subjects)))
+    idx = random.choice(available)
+    used.add(idx)
+    state["used_indices"] = sorted(used)
+    return idx, subjects[idx]
+
+
+def build_message(subject: dict) -> str:
+    lines = [f"\U0001F4AD Today's theme: {subject['subject']}", ""]
+    for q in subject["quotes"]:
+        lines.append(f"“{q['text']}”")
+        lines.append(f"— {q['author']}")
+        lines.append("")
+    lines.append(f"\U0001F4DD {subject['analysis_en']}")
+    lines.append("")
+    lines.append("─" * 12)
+    lines.append("")
+    lines.append(f"\U0001F4AD Тема дня: {subject['subject_uk']}")
+    lines.append("")
+    for q in subject["quotes"]:
+        lines.append(f"«{q['text_uk']}»")
+        lines.append(f"— {q['author']}")
+        lines.append("")
+    lines.append(f"\U0001F4DD {subject['analysis_uk']}")
+    return "\n".join(lines)
 
 
 def main():
@@ -46,44 +84,53 @@ def main():
         print("Missing BOT_TOKEN or ADMIN_CHAT_ID.", file=sys.stderr)
         sys.exit(1)
 
-    today = date.today()
-    quote, idx, from_schedule = todays_quote(today)
-    message = build_quote_message(quote)
+    subjects = load_subjects()
+    state = load_state()
 
-    # log it for the website + no-repeat tracking
-    state = su.load_json(su.QUOTE_STATE_PATH, {"used_indices": [], "history": []})
-    used = set(state.get("used_indices", []))
-    used.add(idx)
-    state["used_indices"] = sorted(used)
+    import schedule_utils as su
+    from datetime import date
+    idx = su.scheduled_index("quotes", date.today())
+    if idx is not None and 0 <= idx < len(subjects):
+        from_schedule = True
+        subject = subjects[idx]
+        used = set(state.get("used_indices", []))
+        used.add(idx)
+        state["used_indices"] = sorted(used)
+        warning = ""
+    else:
+        from_schedule = False
+        idx, subject = pick_subject(subjects, state)
+        warning = "\n\n⚠️ Nothing was scheduled for today, so this was picked automatically."
+
+    message = build_message(subject)
+
+    today = date.today().isoformat()
     entry = {
-        "date": today.isoformat(),
+        "date": today,
+        "subject": subject["subject"],
+        "subject_uk": subject["subject_uk"],
+        "quotes": subject["quotes"],
+        "analysis_en": subject["analysis_en"],
+        "analysis_uk": subject["analysis_uk"],
         "index": idx,
-        "text": quote["text"],
-        "text_uk": quote.get("text_uk"),
-        "author": quote.get("author"),
     }
     history = state.setdefault("history", [])
-    if history and history[-1].get("date") == entry["date"]:
-        history[-1] = entry  # re-run on the same day replaces, never duplicates
+    if history and history[-1].get("date") == today:
+        history[-1] = entry
     else:
         history.append(entry)
-    su.save_json(su.QUOTE_STATE_PATH, state)
-
-    note = "" if from_schedule else (
-        "\n\n⚠️ Nothing was scheduled for today, so this one was picked "
-        "automatically. Run \"Generate schedule\" to refill the queue."
-    )
+    save_state(state)
 
     if CUSTOMER_CHAT_ID:
         send_text(CUSTOMER_CHAT_ID, message)
         print("Sent to customer.")
-        send_text(ADMIN_CHAT_ID, "\U0001F4E4 Sent to your brother just now:\n\n" + message + note)
+        send_text(ADMIN_CHAT_ID, "\U0001F4E4 Sent to your brother just now:\n\n" + message + warning)
         print("Sent report to admin.")
     else:
-        send_text(ADMIN_CHAT_ID, "⚠️ CUSTOMER_CHAT_ID not set - sent to you only:\n\n" + message)
+        send_text(ADMIN_CHAT_ID, "⚠️ CUSTOMER_CHAT_ID not set - sent to you only:\n\n" + message + warning)
         print("Sent to admin only (no customer chat id set).")
 
-    print(f"Quote index {idx}, from_schedule={from_schedule}")
+    print(f"Theme index {idx}, from_schedule={from_schedule}")
 
 
 if __name__ == "__main__":

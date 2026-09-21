@@ -67,6 +67,13 @@ def build_habit_message(h, lang=None):
 def short_label(item, kind):
     """One-line label for the schedule preview."""
     if kind == "quotes":
+        # themed entry (the bot's real daily format): subject + several quotes
+        if isinstance(item, dict) and ("subject" in item or "quotes" in item):
+            prefer_uk = LANG_MODE in ("both", "uk")
+            subj = (item.get("subject_uk") if prefer_uk else item.get("subject")) \
+                or item.get("subject") or item.get("subject_uk") or "(untitled theme)"
+            n = len(item.get("quotes") or [])
+            return f"{subj} ({n} quote{'s' if n != 1 else ''})"
         text = quote_uk(item) if LANG_MODE in ("both", "uk") else item["text"]
         author = item.get("author")
         line = text if len(text) <= 95 else text[:92].rstrip() + "…"
