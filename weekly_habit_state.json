@@ -1,11 +1,18 @@
 {
   "used_indices": [
-    1
+    1,
+    20
   ],
   "history": [
     {
       "date": "2026-09-20",
       "title": "Walk for 10 minutes after eating"
+    },
+    {
+      "date": "2026-09-21",
+      "index": 20,
+      "title": "Learn one new word or fact daily",
+      "title_uk": "Вивчай одне нове слово або факт щодня"
     }
   ]
 }
