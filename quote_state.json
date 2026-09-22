@@ -1,6 +1,7 @@
 {
   "used_indices": [
     1,
+    2,
     4,
     7,
     9,
@@ -606,6 +607,26 @@
       "analysis_en": "People connect with why you do something before they care what you do, and the same discipline that builds outward purpose also quiets the mind inward, rather than trying to force it silent.",
       "analysis_uk": "Люди спершу відгукуються на те, навіщо ти щось робиш, а вже потім — на те, що саме ти робиш. І та сама дисципліна, що будує зовнішню мету, заспокоює розум зсередини — а не намагається змусити його замовкнути.",
       "index": 9
+    },
+    {
+      "date": "2026-09-22",
+      "subject": "Trauma & Healing",
+      "subject_uk": "Травма та зцілення",
+      "quotes": [
+        {
+          "text": "If we make friends with our pain but relieve it of its duties, thank it, but tell it we can handle things now, it becomes our friend rather than our master.",
+          "text_uk": "Якщо ми потоваришуємо з болем, але звільнимо його від обов'язків — подякуємо, скажемо, що тепер впораємося самі — він стає нашим другом, а не господарем.",
+          "author": "Dr Gabor Maté"
+        },
+        {
+          "text": "Trauma is not what happens to you, it's what happens inside you as a result of what happened to you.",
+          "text_uk": "Травма — це не те, що з тобою сталося, а те, що відбулося всередині тебе внаслідок того, що сталося.",
+          "author": "Dr Gabor Maté"
+        }
+      ],
+      "analysis_en": "Healing doesn't mean erasing what happened. It means changing your relationship to it, from something that runs you to something you've made peace with.",
+      "analysis_uk": "Зцілення — це не стирання того, що сталося, а зміна твого ставлення до цього: з того, що керує тобою, на те, з чим ти домовився.",
+      "index": 2
     }
   ]
 }
