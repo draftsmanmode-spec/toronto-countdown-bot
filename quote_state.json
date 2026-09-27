@@ -7,6 +7,7 @@
     5,
     6,
     7,
+    8,
     9,
     10,
     11,
@@ -706,6 +707,26 @@
       "analysis_en": "Your internal state doesn't stay internal. As a leader, parent, or partner, your stress becomes everyone else's stress whether you intend it or not.",
       "analysis_uk": "Твій внутрішній стан не залишається лише твоїм — як лідер, батько чи партнер, твій стрес стає стресом усіх навколо, хочеш ти того чи ні.",
       "index": 6
+    },
+    {
+      "date": "2026-09-27",
+      "subject": "Relationships",
+      "subject_uk": "Стосунки",
+      "quotes": [
+        {
+          "text": "The quality of your life is ultimately the quality of your relationships.",
+          "text_uk": "Якість твого життя — це, зрештою, якість твоїх стосунків.",
+          "author": "Esther Perel"
+        },
+        {
+          "text": "Love rests on two pillars: surrender and autonomy. Our need for togetherness exists right alongside our need for separateness.",
+          "text_uk": "Любов тримається на двох опорах: єднанні та автономії. Потреба бути разом існує поруч із потребою бути окремим.",
+          "author": "Esther Perel"
+        }
+      ],
+      "analysis_en": "Relationships aren't a side project to a good life, for most people they are the measure of it. And lasting love holds two opposite needs at once: closeness and independence.",
+      "analysis_uk": "Стосунки — це не побічний проєкт хорошого життя, а для більшості людей — його мірило. А тривала любов утримує дві протилежні потреби одночасно: близькість і незалежність.",
+      "index": 8
     }
   ]
 }
