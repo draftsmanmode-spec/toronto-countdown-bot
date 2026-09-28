@@ -1,6 +1,7 @@
 {
   "used_indices": [
     1,
+    5,
     20
   ],
   "history": [
@@ -13,6 +14,12 @@
       "index": 20,
       "title": "Learn one new word or fact daily",
       "title_uk": "Вивчай одне нове слово або факт щодня"
+    },
+    {
+      "date": "2026-09-28",
+      "index": 5,
+      "title": "Batch-check messages instead of reacting instantly",
+      "title_uk": "Перевіряй повідомлення блоками, а не миттєво"
     }
   ]
 }
