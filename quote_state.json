@@ -807,6 +807,22 @@
       "analysis_en": "Happiness isn't a mood you chase directly. It's what's left over when your expectations match reality and your actions align with what actually matters to you.",
       "analysis_uk": "Щастя — це не настрій, за яким варто гнатися напряму. Це те, що залишається, коли твої очікування збігаються з реальністю, а дії — з тим, що для тебе справді важливе.",
       "index": 1
+    },
+    {
+      "date": "2026-10-02",
+      "id": "q-365fe72283",
+      "kind": "timeless",
+      "subject": "",
+      "subject_uk": "",
+      "quotes": [
+        {
+          "text": "You're not behind. You're on a timeline nobody else is living.",
+          "text_uk": "Ти не відстаєш. Ти живеш за графіком, якого не живе ніхто інший.",
+          "author": ""
+        }
+      ],
+      "analysis_en": "",
+      "analysis_uk": ""
     }
   ]
 }

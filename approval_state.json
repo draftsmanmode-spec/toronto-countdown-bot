@@ -131,13 +131,15 @@
       "offered": [
         "2026-10-02"
       ],
-      "sent": [],
+      "sent": [
+        "2026-10-02"
+      ],
       "never": false
     }
   },
   "days": {
     "2026-10-02": {
-      "status": "pending",
+      "status": "sent",
       "offers": [
         {
           "id": "q-cd3be5c9ca",
@@ -150,7 +152,9 @@
           "at": "2026-10-02T14:08-04:00"
         }
       ],
-      "reminded": false
+      "reminded": false,
+      "sent_id": "q-365fe72283",
+      "sent_kind": "timeless"
     }
   },
   "enriched": {}
