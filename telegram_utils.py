@@ -85,12 +85,13 @@ def answer_callback(callback_id: str, text: str = "") -> None:
         print(f"(callback already answered or expired: {exc})")
 
 
-def get_updates(offset: int) -> list:
+def get_updates(offset: int, timeout: int = 0) -> list:
+    """timeout > 0 long-polls: Telegram holds the request until something arrives."""
     return api("getUpdates", {
         "offset": offset,
-        "timeout": 0,
+        "timeout": timeout,
         "allowed_updates": ["message", "callback_query"],
-    })
+    }, timeout=timeout + 15)
 
 
 def get_webhook_url() -> str:

@@ -9,8 +9,10 @@ How events get here (see .github/workflows/quote.yml):
   schedule                                     GitHub fallback for the tick
   workflow_dispatch                            run by hand: tick | today
 
-poll_messages.py also feeds updates through Brain.handle_update when the
-webhook isn't connected.
+Without the webhook (GitHub-only mode) updates are pulled instead, by
+drain(): poll_messages.py calls it, and so does every tick here. After a
+tick sends a card or reminder, drain() keeps listening for 15 minutes, so a
+tap right after the card arrives is handled within seconds.
 
 What it does with them:
   your brother messages the bot   -> reported to you
@@ -22,10 +24,15 @@ What it does with them:
 import json
 import os
 import sys
+import time
 import traceback
 
 import approval
 import telegram_utils
+
+OFFSET_PATH = "state.json"
+LISTEN_SECONDS = 15 * 60
+LISTEN_AFTER = {"offered", "reminded", "re-posted"}
 
 HELP_TEXT = (
     "\U0001F916 Bot commands\n\n"
@@ -53,6 +60,7 @@ class Brain:
         self.enrich = enrich
         self.now = now
         self._engine = None
+        self.failures = 0
 
     @property
     def engine(self) -> approval.Engine:
@@ -120,6 +128,12 @@ class Brain:
         print(f"tick: {result}")
         return result
 
+    def decided_today(self) -> bool:
+        if self._engine is None:
+            return False
+        day = self._engine.day()
+        return bool(day) and day.get("status") in ("sent", "skipped")
+
     # ---------- wrap-up ----------
 
     def finish(self) -> bool:
@@ -136,6 +150,60 @@ class Brain:
         except Exception:  # noqa: BLE001 - the send already happened; just report
             traceback.print_exc()
             return False
+
+
+# ---------- pulling updates (GitHub-only mode) ----------
+
+def load_offset() -> int:
+    if os.path.exists(OFFSET_PATH):
+        with open(OFFSET_PATH) as f:
+            return json.load(f).get("last_update_id", 0)
+    return 0
+
+
+def save_offset(update_id: int) -> None:
+    with open(OFFSET_PATH, "w") as f:
+        json.dump({"last_update_id": update_id}, f)
+
+
+def drain(brain: Brain, listen_seconds: int = 0) -> int:
+    """
+    Feed waiting Telegram updates through `brain`. With listen_seconds, keep
+    long-polling until today's card is decided or the time is up.
+    Returns how many updates were handled, or -1 if the webhook is connected
+    (Telegram then refuses getUpdates, and Vercel delivers instead).
+    """
+    if brain.tg.get_webhook_url():
+        return -1
+    deadline = time.monotonic() + listen_seconds
+    offset = start = load_offset()
+    handled = 0
+    while True:
+        remaining = deadline - time.monotonic()
+        updates = brain.tg.get_updates(offset, timeout=int(min(25, max(0, remaining))))
+        for update in updates:
+            offset = max(offset, update["update_id"] + 1)
+            handled += 1
+            try:
+                brain.handle_update(update)
+            except Exception as exc:  # noqa: BLE001 - one bad update must not block the rest
+                brain.failures += 1
+                print(f"update {update.get('update_id')} failed: {exc}", file=sys.stderr)
+        if offset != start:
+            save_offset(offset)
+            start = offset
+        if remaining <= 0 or brain.decided_today():
+            return handled
+        if not updates:
+            time.sleep(1)  # long-polling normally blocks; never spin if it returns early
+
+
+def run_tick(brain: Brain, reopen: bool = False) -> None:
+    pulled = drain(brain)  # taps that arrived since the last run come first
+    result = ("today: " + brain.engine.reopen_today()) if reopen else brain.tick()
+    if pulled >= 0 and result.removeprefix("today: ") in LISTEN_AFTER:
+        print(f"Listening for taps for up to {LISTEN_SECONDS // 60} minutes...")
+        drain(brain, LISTEN_SECONDS)
 
 
 def main():
@@ -159,15 +227,15 @@ def main():
             if action in ("tg_state", "tg_relay"):
                 brain.handle_update((payload.get("client_payload") or {}).get("update") or {})
             elif action == "daily_tick":
-                brain.tick()
+                run_tick(brain)
             else:
                 print(f"Ignoring dispatch action {action!r}")
         elif event == "workflow_dispatch" and task == "today":
-            print("today:", brain.engine.reopen_today())
+            run_tick(brain, reopen=True)
         elif event == "workflow_dispatch" and task == "articles":
             print("Article refresh ran in the previous step; nothing else to do.")
         else:
-            brain.tick()
+            run_tick(brain)
     except Exception as exc:  # noqa: BLE001
         ok = False
         traceback.print_exc()
@@ -177,7 +245,7 @@ def main():
         except Exception:  # noqa: BLE001
             pass
     finally:
-        ok = brain.finish() and ok
+        ok = brain.finish() and ok and not brain.failures
 
     sys.exit(0 if ok else 1)
 

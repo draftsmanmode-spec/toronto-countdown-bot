@@ -33,7 +33,7 @@ Button taps reach GitHub through a tiny Vercel relay (`vercel/`, project `quote-
 3. This repo → Settings → Secrets → Actions: add `GROQ_API_KEY`.
 4. Actions → **Telegram webhook** → Run workflow → `connect`, url `https://quote-relay-stoa29.vercel.app`.
 
-Without step 4, everything still works through GitHub alone, but taps can take hours.
+Without step 4, everything still works through GitHub alone, just slower. The card comes from about 7am, whenever GitHub gets to it. A tap within 15 minutes of the card works right away; later taps are picked up within about an hour.
 To go back to that mode: same workflow, `disconnect`.
 
 ---

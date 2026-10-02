@@ -9,9 +9,12 @@ name: Quote bot
 #                          tg_state   a button tap or /command
 #                          tg_relay   a plain message to relay
 #                          daily_tick Vercel cron, ~8am and ~6pm Toronto
-#   schedule             backup ticks if Vercel is down. GitHub runs these
-#                        hours late, which is harmless: a tick never repeats
-#                        what's already been done today.
+#   schedule             hourly backup ticks. GitHub starts scheduled runs
+#                        hours late, so one an hour means the morning card
+#                        still lands early; a tick never repeats what's
+#                        already been done today, so the extras do nothing.
+#                        Without the webhook, each tick also picks up waiting
+#                        taps, and listens 15 min after sending a card.
 #   workflow_dispatch    run by hand: tick | today | articles
 #
 # Public repo, so Actions minutes are free. Budget notes: CI-BUDGET-01.
@@ -20,8 +23,7 @@ on:
   repository_dispatch:
     types: [tg_state, tg_relay, daily_tick]
   schedule:
-    - cron: "17 12 * * *"   # backup morning tick (8:17am EDT / 7:17am EST)
-    - cron: "17 22 * * *"   # backup evening tick (6:17pm EDT / 5:17pm EST)
+    - cron: "17 * * * *"   # card from 7am Toronto, reminder 5-10pm
   workflow_dispatch:
     inputs:
       task:
@@ -43,7 +45,7 @@ concurrency:
 jobs:
   brain:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25   # room for the 15-minute listen window
     steps:
       - uses: actions/checkout@v4
         with:
@@ -77,7 +79,7 @@ jobs:
       - name: Save state and website
         if: always() && github.event.action != 'tg_relay'
         run: |
-          files="approval_state.json quote_state.json articles.json docs/index.html"
+          files="approval_state.json quote_state.json articles.json docs/index.html state.json"
           if [ -z "$(git status --porcelain -- $files)" ]; then
             echo "No changes to commit."; exit 0
           fi

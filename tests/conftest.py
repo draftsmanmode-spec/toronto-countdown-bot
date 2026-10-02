@@ -38,6 +38,20 @@ class FakeTG:
     def answer_callback(self, callback_id, text=""):
         self.answers.append(text)
 
+    # polling mode: queue batches of updates; each get_updates call pops one
+    webhook = ""
+    def get_webhook_url(self):
+        return self.webhook
+
+    def get_updates(self, offset, timeout=0):
+        self.polls = getattr(self, "polls", []) + [(offset, timeout)]
+        batches = getattr(self, "batches", [])
+        while batches:
+            batch = [u for u in batches.pop(0) if u["update_id"] >= offset]
+            if batch:
+                return batch
+        return []
+
     # helpers for assertions
     def to(self, chat):
         return [m for m in self.sent if m["chat"] == chat]
@@ -57,6 +71,9 @@ def repo(tmp_path, monkeypatch):
     shutil.copy(ROOT / "docs" / "index.html", tmp_path / "docs" / "index.html")
     monkeypatch.chdir(tmp_path)
     monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    import bot_brain
+    monkeypatch.setattr(bot_brain, "LISTEN_SECONDS", 3)
+    monkeypatch.setattr(bot_brain.time, "sleep", lambda s: None)
     return tmp_path
 
 

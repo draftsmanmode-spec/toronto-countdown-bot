@@ -11,7 +11,7 @@ Telegram bot for Denys's brother: a daily quote (approval-gated), a weekly habit
 
 ## Event paths
 - Instant mode: Telegram → Vercel project `quote-relay` (`vercel/api/telegram.py`, team STOA29) → `repository_dispatch` → `.github/workflows/quote.yml`. A Vercel cron (`vercel/api/tick.py`) fires `daily_tick` at 12:00 and 22:00 UTC.
-- Fallback: `poll.yml` runs `poll_messages.py` only when no webhook is set. `quote.yml` also has backup schedule ticks (GitHub runs them hours late, which is harmless because a tick is idempotent).
+- GitHub-only mode (no webhook): `quote.yml` runs hourly backup ticks (`17 * * * *`, idempotent; GitHub starts them hours late). Each tick first drains waiting taps (`bot_brain.drain`, offset in `state.json`) and long-polls for 15 minutes after sending a card or reminder. `poll.yml` drains too, every few hours. All of this is skipped when a webhook is set.
 - `webhook.yml` connects or disconnects the Telegram webhook. Its secret is derived from BOT_TOKEN, and both sides must match.
 - State-changing runs share the concurrency group `bot-state` and check out `ref: main`.
 - Dates are Toronto-local (`approval.TZ`), not UTC.

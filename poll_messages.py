@@ -8,9 +8,10 @@ webhook is set, so this script checks for one first and exits right away
 if it finds it. If the webhook is ever disconnected (webhook.yml →
 "disconnect"), this picks everything up again on its own schedule.
 
-Everything it receives goes through bot_brain.Brain, so behaviour is
-identical either way - just slower (GitHub runs this every few hours, not
-every 5 minutes as the cron line suggests).
+Everything it receives goes through bot_brain.drain/Brain, so behaviour
+is identical either way - just slower (GitHub runs this every few hours,
+not every 5 minutes as the cron line suggests; the hourly quote ticks also
+drain updates).
 
 What a delivery report can and cannot tell you: Telegram confirms that a
 message was accepted for delivery to his chat. It does NOT expose read
@@ -22,26 +23,11 @@ Required repo secrets:
   CUSTOMER_CHAT_ID
 """
 
-import json
 import os
 import sys
 
 import telegram_utils
-from bot_brain import Brain
-
-STATE_PATH = "state.json"
-
-
-def load_offset() -> int:
-    if os.path.exists(STATE_PATH):
-        with open(STATE_PATH) as f:
-            return json.load(f).get("last_update_id", 0)
-    return 0
-
-
-def save_offset(update_id: int) -> None:
-    with open(STATE_PATH, "w") as f:
-        json.dump({"last_update_id": update_id}, f)
+from bot_brain import Brain, drain
 
 
 def webhook_connected() -> bool:
@@ -66,29 +52,14 @@ def main():
         print(f"mode={mode}")
         return
 
-    if webhook_connected():
-        return
-
-    offset = load_offset()
-    updates = telegram_utils.get_updates(offset)
-    if not updates:
-        print("No new updates.")
-        return
-
     brain = Brain()
-    highest = offset - 1
-    failed = False
-    for update in updates:
-        highest = max(highest, update["update_id"])
-        try:
-            brain.handle_update(update)
-        except Exception as exc:  # noqa: BLE001 - one bad update must not block the rest
-            failed = True
-            print(f"update {update.get('update_id')} failed: {exc}", file=sys.stderr)
-
-    save_offset(highest + 1)
+    handled = drain(brain)
+    if handled < 0:
+        print("Webhook is connected - nothing to poll.")
+        return
+    print(f"Handled {handled} update(s).")
     ok = brain.finish()
-    sys.exit(0 if ok and not failed else 1)
+    sys.exit(0 if ok and not brain.failures else 1)
 
 
 if __name__ == "__main__":

@@ -9,7 +9,8 @@
 - Article lines come from RSS plus Groq, with a check that each quote appears word for word in its article (`articles.py`, `article_sources.json`). Bare timeless quotes get a subject and takeaway the first time they're offered.
 - Instant mode: Vercel project `quote-relay` (STOA29) → repository_dispatch → `quote.yml`. Fallback: `poll.yml` (only while no webhook is set) and backup ticks in `quote.yml`.
 - Removed `send_quote.py` (an auto-sender that bypassed approval). Quote queuing was dropped from `schedule.json`; habits are unchanged.
-- 48 tests (`python -m pytest -q`). actionlint clean. Timeouts and rebase-before-push added to all workflows (CI-BUDGET-01).
+- GitHub-only mode hardened: hourly backup ticks (card from 7am), taps drained on every tick, and a 15-minute listen window after each card or reminder.
+- 52 tests (`python -m pytest -q`). actionlint clean. Timeouts and rebase-before-push added to all workflows (CI-BUDGET-01).
 
 **Waiting on Denys (one-time setup)**
 1. GitHub fine-grained token: this repo only, Contents read/write.
@@ -19,5 +20,5 @@
 
 **Next**
 - After setup: confirm one tap round-trip and check feed health in `/stats`. Drop dead feeds from `article_sources.json`.
-- Once instant mode is proven: remove the `*/5` schedule from `poll.yml` (keep workflow_dispatch).
+- Once instant mode is proven: remove the `*/5` schedule from `poll.yml` (keep workflow_dispatch). Hourly ticks can stay; they cost nothing on a public repo.
 - Note the GH_TOKEN expiry date here when it's created.
