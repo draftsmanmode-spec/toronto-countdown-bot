@@ -13,13 +13,13 @@
 - Relay needs only GH_TOKEN now: the webhook secret is checked on GitHub, and there's a /ping self-test (`webhook.yml` → test).
 - 57 tests (`python -m pytest -q`). actionlint clean. Timeouts and rebase-before-push added to all workflows (CI-BUDGET-01).
 
-**Waiting on Denys (one-time setup)**
-1. GitHub fine-grained token: this repo only, Contents read/write.
-2. Vercel → quote-relay → Environment Variables: `BOT_TOKEN`, `GH_TOKEN`, `ADMIN_CHAT_ID`. Then redeploy.
-3. GitHub secret `GROQ_API_KEY` (same key knowledge-bot uses).
-4. Then run Actions → "Telegram webhook" → connect, with `https://quote-relay-stoa29.vercel.app`.
+- Instant mode LIVE (Oct 2): webhook → quote-relay → GitHub. The self-test /ping round trip took about 11s. GH_TOKEN is set in Vercel.
+- Removed the `poll.yml` schedule (CI-BUDGET-02); it's dispatch-only now.
+
+**Waiting on Denys**
+- GitHub secret `GROQ_API_KEY` (same key knowledge-bot uses). Until it's set, cards are timeless quotes only.
+- Optional: `BOT_TOKEN` in Vercel for an instant "Sending…" toast on taps.
 
 **Next**
-- After setup: confirm one tap round-trip and check feed health in `/stats`. Drop dead feeds from `article_sources.json`.
-- Once instant mode is proven: remove the `*/5` schedule from `poll.yml` (keep workflow_dispatch). Hourly ticks can stay; they cost nothing on a public repo.
+- After GROQ_API_KEY: run Quote bot → `articles`, check feed health in `/stats`, and drop dead feeds from `article_sources.json`.
 - Note the GH_TOKEN expiry date here when it's created.

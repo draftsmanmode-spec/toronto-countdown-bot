@@ -6,12 +6,12 @@ name: Poll for brother's messages
 # messages and button taps here instead (slower: GitHub runs this cron every
 # few hours, not every 5 minutes).
 #
-# Public repo, so these runs are free. Once instant mode has proven itself,
-# the schedule can go (keep workflow_dispatch). Budget notes: CI-BUDGET-01.
+# Instant mode is live (Oct 2), and Telegram refuses polling while a webhook
+# is set, so the old */5 schedule was pure noise and is gone (CI-BUDGET-02).
+# If the webhook is ever disconnected, quote.yml's hourly ticks drain taps;
+# run this by hand for an immediate catch-up.
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"
   workflow_dispatch: {}
 
 permissions:
