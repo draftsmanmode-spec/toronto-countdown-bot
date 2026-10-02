@@ -99,6 +99,22 @@ def test_github_failure_alerts_admin(monkeypatch, serve):
     assert "sendMessage" in alert[0] and "401" in alert[1]["text"]
 
 
+def test_relay_works_with_only_gh_token(monkeypatch, serve):
+    mod, calls = load("telegram", monkeypatch, GH_TOKEN="gh")
+    base = serve(mod)
+    status, body = request(base, TAP, {"X-Telegram-Bot-Api-Secret-Token": "abc123"})
+    assert status == 200 and body["ok"] is True
+    # no Telegram calls without BOT_TOKEN; the secret travels to GitHub for checking
+    assert len(calls) == 1 and calls[0][0].endswith("/dispatches")
+    assert calls[0][1]["client_payload"]["secret"] == "abc123"
+
+
+def test_relay_rejects_calls_without_a_secret(monkeypatch, serve):
+    mod, calls = load("telegram", monkeypatch, GH_TOKEN="gh")
+    status, _ = request(serve(mod), TAP)
+    assert status == 401 and calls == []
+
+
 def test_webhook_secret_matches_github_side(monkeypatch):
     mod, _ = load("telegram", monkeypatch, BOT_TOKEN="123:abc")
     import webhook_admin
@@ -109,6 +125,7 @@ def test_health_check_reveals_no_secrets(monkeypatch, serve):
     mod, _ = load("telegram", monkeypatch, BOT_TOKEN="123:abc")
     status, body = request(serve(mod))
     assert status == 200 and body["bot_token_set"] is True and body["gh_token_set"] is False
+    assert body["ok"] is False  # GH_TOKEN is the one thing the relay can't work without
     assert "123:abc" not in json.dumps(body)
 
 

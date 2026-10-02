@@ -10,7 +10,8 @@
 - Instant mode: Vercel project `quote-relay` (STOA29) → repository_dispatch → `quote.yml`. Fallback: `poll.yml` (only while no webhook is set) and backup ticks in `quote.yml`.
 - Removed `send_quote.py` (an auto-sender that bypassed approval). Quote queuing was dropped from `schedule.json`; habits are unchanged.
 - GitHub-only mode hardened: hourly backup ticks (card from 7am), taps drained on every tick, and a 15-minute listen window after each card or reminder.
-- 53 tests (`python -m pytest -q`). actionlint clean. Timeouts and rebase-before-push added to all workflows (CI-BUDGET-01).
+- Relay needs only GH_TOKEN now: the webhook secret is checked on GitHub, and there's a /ping self-test (`webhook.yml` → test).
+- 57 tests (`python -m pytest -q`). actionlint clean. Timeouts and rebase-before-push added to all workflows (CI-BUDGET-01).
 
 **Waiting on Denys (one-time setup)**
 1. GitHub fine-grained token: this repo only, Contents read/write.

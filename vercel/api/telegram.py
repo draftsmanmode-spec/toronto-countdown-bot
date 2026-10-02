@@ -1,20 +1,21 @@
 """
 Telegram webhook -> GitHub, in under a second.
 
-Telegram POSTs every message and button tap here. This function:
-  1. checks the secret header (derived from BOT_TOKEN, same as webhook_admin.py)
-  2. answers a button tap immediately, so the spinner stops and you see
-     "Sending…" right away
-  3. forwards the update to GitHub as a repository_dispatch event; the
-     "Quote bot" workflow does the real work there, where the state lives
+Telegram POSTs every message and button tap here. This function forwards
+the update, plus the secret header Telegram sent with it, to GitHub as a
+repository_dispatch event. The "Quote bot" workflow checks that secret
+against BOT_TOKEN (see bot_brain.dispatched_update) and does the real work
+there, where the state lives.
 
-If GitHub can't be reached (most likely an expired GH_TOKEN), you get a
-Telegram message saying so instead of silence.
+Only GH_TOKEN is required. With the optional extras it also:
+  BOT_TOKEN       checks the secret here too, answers a button tap at once
+                  ("Sending…") instead of after the GitHub run, and
+  ADMIN_CHAT_ID   alerts you on Telegram if GitHub can't be reached
 
 Vercel environment variables:
-  BOT_TOKEN       same value as the GitHub secret
   GH_TOKEN        fine-grained GitHub token: this repo only, Contents read/write
-  ADMIN_CHAT_ID   same value as the GitHub secret (used for failure alerts)
+  BOT_TOKEN       optional, same value as the GitHub secret
+  ADMIN_CHAT_ID   optional, same value as the GitHub secret
   GH_REPO         optional, defaults to draftsmanmode-spec/toronto-countdown-bot
 
 GET returns a small health check (no secrets).
@@ -100,7 +101,7 @@ class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         self._reply(200, {
-            "ok": bool(BOT_TOKEN and GH_TOKEN),
+            "ok": bool(GH_TOKEN),
             "bot_token_set": bool(BOT_TOKEN),
             "gh_token_set": bool(GH_TOKEN),
             "admin_chat_set": bool(ADMIN_CHAT_ID),
@@ -108,9 +109,10 @@ class handler(BaseHTTPRequestHandler):
         })
 
     def do_POST(self):
-        if not BOT_TOKEN:
-            return self._reply(503, {"ok": False, "error": "BOT_TOKEN not configured"})
-        if self.headers.get("X-Telegram-Bot-Api-Secret-Token", "") != webhook_secret():
+        secret = self.headers.get("X-Telegram-Bot-Api-Secret-Token", "")
+        # Telegram always sends the header; without one it isn't Telegram.
+        # With BOT_TOKEN set the full check happens here, otherwise on GitHub.
+        if not secret or (BOT_TOKEN and secret != webhook_secret()):
             return self._reply(401, {"ok": False})
 
         try:
@@ -120,7 +122,7 @@ class handler(BaseHTTPRequestHandler):
             return self._reply(200, {"ok": True, "ignored": "bad json"})
 
         cq = update.get("callback_query")
-        if cq:
+        if cq and BOT_TOKEN:
             action = (cq.get("data") or "").split("|")[0]
             telegram("answerCallbackQuery", {
                 "callback_query_id": cq.get("id"),
@@ -131,7 +133,7 @@ class handler(BaseHTTPRequestHandler):
         # button taps and commands touch shared state, so GitHub runs them one
         # at a time; plain relays don't, so they run in parallel
         event = "tg_state" if (cq or text.startswith("/")) else "tg_relay"
-        ok, detail = dispatch(event, {"update": update})
+        ok, detail = dispatch(event, {"update": update, "secret": secret})
         if not ok:
             alert(
                 f"⚠️ The bot couldn't reach GitHub ({detail}), so that "

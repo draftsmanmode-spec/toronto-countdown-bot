@@ -21,6 +21,7 @@ What it does with them:
   /today /stats /schedule /help   -> commands
 """
 
+import hmac
 import json
 import os
 import sys
@@ -41,6 +42,7 @@ HELP_TEXT = (
     "/today — show today's pick (or reopen today if you skipped it)\n"
     "/stats — how many quotes are ready, banned, sent\n"
     "/schedule — upcoming weekly habits\n"
+    "/ping — check the bot is alive\n"
     "/help — this list\n\n"
     "Each morning you get one pick with buttons: ✅ Send today · ⏭ Not today · "
     "🚫 Never send · 🔄 Another. Nothing reaches your brother until you tap ✅.\n\n"
@@ -64,6 +66,7 @@ class Brain:
         self._engine = None
         self.failures = 0
         self.new_card = False
+        self.via_webhook = False
 
     @property
     def engine(self) -> approval.Engine:
@@ -121,6 +124,10 @@ class Brain:
             from send_schedule_preview import build_preview
             self.tg.send_text(self.admin, build_preview())
             return "sent schedule"
+        if cmd == "ping":
+            mode = "instant mode (Telegram → Vercel → GitHub)" if self.via_webhook else "GitHub polling mode"
+            self.tg.send_text(self.admin, f"\U0001F3D3 Pong. The bot is alive, running in {mode}.")
+            return "pong"
         if cmd in ("help", "start"):
             self.tg.send_text(self.admin, HELP_TEXT)
             return "sent help"
@@ -154,6 +161,20 @@ class Brain:
         except Exception:  # noqa: BLE001 - the send already happened; just report
             traceback.print_exc()
             return False
+
+
+def dispatched_update(client_payload: dict) -> dict | None:
+    """
+    The Telegram update the Vercel relay forwarded, or None if the secret
+    Telegram sent with it doesn't match BOT_TOKEN. The relay may not hold
+    BOT_TOKEN, so this is where forged webhook calls get stopped.
+    """
+    from webhook_admin import webhook_secret
+    expected = webhook_secret(os.environ.get("BOT_TOKEN", ""))
+    got = str((client_payload or {}).get("secret") or "")
+    if not got or not hmac.compare_digest(got, expected):
+        return None
+    return (client_payload or {}).get("update") or {}
 
 
 # ---------- pulling updates (GitHub-only mode) ----------
@@ -232,7 +253,12 @@ def main():
         if event == "repository_dispatch":
             action = payload.get("action")
             if action in ("tg_state", "tg_relay"):
-                brain.handle_update((payload.get("client_payload") or {}).get("update") or {})
+                update = dispatched_update(payload.get("client_payload") or {})
+                if update is None:
+                    print("Ignoring a forwarded update: its webhook secret didn't match.")
+                else:
+                    brain.via_webhook = True
+                    brain.handle_update(update)
             elif action == "daily_tick":
                 run_tick(brain)
             else:

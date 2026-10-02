@@ -22,7 +22,7 @@ Telegram bot for Denys's brother: a daily quote (approval-gated), a weekly habit
 - No CI on push (budget). Run the checks locally before pushing.
 
 ## Deploying the Vercel relay
-It isn't git-connected. Redeploy changes in `vercel/` via the Vercel connector (`create_deployment` with the files inline, project `quote-relay`, target production). Env vars: BOT_TOKEN, GH_TOKEN (fine-grained, this repo, Contents RW), ADMIN_CHAT_ID, CRON_SECRET.
+It isn't git-connected. Redeploy changes in `vercel/` via the Vercel connector (`create_deployment` with the files inline, project `quote-relay`, target production). Env vars: GH_TOKEN (required; fine-grained, this repo, Contents RW), CRON_SECRET, GH_REPO. BOT_TOKEN and ADMIN_CHAT_ID are optional (instant tap toast and failure alerts). The webhook secret is checked on GitHub in `bot_brain.dispatched_update`. `webhook.yml` mode `test` sends a fake /ping through the whole chain.
 
 ## Don't
 - Don't hand-edit `approval_state.json`, `state.json` or `quote_state.json` while workflows run. Use the bot commands.

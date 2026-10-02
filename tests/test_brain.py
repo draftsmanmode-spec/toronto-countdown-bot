@@ -80,3 +80,21 @@ def test_relay_does_not_touch_state(repo, tg):
     b.handle_update(msg(ADMIN, "hello"))
     assert b.finish()
     assert not (repo / "approval_state.json").exists()
+
+
+def test_forwarded_updates_need_the_right_secret(repo, tg, monkeypatch):
+    import bot_brain
+    from webhook_admin import webhook_secret
+    monkeypatch.setenv("BOT_TOKEN", "123:abc")
+    update = {"update_id": 4, "message": {"chat": {"id": int(ADMIN)}, "text": "hi"}}
+    assert bot_brain.dispatched_update({"update": update, "secret": "forged"}) is None
+    assert bot_brain.dispatched_update({"update": update}) is None
+    good = {"update": update, "secret": webhook_secret("123:abc")}
+    assert bot_brain.dispatched_update(good) == update
+
+
+def test_ping_reports_the_mode(repo, tg):
+    b = brain(tg)
+    b.via_webhook = True
+    assert b.handle_update(msg(ADMIN, "/ping")) == "pong"
+    assert "instant mode" in tg.sent[-1]["text"]

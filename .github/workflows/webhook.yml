@@ -8,11 +8,11 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "connect | disconnect | status"
+        description: "connect | test | disconnect | status"
         required: true
         default: status
         type: choice
-        options: [connect, disconnect, status]
+        options: [connect, test, disconnect, status]
       url:
         description: "Vercel address for connect, e.g. https://quote-relay.vercel.app"
         required: false
