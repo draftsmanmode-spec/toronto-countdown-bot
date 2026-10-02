@@ -8,12 +8,11 @@ on:
         required: true
         type: string
       kind:
-        description: "What to swap"
+        description: "What to swap (daily quotes use the 🔄 Another button on the morning card)"
         required: true
-        default: quotes
+        default: habits
         type: choice
         options:
-          - quotes
           - habits
 
 permissions:
@@ -22,6 +21,7 @@ permissions:
 jobs:
   reroll:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -44,7 +44,7 @@ jobs:
             git config user.email "actions@github.com"
             git add schedule.json
             git commit -m "Reroll ${{ github.event.inputs.kind }} for ${{ github.event.inputs.date }} [skip ci]"
-            git push
+            git pull --rebase origin main && git push
           else
             echo "No changes to commit."
           fi

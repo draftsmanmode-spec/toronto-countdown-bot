@@ -1,12 +1,11 @@
 """
 Shared logic for the reviewable send schedule.
 
-Instead of picking a quote/habit randomly at send time (which makes it
-impossible to preview or approve anything in advance), the bot now keeps a
-dated queue in schedule.json:
+Daily quotes moved to the approval card (approval.py) and are no longer
+queued here. Weekly habits still use this dated queue in schedule.json:
 
     {
-      "quotes": {"2026-09-21": 42, "2026-09-22": 7, ...},
+      "quotes": {},
       "habits": {"2026-09-22": 3, "2026-09-29": 11, ...}
     }
 
@@ -28,7 +27,6 @@ HABITS_PATH = "habits.json"
 QUOTE_STATE_PATH = "quote_state.json"
 HABIT_STATE_PATH = "weekly_habit_state.json"
 
-QUOTE_HORIZON_DAYS = 30   # how far ahead quotes are queued
 HABIT_HORIZON_WEEKS = 8   # how many Mondays ahead habits are queued
 
 
@@ -97,24 +95,19 @@ def upcoming_mondays(start, weeks):
 
 def ensure_schedule(today=None):
     """
-    Fill the queue forward so quotes cover QUOTE_HORIZON_DAYS and habits
-    cover HABIT_HORIZON_WEEKS of Mondays. Existing entries are never
+    Fill the habit queue forward to cover HABIT_HORIZON_WEEKS of Mondays. Existing entries are never
     overwritten. Returns (schedule, number_of_new_entries_added).
     """
     today = today or date.today()
     sched = load_schedule()
     added = 0
 
-    # never queue further ahead than the library is big, or the queue fills
-    # with repeats (13 themes over 30 days would repeat within two weeks)
-    quote_days = min(QUOTE_HORIZON_DAYS, max(1, len(load_library("quotes"))))
-    habit_weeks = min(HABIT_HORIZON_WEEKS, max(1, len(load_library("habits"))))
+    # Quotes are no longer queued: they go through the daily approval card
+    # (approval.py), which picks fresh each morning. Drop any old queue so
+    # nothing mistakes it for what's going out.
+    sched["quotes"] = {}
 
-    for offset in range(quote_days):
-        day = (today + timedelta(days=offset)).isoformat()
-        if day not in sched["quotes"]:
-            sched["quotes"][day] = pick_index("quotes", sched)
-            added += 1
+    habit_weeks = min(HABIT_HORIZON_WEEKS, max(1, len(load_library("habits"))))
 
     for monday in upcoming_mondays(today, habit_weeks):
         day = monday.isoformat()

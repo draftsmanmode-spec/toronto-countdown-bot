@@ -1,0 +1,36 @@
+name: Telegram webhook
+
+# Switches the bot between instant mode (Vercel relay, taps act in seconds)
+# and polling mode (GitHub only, taps act within hours). Reports the result
+# to you on Telegram. Safe to run any time; "status" changes nothing.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "connect | disconnect | status"
+        required: true
+        default: status
+        type: choice
+        options: [connect, disconnect, status]
+      url:
+        description: "Vercel address for connect, e.g. https://quote-relay.vercel.app"
+        required: false
+        type: string
+
+jobs:
+  webhook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - run: python webhook_admin.py
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
+          WEBHOOK_MODE: ${{ inputs.mode }}
+          WEBHOOK_URL: ${{ inputs.url }}

@@ -1,43 +1,35 @@
 """
-Two-way relay + delivery reporting, checked every 5 minutes.
+Fallback path for Telegram updates: only does anything while the Vercel
+webhook is NOT connected.
 
-1. Anything your brother (CUSTOMER_CHAT_ID) sends the bot is reported to
-   you (ADMIN_CHAT_ID).
-2. Anything YOU send the bot is relayed straight to him, and you get a
-   delivery report back - a green check if Telegram accepted it, a red X
-   with the reason if it did not. A failed send is never silent.
-3. Commands you can text the bot instead of opening GitHub:
-       /schedule  (or /preview)  - what's queued to go out next
-       /help                     - list the commands
+Normally the webhook delivers every message and button tap to GitHub
+within seconds (see bot_brain.py). Telegram refuses getUpdates while a
+webhook is set, so this script checks for one first and exits right away
+if it finds it. If the webhook is ever disconnected (webhook.yml →
+"disconnect"), this picks everything up again on its own schedule.
 
-What a delivery report can and cannot tell you: Telegram's Bot API
-confirms that a message was accepted for delivery to his chat. It does NOT
-expose read receipts to bots, so nothing here can tell you whether he
-actually opened it. That's a platform limit, not a gap in this code.
+Everything it receives goes through bot_brain.Brain, so behaviour is
+identical either way - just slower (GitHub runs this every few hours, not
+every 5 minutes as the cron line suggests).
+
+What a delivery report can and cannot tell you: Telegram confirms that a
+message was accepted for delivery to his chat. It does NOT expose read
+receipts to bots, so nothing here can tell you whether he opened it.
 
 Required repo secrets:
   BOT_TOKEN
   ADMIN_CHAT_ID
-  CUSTOMER_CHAT_ID   (script exits quietly if this isn't set yet)
+  CUSTOMER_CHAT_ID
 """
 
 import json
 import os
 import sys
 
-from telegram_utils import get_updates, send_text, describe_message
+import telegram_utils
+from bot_brain import Brain
 
-ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID")
-CUSTOMER_CHAT_ID = os.environ.get("CUSTOMER_CHAT_ID", "").strip()
 STATE_PATH = "state.json"
-
-HELP_TEXT = (
-    "\U0001F916 Bot commands\n\n"
-    "/schedule — what's queued to send next\n"
-    "/help — this list\n\n"
-    "Anything else you type here is relayed straight to your brother, "
-    "and you get a delivery report back."
-)
 
 
 def load_offset() -> int:
@@ -52,102 +44,51 @@ def save_offset(update_id: int) -> None:
         json.dump({"last_update_id": update_id}, f)
 
 
-def handle_customer_message(message: dict) -> None:
-    """Brother messaged the bot -> report it to you."""
-    summary = describe_message(message)
-    send_text(ADMIN_CHAT_ID, f"\U0001F4AC Your brother messaged the bot:\n\n{summary}")
-    print("Reported to admin:", summary)
-
-
-def handle_command(text: str) -> bool:
-    """Handle an admin command. Returns True if it was one."""
-    cmd = text.split()[0].lower().lstrip("/")
-
-    if cmd in ("schedule", "preview"):
-        try:
-            from send_schedule_preview import build_preview
-            send_text(ADMIN_CHAT_ID, build_preview())
-            print("Sent schedule preview on request.")
-        except Exception as exc:  # noqa: BLE001
-            send_text(ADMIN_CHAT_ID, f"❌ Couldn't build the schedule preview: {exc}")
-            print("Preview failed:", exc, file=sys.stderr)
-        return True
-
-    if cmd in ("help", "start"):
-        send_text(ADMIN_CHAT_ID, HELP_TEXT)
-        print("Sent help.")
-        return True
-
-    send_text(ADMIN_CHAT_ID, f"❓ Unknown command “/{cmd}”. Send /help for the list.")
-    print("Unknown command:", cmd)
-    return True
-
-
-def handle_admin_message(message: dict) -> None:
-    """You messaged the bot -> run a command, or relay the text to him."""
-    text = message.get("text", "")
-
-    if text.startswith("/"):
-        handle_command(text)
-        return
-
-    if not text:
-        send_text(
-            ADMIN_CHAT_ID,
-            "ℹ️ Only text messages get relayed — that one wasn't sent on.",
-        )
-        print("Ignored non-text admin message.")
-        return
-
-    try:
-        send_text(CUSTOMER_CHAT_ID, text)
-    except Exception as exc:  # noqa: BLE001 - a failed relay must never be silent
-        send_text(
-            ADMIN_CHAT_ID,
-            f"❌ NOT delivered to your brother:\n\n“{text}”\n\nReason: {exc}",
-        )
-        print("Relay FAILED:", exc, file=sys.stderr)
-        return
-
-    send_text(
-        ADMIN_CHAT_ID,
-        f"✅ Delivered to your brother:\n\n“{text}”",
-    )
-    print("Relayed to customer:", text)
+def webhook_connected() -> bool:
+    url = telegram_utils.get_webhook_url()
+    if url:
+        print(f"Webhook is connected ({url.split('?')[0]}) - nothing to poll.")
+    return bool(url)
 
 
 def main():
-    if not os.environ.get("BOT_TOKEN") or not ADMIN_CHAT_ID:
+    if not os.environ.get("BOT_TOKEN") or not os.environ.get("ADMIN_CHAT_ID"):
         print("Missing BOT_TOKEN or ADMIN_CHAT_ID.", file=sys.stderr)
         sys.exit(1)
 
-    if not CUSTOMER_CHAT_ID:
-        print("CUSTOMER_CHAT_ID not set yet - nothing to relay. Skipping.")
+    if "--check" in sys.argv:
+        # used by the workflow to decide whether the processing job runs at all
+        mode = "webhook" if webhook_connected() else "poll"
+        out = os.environ.get("GITHUB_OUTPUT")
+        if out:
+            with open(out, "a") as f:
+                f.write(f"mode={mode}\n")
+        print(f"mode={mode}")
+        return
+
+    if webhook_connected():
         return
 
     offset = load_offset()
-    updates = get_updates(offset)
-
+    updates = telegram_utils.get_updates(offset)
     if not updates:
         print("No new updates.")
         return
 
-    highest_id = offset - 1
+    brain = Brain()
+    highest = offset - 1
+    failed = False
     for update in updates:
-        highest_id = max(highest_id, update["update_id"])
-        message = update.get("message")
-        if not message:
-            continue
+        highest = max(highest, update["update_id"])
+        try:
+            brain.handle_update(update)
+        except Exception as exc:  # noqa: BLE001 - one bad update must not block the rest
+            failed = True
+            print(f"update {update.get('update_id')} failed: {exc}", file=sys.stderr)
 
-        chat_id = str(message["chat"]["id"])
-        if chat_id == str(CUSTOMER_CHAT_ID):
-            handle_customer_message(message)
-        elif chat_id == str(ADMIN_CHAT_ID):
-            handle_admin_message(message)
-        else:
-            print("Ignored message from unrecognized chat:", chat_id)
-
-    save_offset(highest_id + 1)
+    save_offset(highest + 1)
+    ok = brain.finish()
+    sys.exit(0 if ok and not failed else 1)
 
 
 if __name__ == "__main__":

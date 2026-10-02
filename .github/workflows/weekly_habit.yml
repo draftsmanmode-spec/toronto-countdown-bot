@@ -12,6 +12,7 @@ permissions:
 jobs:
   habit:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -36,7 +37,7 @@ jobs:
             git config user.email "actions@github.com"
             git add weekly_habit_state.json schedule.json
             git commit -m "Weekly habit log update [skip ci]"
-            git push
+            git pull --rebase origin main && git push
           else
             echo "No changes to commit."
           fi

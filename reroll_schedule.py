@@ -4,7 +4,7 @@ Swaps the item scheduled for one specific date - this is how you say
 
 Triggered from the Actions tab ("Reroll scheduled item") with two inputs:
   date  - YYYY-MM-DD, must be today or later
-  kind  - quotes | habits
+  kind  - habits (daily quotes use the approval card's 🔄 Another button instead)
 
 Reads them from env (REROLL_DATE / REROLL_KIND), picks a replacement that
 hasn't been sent or queued, saves it, and confirms to you on Telegram with
@@ -23,7 +23,7 @@ import schedule_utils as su
 
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID")
 REROLL_DATE = (os.environ.get("REROLL_DATE") or "").strip()
-REROLL_KIND = (os.environ.get("REROLL_KIND") or "quotes").strip().lower()
+REROLL_KIND = (os.environ.get("REROLL_KIND") or "habits").strip().lower()
 
 
 def fail(msg):
@@ -41,8 +41,11 @@ def main():
         print("Missing BOT_TOKEN or ADMIN_CHAT_ID.", file=sys.stderr)
         sys.exit(1)
 
-    if REROLL_KIND not in ("quotes", "habits"):
-        fail(f"kind must be 'quotes' or 'habits', got '{REROLL_KIND}'")
+    if REROLL_KIND == "quotes":
+        fail("quotes aren't queued any more. Each morning's pick comes with a "
+             "🔄 Another button, and /today reopens a skipped day.")
+    if REROLL_KIND != "habits":
+        fail(f"kind must be 'habits', got '{REROLL_KIND}'")
 
     try:
         target = date.fromisoformat(REROLL_DATE)

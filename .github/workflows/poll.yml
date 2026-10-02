@@ -1,18 +1,53 @@
 name: Poll for brother's messages
 
+# Fallback only. While the Vercel webhook is connected, Telegram delivers
+# everything instantly through quote.yml and the `check` job below ends in a
+# few seconds. If the webhook is ever disconnected, `process` picks up
+# messages and button taps here instead (slower: GitHub runs this cron every
+# few hours, not every 5 minutes).
+#
+# Public repo, so these runs are free. Once instant mode has proven itself,
+# the schedule can go (keep workflow_dispatch). Budget notes: CI-BUDGET-01.
+
 on:
   schedule:
-    - cron: "*/5 * * * *"   # every 5 minutes
+    - cron: "*/5 * * * *"
   workflow_dispatch: {}
 
 permissions:
-  contents: write   # needed so this workflow can commit state.json back
+  contents: write
 
 jobs:
-  poll:
+  check:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      mode: ${{ steps.mode.outputs.mode }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - id: mode
+        run: python poll_messages.py --check
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
+
+  process:
+    needs: check
+    if: needs.check.outputs.mode == 'poll'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # same lock as quote.yml so taps and ticks never edit state at once
+    concurrency:
+      group: bot-state
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -22,14 +57,20 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
           CUSTOMER_CHAT_ID: ${{ secrets.CUSTOMER_CHAT_ID }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       - name: Save progress
+        if: always()
         run: |
-          if ! git diff --quiet state.json; then
-            git config user.name "countdown-bot"
-            git config user.email "actions@github.com"
-            git add state.json
-            git commit -m "update poll offset [skip ci]"
-            git push
-          else
-            echo "No change to state.json, nothing to commit."
+          files="state.json approval_state.json quote_state.json docs/index.html"
+          if [ -z "$(git status --porcelain -- $files)" ]; then
+            echo "No changes to commit."; exit 0
           fi
+          git config user.name "countdown-bot"
+          git config user.email "actions@github.com"
+          for f in $files; do [ -e "$f" ] && git add -- "$f"; done
+          git commit -m "update poll offset [skip ci]"
+          for attempt in 1 2 3; do
+            git push && exit 0
+            git pull --rebase origin main || exit 1
+          done
+          exit 1

@@ -1,48 +1,92 @@
-name: Send daily quote
+name: Quote bot
+
+# The daily quote is approval-only now: every morning you get one candidate
+# on Telegram and nothing reaches your brother until you tap ✅ Send today.
+# This workflow is the bot's "brain" - every tap, message and daily tick runs
+# bot_brain.py here, because this repo is where the state lives.
+#
+#   repository_dispatch  sent by the Vercel relay (vercel/) within seconds:
+#                          tg_state   a button tap or /command
+#                          tg_relay   a plain message to relay
+#                          daily_tick Vercel cron, ~8am and ~6pm Toronto
+#   schedule             backup ticks if Vercel is down. GitHub runs these
+#                        hours late, which is harmless: a tick never repeats
+#                        what's already been done today.
+#   workflow_dispatch    run by hand: tick | today | articles
+#
+# Public repo, so Actions minutes are free. Budget notes: CI-BUDGET-01.
 
 on:
+  repository_dispatch:
+    types: [tg_state, tg_relay, daily_tick]
   schedule:
-    # 12:00 UTC = 8:00am Toronto (EDT) / 2:00pm Cologne (CEST)
-    - cron: "0 12 * * *"
-  workflow_dispatch: {}
+    - cron: "17 12 * * *"   # backup morning tick (8:17am EDT / 7:17am EST)
+    - cron: "17 22 * * *"   # backup evening tick (6:17pm EDT / 5:17pm EST)
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "tick = run the morning/evening check · today = show or reopen today's pick · articles = check feeds now"
+        required: true
+        default: tick
+        type: choice
+        options: [tick, today, articles]
 
 permissions:
   contents: write
 
+# Anything that changes state runs one at a time on the latest commit.
+# Plain relays touch no state, so each gets its own group and runs at once.
+concurrency:
+  group: ${{ github.event.action == 'tg_relay' && format('relay-{0}', github.run_id) || 'bot-state' }}
+  cancel-in-progress: false
+
 jobs:
-  quote:
+  brain:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main   # not the triggering SHA: a queued run must see the previous run's state
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install requests
 
-      # make sure today (and the next 30 days) are queued before sending
-      - run: python generate_schedule.py
+      - name: Refresh article candidates
+        if: >-
+          github.event.action == 'daily_tick' || github.event_name == 'schedule' ||
+          (github.event_name == 'workflow_dispatch' && inputs.task != 'today')
+        continue-on-error: true
+        run: python articles.py ${{ inputs.task == 'articles' && '--force' || '' }}
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
 
-      - run: python send_quote.py
+      - name: Run the bot
+        run: python bot_brain.py
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
           CUSTOMER_CHAT_ID: ${{ secrets.CUSTOMER_CHAT_ID }}
-          LANG_MODE: ${{ secrets.LANG_MODE }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TASK: ${{ inputs.task }}
 
-      - run: python update_site.py
-
-      # Runs even if update_site.py failed: the quote was already delivered and
-      # logged, so the log and schedule must be saved regardless. A rendering
-      # bug should not cost us the state - the run still reports red.
-      - name: Save quote log, schedule and updated site
-        if: always()
+      # Runs even if the bot step failed: a message may already have gone
+      # out, and the state must record that or it could be sent twice.
+      - name: Save state and website
+        if: always() && github.event.action != 'tg_relay'
         run: |
-          if ! git diff --quiet quote_state.json schedule.json docs/index.html; then
-            git config user.name "quote-bot"
-            git config user.email "actions@github.com"
-            git add quote_state.json schedule.json docs/index.html
-            git commit -m "Daily quote update [skip ci]"
-            git push
-          else
-            echo "No changes to commit."
+          files="approval_state.json quote_state.json articles.json docs/index.html"
+          if [ -z "$(git status --porcelain -- $files)" ]; then
+            echo "No changes to commit."; exit 0
           fi
+          git config user.name "quote-bot"
+          git config user.email "actions@github.com"
+          for f in $files; do [ -e "$f" ] && git add -- "$f"; done
+          git commit -m "Quote bot state [skip ci]"
+          for attempt in 1 2 3; do
+            git push && exit 0
+            git pull --rebase origin main || exit 1
+          done
+          exit 1

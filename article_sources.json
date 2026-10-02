@@ -1,0 +1,12 @@
+[
+  {"name": "Farnam Street", "url": "https://fs.blog/feed/", "author": "Shane Parrish"},
+  {"name": "Daily Stoic", "url": "https://dailystoic.com/feed/", "author": "Ryan Holiday"},
+  {"name": "James Clear", "url": "https://jamesclear.com/feed", "author": "James Clear"},
+  {"name": "The Marginalian", "url": "https://www.themarginalian.org/feed/", "author": "Maria Popova"},
+  {"name": "Seth Godin", "url": "https://seths.blog/feed/", "author": "Seth Godin"},
+  {"name": "Collab Fund", "url": "https://collabfund.com/blog/feed/", "author": "Morgan Housel"},
+  {"name": "Of Dollars And Data", "url": "https://ofdollarsanddata.com/feed/", "author": "Nick Maggiulli"},
+  {"name": "Mark Manson", "url": "https://markmanson.net/feed", "author": "Mark Manson"},
+  {"name": "Ness Labs", "url": "https://nesslabs.com/feed", "author": "Anne-Laure Le Cunff"},
+  {"name": "More To That", "url": "https://moretothat.com/feed/", "author": "Lawrence Yeo"}
+]

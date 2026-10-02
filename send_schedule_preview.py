@@ -1,13 +1,11 @@
 """
-Sends YOU (ADMIN_CHAT_ID only - never the customer) a preview of what's
-queued to go out, so you can approve it or swap anything you don't like
-before your brother ever sees it.
+Sends YOU (ADMIN_CHAT_ID only - never the customer) a preview of the
+weekly habits queued to go out, plus where the daily quote approval stands.
 
 Runs weekly on Saturdays, and on demand from the Actions tab
 ("Send schedule preview").
 
 Env:
-  PREVIEW_DAYS    how many days of quotes to show (default 14)
   PREVIEW_WEEKS   how many upcoming habits to show (default 4)
 """
 
@@ -20,7 +18,6 @@ from render import short_label
 import schedule_utils as su
 
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID")
-PREVIEW_DAYS = int(os.environ.get("PREVIEW_DAYS") or 14)
 PREVIEW_WEEKS = int(os.environ.get("PREVIEW_WEEKS") or 4)
 
 TELEGRAM_LIMIT = 4000  # real cap is 4096; leave headroom
@@ -30,28 +27,34 @@ def fmt_day(d: date) -> str:
     return d.strftime("%d %b (%a)")
 
 
+def quote_status_line(today) -> str:
+    """Today's approval status plus how many quotes are ready, without touching state."""
+    import approval
+    state = approval.load_state()
+    pool = approval.build_pool(state["enriched"])
+    approval.seed_from_history(state, pool)
+    ready = approval.eligible(pool, state, today, (), 0)
+    fresh = sum(1 for i in ready if approval.is_fresh_article(i, today))
+    day = state["days"].get(today.isoformat())
+    status = {"sent": "sent ✅", "skipped": "skipped ⏭", "pending": "waiting for your tap",
+              "expired": "no answer"}.get((day or {}).get("status"), "card not out yet")
+    return (f"Today: {status}. {len(ready)} ready to offer ({fresh} fresh articles). "
+            "Each morning's card comes with ✅ ⏭ 🚫 🔄 buttons.")
+
+
 def build_preview(today=None):
-    today = today or date.today()
+    if today is None:
+        import approval
+        today = approval.now_local().date()
     sched = su.load_schedule()
-    quotes = su.load_library("quotes")
     habits = su.load_library("habits")
 
     lines = ["\U0001F4C5 Upcoming sends — review before they go out", ""]
 
-    lines.append(f"QUOTES — next {PREVIEW_DAYS} days")
-    shown = 0
-    for offset in range(PREVIEW_DAYS):
-        day = today + timedelta(days=offset)
-        idx = sched["quotes"].get(day.isoformat())
-        if idx is None or not (0 <= idx < len(quotes)):
-            continue
-        marker = "→" if offset == 0 else "·"
-        lines.append(f"{fmt_day(day)} {marker} {short_label(quotes[idx], 'quotes')}")
-        shown += 1
-    if shown == 0:
-        lines.append("(nothing queued — run \"Generate schedule\")")
-
+    lines.append("QUOTES — daily approval")
+    lines.append(quote_status_line(today))
     lines.append("")
+
     lines.append(f"HABITS — next {PREVIEW_WEEKS} Mondays")
     shown = 0
     for monday in su.upcoming_mondays(today, PREVIEW_WEEKS):
@@ -65,8 +68,8 @@ def build_preview(today=None):
 
     lines += [
         "",
-        "Don't like one? GitHub → Actions → \"Reroll scheduled item\"",
-        "→ enter the date (e.g. " + (today + timedelta(days=1)).isoformat() + ") and quotes/habits.",
+        "Don't like a habit? GitHub → Actions → \"Reroll scheduled item\"",
+        "→ enter the date (e.g. " + (today + timedelta(days=1)).isoformat() + ").",
     ]
 
     text = "\n".join(lines)

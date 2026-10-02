@@ -1,4 +1,44 @@
-# Toronto Countdown Bot (v3 — admin/customer roles)
+# Toronto Countdown Bot
+
+## Daily quote: you approve, then he receives
+
+Every morning (~8am Toronto) you get one candidate on Telegram:
+
+```
+🗳 Today's pick · Fri, Oct 2
+📰 Fresh article · Farnam Street · Sep 29      (or 🏛 Timeless library · Seneca)
+🔁 Offered 2× before (last Sep 14) · 📤 Never sent
+🧮 Pool: 118 ready · 3 fresh articles
+━━━━━━━━━━━━
+<exactly what your brother will get, English + Ukrainian>
+
+[✅ Send today] [⏭ Not today]
+[🚫 Never send] [🔄 Another]
+```
+
+- **✅ Send today**: goes to him right away and onto the website.
+- **⏭ Not today**: nothing is sent today. The item rests 5 days, then may come back.
+- **🚫 Never send**: banned for good (there's an undo button). Another candidate is offered straight away.
+- **🔄 Another**: swaps in a different one. Fresh articles and timeless quotes take turns.
+- Anything sent in the last 90 days is never offered.
+- No tap by ~6pm: one reminder. Still nothing: nothing goes out that day.
+- Commands: `/today` (show today's pick, or reopen a skipped day), `/stats`, `/schedule`, `/help`.
+
+Sources: `quotes.json` (themes), `quotes_flat_pending.json` (timeless quotes), and fresh article lines in `articles.json`. Those come from the feeds in `article_sources.json`, read by free Groq AI. A line is only kept if it appears word for word in the article.
+
+### One-time setup for instant buttons
+Button taps reach GitHub through a tiny Vercel relay (`vercel/`, project `quote-relay`):
+1. GitHub → Settings → Developer settings → Fine-grained tokens → new token. Only this repo, **Contents: Read and write**.
+2. Vercel → quote-relay → Settings → Environment Variables: add `BOT_TOKEN`, `GH_TOKEN` (the token above) and `ADMIN_CHAT_ID`. Then redeploy.
+3. This repo → Settings → Secrets → Actions: add `GROQ_API_KEY`.
+4. Actions → **Telegram webhook** → Run workflow → `connect`, url `https://quote-relay-stoa29.vercel.app`.
+
+Without step 4, everything still works through GitHub alone, but taps can take hours.
+To go back to that mode: same workflow, `disconnect`.
+
+---
+
+## Countdown, relay and roles (v3)
 
 Two roles now:
 - **CUSTOMER** (your brother) — receives the daily countdown photo
@@ -10,9 +50,9 @@ Two roles now:
   tell you "the message was successfully delivered to Telegram's servers
   for his chat" — it cannot tell you if he opened or read it. No bot setup
   can do that; it's a platform limitation, not something more code fixes.
-- "He typed something" is checked **every 5 minutes**, not instantly —
-  there's no always-on server here, so it's near-real-time rather than
-  live.
+- "He typed something" reaches you within seconds once the Vercel relay
+  is connected (see the quote section above). Without it, GitHub's
+  "every 5 minutes" poll really runs every few hours.
 - Worth actually telling your brother the bot works this way, so it's not
   a surprise later.
 
