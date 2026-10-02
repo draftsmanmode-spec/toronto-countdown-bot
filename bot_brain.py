@@ -33,6 +33,8 @@ import telegram_utils
 OFFSET_PATH = "state.json"
 LISTEN_SECONDS = 15 * 60
 LISTEN_AFTER = {"offered", "reminded", "re-posted"}
+# results of a tap/command that put a fresh card in front of you
+NEW_CARD = {"offered another", "banned + offered another", "today: offered", "today: re-posted"}
 
 HELP_TEXT = (
     "\U0001F916 Bot commands\n\n"
@@ -61,6 +63,7 @@ class Brain:
         self.now = now
         self._engine = None
         self.failures = 0
+        self.new_card = False
 
     @property
     def engine(self) -> approval.Engine:
@@ -77,6 +80,7 @@ class Brain:
             result = self.handle_message(update["message"])
         else:
             result = "ignored: unsupported update"
+        self.new_card = self.new_card or result in NEW_CARD
         print(f"update {update.get('update_id')}: {result}")
         return result
 
@@ -201,7 +205,10 @@ def drain(brain: Brain, listen_seconds: int = 0) -> int:
 def run_tick(brain: Brain, reopen: bool = False) -> None:
     pulled = drain(brain)  # taps that arrived since the last run come first
     result = ("today: " + brain.engine.reopen_today()) if reopen else brain.tick()
-    if pulled >= 0 and result.removeprefix("today: ") in LISTEN_AFTER:
+    # listen if this run put a card in front of you: the tick itself, or a
+    # 🔄 Another / /today that was waiting in the queue
+    if pulled >= 0 and (result.removeprefix("today: ") in LISTEN_AFTER or brain.new_card) \
+            and not brain.decided_today():
         print(f"Listening for taps for up to {LISTEN_SECONDS // 60} minutes...")
         drain(brain, LISTEN_SECONDS)
 

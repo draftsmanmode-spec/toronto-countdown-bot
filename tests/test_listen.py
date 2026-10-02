@@ -66,3 +66,32 @@ def test_listen_window_ends_without_a_tap(repo, tg, monkeypatch):
     run_tick(b)
     assert b.finish()
     assert tg.to(BROTHER) == []
+
+
+def test_queued_another_tap_gets_a_listen_window(repo, tg, monkeypatch):
+    monkeypatch.setattr(bot_brain, "LISTEN_SECONDS", 0)
+    b = brain(tg)
+    run_tick(b)
+    b.finish()
+    first = tg.cards()[-1]
+
+    # later: the 🔄 Another tap is waiting; the next tick handles it, and the
+    # new card must get a listen window so a quick ✅ on it lands right away
+    monkeypatch.setattr(bot_brain, "LISTEN_SECONDS", 60)
+    state = {"phase": "queued"}
+
+    def updates(offset, timeout=0):
+        if state["phase"] == "queued":
+            state["phase"] = "listening"
+            return [tap_update(10, first, "next")]
+        if state["phase"] == "listening" and timeout > 0:
+            state["phase"] = "done"
+            return [tap_update(11, tg.cards()[-1], "ok")]
+        return []
+
+    tg.get_updates = updates
+    b2 = brain(tg, hour=11)
+    run_tick(b2)
+    assert b2.finish()
+    assert len(tg.to(BROTHER)) == 1
+    assert tg.cards()[-1]["message_id"] != first["message_id"]
