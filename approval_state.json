@@ -144,6 +144,13 @@
         "2026-10-03"
       ],
       "never": false
+    },
+    "q-52c9076c18": {
+      "offered": [
+        "2026-10-04"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -177,6 +184,17 @@
       "reminded": false,
       "sent_id": "q-0901d343c5",
       "sent_kind": "timeless"
+    },
+    "2026-10-04": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-52c9076c18",
+          "message_id": 274,
+          "at": "2026-10-04T08:24-04:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
