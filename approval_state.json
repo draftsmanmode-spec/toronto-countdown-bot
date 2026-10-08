@@ -206,7 +206,9 @@
       "offered": [
         "2026-10-08"
       ],
-      "sent": [],
+      "sent": [
+        "2026-10-08"
+      ],
       "never": false
     }
   },
@@ -310,7 +312,7 @@
       "sent_kind": "timeless"
     },
     "2026-10-08": {
-      "status": "pending",
+      "status": "sent",
       "offers": [
         {
           "id": "q-d3a8f5e425",
@@ -318,7 +320,9 @@
           "at": "2026-10-08T08:23-04:00"
         }
       ],
-      "reminded": false
+      "reminded": false,
+      "sent_id": "q-d3a8f5e425",
+      "sent_kind": "timeless"
     }
   },
   "enriched": {}
