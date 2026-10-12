@@ -235,6 +235,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-f7480dd1f9": {
+      "offered": [
+        "2026-10-12"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -382,6 +389,17 @@
           "id": "q-a293c2eb6d",
           "message_id": 292,
           "at": "2026-10-11T08:23-04:00"
+        }
+      ],
+      "reminded": false
+    },
+    "2026-10-12": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-f7480dd1f9",
+          "message_id": 293,
+          "at": "2026-10-12T08:23-04:00"
         }
       ],
       "reminded": false
