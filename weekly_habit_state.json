@@ -2,7 +2,8 @@
   "used_indices": [
     1,
     5,
-    20
+    20,
+    22
   ],
   "history": [
     {
@@ -20,6 +21,12 @@
       "index": 5,
       "title": "Batch-check messages instead of reacting instantly",
       "title_uk": "Перевіряй повідомлення блоками, а не миттєво"
+    },
+    {
+      "date": "2026-10-12",
+      "index": 22,
+      "title": "Stretch for 5 minutes after waking",
+      "title_uk": "Розтягуйся 5 хвилин після пробудження"
     }
   ]
 }
