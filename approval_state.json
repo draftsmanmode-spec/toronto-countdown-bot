@@ -244,6 +244,13 @@
         "2026-10-12"
       ],
       "never": false
+    },
+    "q-ec8054a762": {
+      "offered": [
+        "2026-10-13"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -407,6 +414,17 @@
       "reminded": false,
       "sent_id": "q-f7480dd1f9",
       "sent_kind": "timeless"
+    },
+    "2026-10-13": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-ec8054a762",
+          "message_id": 297,
+          "at": "2026-10-13T07:48-04:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
