@@ -280,6 +280,13 @@
         "2026-10-16"
       ],
       "never": false
+    },
+    "q-c0c5b1cb47": {
+      "offered": [
+        "2026-10-17"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -495,6 +502,17 @@
       "reminded": false,
       "sent_id": "q-34256204ea",
       "sent_kind": "timeless"
+    },
+    "2026-10-17": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-c0c5b1cb47",
+          "message_id": 305,
+          "at": "2026-10-17T08:23-04:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
