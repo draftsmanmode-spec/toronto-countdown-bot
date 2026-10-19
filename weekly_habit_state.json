@@ -2,6 +2,7 @@
   "used_indices": [
     1,
     5,
+    15,
     20,
     22
   ],
@@ -27,6 +28,12 @@
       "index": 22,
       "title": "Stretch for 5 minutes after waking",
       "title_uk": "Розтягуйся 5 хвилин після пробудження"
+    },
+    {
+      "date": "2026-10-19",
+      "index": 15,
+      "title": "Do one uncomfortable ask this week",
+      "title_uk": "Зроби одне незручне прохання цього тижня"
     }
   ]
 }
