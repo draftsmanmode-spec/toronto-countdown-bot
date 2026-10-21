@@ -312,6 +312,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-265b425f15": {
+      "offered": [
+        "2026-10-21"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -575,6 +582,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-10-21": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-265b425f15",
+          "message_id": 316,
+          "at": "2026-10-21T08:23-04:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
