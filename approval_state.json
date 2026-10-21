@@ -317,7 +317,9 @@
       "offered": [
         "2026-10-21"
       ],
-      "sent": [],
+      "sent": [
+        "2026-10-21"
+      ],
       "never": false
     }
   },
@@ -584,7 +586,7 @@
       "reminded": true
     },
     "2026-10-21": {
-      "status": "pending",
+      "status": "sent",
       "offers": [
         {
           "id": "q-265b425f15",
@@ -592,7 +594,9 @@
           "at": "2026-10-21T08:23-04:00"
         }
       ],
-      "reminded": false
+      "reminded": false,
+      "sent_id": "q-265b425f15",
+      "sent_kind": "timeless"
     }
   },
   "enriched": {}
