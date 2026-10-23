@@ -606,7 +606,7 @@
       "sent_kind": "timeless"
     },
     "2026-10-22": {
-      "status": "pending",
+      "status": "expired",
       "offers": [
         {
           "id": "q-5b2a8affbf",
