@@ -328,6 +328,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-5399add749": {
+      "offered": [
+        "2026-10-23"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -615,6 +622,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-10-23": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-5399add749",
+          "message_id": 320,
+          "at": "2026-10-23T08:23-04:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
