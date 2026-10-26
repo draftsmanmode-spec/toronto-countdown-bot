@@ -353,6 +353,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-704c4a8ad2": {
+      "offered": [
+        "2026-10-26"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -677,6 +684,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-10-26": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-704c4a8ad2",
+          "message_id": 327,
+          "at": "2026-10-26T08:23-04:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
