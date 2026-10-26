@@ -1,6 +1,7 @@
 {
   "used_indices": [
     1,
+    4,
     5,
     15,
     20,
@@ -34,6 +35,12 @@
       "index": 15,
       "title": "Do one uncomfortable ask this week",
       "title_uk": "Зроби одне незручне прохання цього тижня"
+    },
+    {
+      "date": "2026-10-26",
+      "index": 4,
+      "title": "Strength train twice a week",
+      "title_uk": "Силові тренування двічі на тиждень"
     }
   ]
 }
