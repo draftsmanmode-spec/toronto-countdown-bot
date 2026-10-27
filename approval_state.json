@@ -360,6 +360,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-24bc838a32": {
+      "offered": [
+        "2026-10-27"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -695,6 +702,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-10-27": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-24bc838a32",
+          "message_id": 331,
+          "at": "2026-10-27T08:23-04:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
