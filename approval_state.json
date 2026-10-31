@@ -792,7 +792,7 @@
           "at": "2026-10-31T08:23-04:00"
         }
       ],
-      "reminded": false
+      "reminded": true
     }
   },
   "enriched": {}
