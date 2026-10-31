@@ -392,6 +392,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-acb897104e": {
+      "offered": [
+        "2026-10-31"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -775,6 +782,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-10-31": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-acb897104e",
+          "message_id": 340,
+          "at": "2026-10-31T08:23-04:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
