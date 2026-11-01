@@ -399,6 +399,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-cae3dfad28": {
+      "offered": [
+        "2026-11-01"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -793,6 +800,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-11-01": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-cae3dfad28",
+          "message_id": 343,
+          "at": "2026-11-01T07:23-05:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
