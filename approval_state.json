@@ -802,7 +802,7 @@
       "reminded": true
     },
     "2026-11-01": {
-      "status": "pending",
+      "status": "expired",
       "offers": [
         {
           "id": "q-cae3dfad28",
