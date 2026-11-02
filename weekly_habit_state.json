@@ -5,7 +5,8 @@
     5,
     15,
     20,
-    22
+    22,
+    26
   ],
   "history": [
     {
@@ -41,6 +42,12 @@
       "index": 4,
       "title": "Strength train twice a week",
       "title_uk": "Силові тренування двічі на тиждень"
+    },
+    {
+      "date": "2026-11-02",
+      "index": 26,
+      "title": "Read 10 pages of a real book",
+      "title_uk": "Читай 10 сторінок справжньої книги"
     }
   ]
 }
