@@ -441,6 +441,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-5f4834ecd2": {
+      "offered": [
+        "2026-11-07"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -901,6 +908,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-11-07": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-5f4834ecd2",
+          "message_id": 357,
+          "at": "2026-11-07T11:26-05:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
