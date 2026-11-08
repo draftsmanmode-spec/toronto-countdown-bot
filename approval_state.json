@@ -448,6 +448,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-87fe9847aa": {
+      "offered": [
+        "2026-11-08"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -919,6 +926,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-11-08": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-87fe9847aa",
+          "message_id": 360,
+          "at": "2026-11-08T10:11-05:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
