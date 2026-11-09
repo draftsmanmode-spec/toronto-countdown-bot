@@ -6,7 +6,8 @@
     15,
     20,
     22,
-    26
+    26,
+    29
   ],
   "history": [
     {
@@ -48,6 +49,12 @@
       "index": 26,
       "title": "Read 10 pages of a real book",
       "title_uk": "Читай 10 сторінок справжньої книги"
+    },
+    {
+      "date": "2026-11-09",
+      "index": 29,
+      "title": "Track your sleep for a week",
+      "title_uk": "Відстежуй сон протягом тижня"
     }
   ]
 }
