@@ -455,6 +455,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-b685482519": {
+      "offered": [
+        "2026-11-09"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -937,6 +944,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-11-09": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-b685482519",
+          "message_id": 362,
+          "at": "2026-11-09T12:28-05:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
