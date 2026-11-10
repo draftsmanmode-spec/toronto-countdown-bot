@@ -462,6 +462,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-ea68b46426": {
+      "offered": [
+        "2026-11-10"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -955,6 +962,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-11-10": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-ea68b46426",
+          "message_id": 366,
+          "at": "2026-11-10T12:49-05:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
