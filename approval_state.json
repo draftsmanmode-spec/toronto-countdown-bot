@@ -476,6 +476,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-e1ca863998": {
+      "offered": [
+        "2026-11-12"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -991,6 +998,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-11-12": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-e1ca863998",
+          "message_id": 370,
+          "at": "2026-11-12T13:56-05:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
