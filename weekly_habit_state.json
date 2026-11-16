@@ -3,6 +3,7 @@
     1,
     4,
     5,
+    7,
     15,
     20,
     22,
@@ -55,6 +56,12 @@
       "index": 29,
       "title": "Track your sleep for a week",
       "title_uk": "Відстежуй сон протягом тижня"
+    },
+    {
+      "date": "2026-11-16",
+      "index": 7,
+      "title": "Write tomorrow's top 3 tasks tonight",
+      "title_uk": "Запиши 3 головні задачі на завтра ще звечора"
     }
   ]
 }
