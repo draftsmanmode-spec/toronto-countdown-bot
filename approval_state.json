@@ -504,6 +504,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-bbb5321d90": {
+      "offered": [
+        "2026-11-16"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -1063,6 +1070,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-11-16": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-bbb5321d90",
+          "message_id": 379,
+          "at": "2026-11-16T15:28-05:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
