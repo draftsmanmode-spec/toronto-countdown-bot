@@ -518,6 +518,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-a788a8c966": {
+      "offered": [
+        "2026-11-18"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -1090,7 +1097,7 @@
       "reminded": false
     },
     "2026-11-17": {
-      "status": "pending",
+      "status": "expired",
       "offers": [
         {
           "id": "q-a8a0bcfc4a",
@@ -1099,6 +1106,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-11-18": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-a788a8c966",
+          "message_id": 384,
+          "at": "2026-11-18T08:57-05:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
