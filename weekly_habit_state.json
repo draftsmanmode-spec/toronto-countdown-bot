@@ -5,6 +5,7 @@
     5,
     7,
     15,
+    19,
     20,
     22,
     26,
@@ -62,6 +63,12 @@
       "index": 7,
       "title": "Write tomorrow's top 3 tasks tonight",
       "title_uk": "Запиши 3 головні задачі на завтра ще звечора"
+    },
+    {
+      "date": "2026-11-23",
+      "index": 19,
+      "title": "Do a digital sunset",
+      "title_uk": "Влаштуй «цифровий захід сонця»"
     }
   ]
 }
