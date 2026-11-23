@@ -553,6 +553,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-40afbf4562": {
+      "offered": [
+        "2026-11-23"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -1189,6 +1196,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-11-23": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-40afbf4562",
+          "message_id": 393,
+          "at": "2026-11-23T16:24-05:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
