@@ -560,6 +560,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-6d84597ffb": {
+      "offered": [
+        "2026-11-24"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -1204,6 +1211,17 @@
           "id": "q-40afbf4562",
           "message_id": 393,
           "at": "2026-11-23T16:24-05:00"
+        }
+      ],
+      "reminded": false
+    },
+    "2026-11-24": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-6d84597ffb",
+          "message_id": 396,
+          "at": "2026-11-24T12:44-05:00"
         }
       ],
       "reminded": false
