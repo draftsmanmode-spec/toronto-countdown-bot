@@ -581,6 +581,13 @@
       ],
       "sent": [],
       "never": false
+    },
+    "q-eb462dbbd5": {
+      "offered": [
+        "2026-11-27"
+      ],
+      "sent": [],
+      "never": false
     }
   },
   "days": {
@@ -1261,6 +1268,17 @@
         }
       ],
       "reminded": true
+    },
+    "2026-11-27": {
+      "status": "pending",
+      "offers": [
+        {
+          "id": "q-eb462dbbd5",
+          "message_id": 402,
+          "at": "2026-11-27T13:58-05:00"
+        }
+      ],
+      "reminded": false
     }
   },
   "enriched": {}
